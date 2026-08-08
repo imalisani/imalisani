@@ -1,88 +1,88 @@
-## Hi! There 👋
+<h1>Irina Malisani</h1>
+<h3>Quality Engineer · Agentic Quality Engineering</h3>
 
-<div id="header" align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlzajNxbWFxc3oxbGh6enluZW50azJ4eGJ6dmlvZmk5NHNzZThzdSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/HzPtbOKyBoBFsK4hyc/giphy.gif" width="100"/>
-  <div id="badges">
-    <a href="https://www.linkedin.com/in/imalisani/">
-      <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-    </a>
-  </div>
-  <img src="https://komarev.com/ghpvc/?username=thefreerangetester&color=blue" alt=""/>
-  <h1>
-  hey there
-  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
-  </h1>
-</div>
-<div align="center">
-  <img src="https://media.giphy.com/media/dWesBcTLavkZuG35MI/giphy.gif" width="600" height="300"/>
-</div>
+I work on quality before there is anything to test, and I build AI agents that carry
+test design criteria — so the reasoning behind a good test case lives somewhere
+reusable instead of inside each person's prompt.
 
----
-### :man_technologist: About Me :
-I am a QA Analyst <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> from New Zealand.
-- :telescope: I’m working as a Senior Test Engineer Contractor and contributing to projects both in Wellington and remotely around all New Zealand and Australia.
-
-- :seedling: Mentoring the new generations of Test Engineers in New Zealand through <a href="https://devacademy.co.nz/testing-automation-essentials/">DevAcademy Aotearoa</a>
-
-- :zap: In my free time, I create content for <a href="https://www.freerangetesters.com/">Free Range Testers</a> and make music on <a href="https://open.spotify.com/intl-es/artist/1n8lYlkH7XKivKBmh6oey1/">Modern Druids</a>.
-
-- :mailbox:How to reach me: [![Linkedin Badge](https://img.shields.io/badge/-Pato-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/patricio-m-690b3729)
+[LinkedIn](https://linkedin.com/in/imalisani) · Santa Fe, Argentina · ES / EN (B2+)
 
 ---
 
-### :hammer_and_wrench: Languages and Dev Tools :
-<div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" title="Java" alt="Java" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" title="Python" **alt="Python" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/nextjs/nextjs-original.svg" title="NextJS" **alt="NextJS" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-original.svg" title="Tailwind" alt="Tailwind" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL"  alt="MySQL" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" title="AWS" alt="AWS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg" title="Git" **alt="Git" width="40" height="40"/>
-  
-  
-</div>
+### How I work
 
-### 🐞 Testing Tools :
-<div>
-<img src="https://github.com/devicons/devicon/blob/master/icons/cucumber/cucumber-plain.svg" title="Cucumber" **alt="Cucumber" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/selenium/selenium-original.svg" title="Selenium" **alt="Selenium" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/playwright/playwright-original.svg" title="Playwright" **alt="Selenium" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/cypressio/cypressio-original.svg" title="CypressIO" **alt="CypressIO" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/pytest/pytest-original.svg" title="Pytest" **alt="Pytest" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/postman/postman-original.svg" title="Postman" **alt="Postman" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/jenkins/jenkins-original.svg" title="Jenkins" **alt="Jenkins" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/jira/jira-original.svg" title="Jira" **alt="Jira" width="40" height="40"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/azuredevops/azuredevops-original.svg" title="Azure DevOps" **alt="Azure DevOps" width="40" height="40"/>
+**Quality starts at refinement, not at regression.**
+At Simpliroute I kept test plans ready for **~90% of features before implementation**,
+written as Gherkin acceptance criteria and discussed with Product Managers and
+developers while the requirement was still changeable.
 
-</div>
+**Agents should decide, not just generate.**
+I built a QA agent that takes a **GitHub PR and a test plan**, compares what the
+developer actually implemented against what the plan covered, and evaluates what is
+worth automating, what is not, and what falls out of scope. It ran on every PR and
+lives in the QA team's repository.
+
+I also built the **reusable skills** that fed two other agents — a critical-thinking
+skill and skills based on ISTQB test design techniques (Equivalence Partitioning,
+Boundary Value Analysis). Both the test-plan generation agent and the plan review agent
+invoke them, so test design criteria became shared infrastructure rather than
+individual improvisation.
+
+**Testing is a gate, not a formality.**
+Validating 3–6 features per week with a one-day average QA turnaround, **~25% of the
+tasks I tested went back to development** with defects found before release.
+
+**Automation is coverage only if someone maintains it.**
+Maintained and extended the Playwright + TypeScript regression suite (~3 years) and
+built Postman API automation. When team capacity allowed, I started **mobile automation
+with Appium from scratch** — structure, environment configuration and first flows.
 
 ---
 
-### :fire: My Stats :
-<p align="center"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=thefreerangetester" alt="thefreerangetester" /></a> </p>
-<div align="center">  
-  <img src="http://github-readme-streak-stats.herokuapp.com?user=thefreerangetester&theme=dark&background=000000" width="600"/>
-</div>
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=thefreerangetester&layout=compact&theme=vision-friendly-dark" width="600"/>
-</div>
-**imalisani/imalisani** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### Repositories
 
-Here are some ideas to get you started:
+| Repository | What it is | Status |
+|---|---|---|
+| [playwright-portfolio-typescript](https://github.com/imalisani/playwright-portfolio-typescript) | Playwright + TypeScript suite — Page Object Model, CI workflow, execution evidence | 🚧 active |
+| [selenium-portfolio-python](https://github.com/imalisani/selenium-portfolio-python) | Selenium + Python + Pytest suite | 🚧 active |
+| `imalisani.github.io` | Portfolio and knowledge hub | 🚧 in progress |
+| `agentic-qa-agents` | QA agents with golden sets and evals | 📋 planned |
+| `agentic-qa-knowledge` | Test plans in Gherkin, structured bug reports, documentation | 📋 planned |
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Where this is going: an open set of quality engineering artifacts — test plans, bug
+reports, and QA agents with evaluation — plus an automation layer where the tool is an
+interchangeable adapter rather than the architecture itself.
+
+Statuses are honest on purpose. I would rather show something being built than five
+repositories marked as finished.
+
+---
+
+### Stack
+
+**Automation** Playwright · Selenium · Cypress · Appium · Pytest
+**API & Performance** Postman · JMeter · K6
+**Testing** Functional · Exploratory · Regression · Smoke · Integration · API · Web · Mobile · E2E · Risk analysis
+**Test Management** Jira · Xray · TestRail · Zephyr · Notion · Jam.dev
+**Languages** JavaScript · TypeScript · Python · SQL
+**Data** PostgreSQL · MongoDB
+**Practices** Agile / Scrum · Gherkin · Shift-left · ISTQB test design techniques
+**AI for QA** Claude Code · Cursor · GitHub Copilot · MCP (Playwright, GitHub, Notion) · QA agent design · reusable agent skills
+**Platform** Git · GitHub Actions · GitHub Pages · Docker
+
+---
+
+### Background
+
+**QA Engineer @ Simpliroute** — SaaS logistics platform · Jan 2022 – Jul 2026
+Started as an intern in manual testing and grew into test strategy, automation and
+agent design on the same product.
+
+**Systems Engineering** — Universidad Tecnológica Nacional (UTN), Santa Fe · in progress
+**Selenium with Python and Pytest** — Free Range Testers, 2026
+**Mastering Playwright with TypeScript** — Udemy, 2025
+
+---
+
+<sub>Open to Quality Engineering roles — remote or hybrid.
+Reach me on <a href="https://linkedin.com/in/imalisani">LinkedIn</a>.</sub>
