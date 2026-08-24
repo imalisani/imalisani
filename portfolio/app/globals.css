@@ -22,3 +22,6 @@ html,body{max-width:100%;overflow-x:hidden;overflow-x:clip}img{max-width:100%}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee>div{animation:none}.case,.round,.pageIndexCard,.cvBanner>a{transition:none}.planet{animation:none}}
 @media(max-width:760px){.navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.navGroup:not([open]) .navParent span{transform:none}
+.navGroup:not([open]) .navDropdown{opacity:0;visibility:hidden;transform:translate(-50%,-6px)}
+@media(max-width:760px){.navGroup:not([open]) .navDropdown{transform:translateY(-6px)}}
