@@ -73,6 +73,6 @@ export default function ProcessJourney(){
       <div className={styles.outcomeGrid}>{outcomes.map((outcome,index)=>{const item=outcome[lang];return <article key={outcome.key}><span>0{index+1}</span><h3>{item.title}</h3><p>{item.copy}</p></article>})}</div>
     </section>
 
-    <footer className={styles.footer}><p className={styles.eyebrow}>{c.ctaLabel}</p><h2>{c.ctaTitle}</h2><div><Link href="/#test-cases">{c.evidence} ↗</Link><Link href="/#github">{c.repos} ↗</Link><Link href="/#contact">{c.talk} ↗</Link></div></footer>
+    <footer className={styles.footer}><p className={styles.eyebrow}>{c.ctaLabel}</p><h2>{c.ctaTitle}</h2><div><Link href="/casos-de-prueba">{c.evidence} ↗</Link><Link href="/#github">{c.repos} ↗</Link><Link href="/#contact">{c.talk} ↗</Link></div></footer>
   </main>;
 }
