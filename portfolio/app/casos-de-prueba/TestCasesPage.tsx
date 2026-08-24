@@ -13,8 +13,8 @@ const testExamples=[
 ] as const;
 
 const copy={
-  es:{back:"Portfolio",process:"Flujo de QA",reposNav:"Repositorios",contact:"Contacto",label:"Diseño de pruebas · Gherkin",title:<>Casos que hacen visible <em>el riesgo.</em></>,lead:"Cada ejemplo conecta una pregunta de negocio con un escenario Gherkin, una técnica de diseño y una implementación pública.",collection:"Escenarios Gherkin",hint:"Abrí cada escenario para ver su trazabilidad.",risk:"Riesgo cubierto",scenario:"Escenario Gherkin",technique:"Técnica",code:"Ver implementación",footerLabel:"Evidencia real",footerTitle:"Del comportamiento esperado al código ejecutable.",repositories:"Explorar repositorios",talk:"Hablemos"},
-  en:{back:"Portfolio",process:"QA workflow",reposNav:"Repositories",contact:"Contact",label:"Test design · Gherkin",title:<>Test cases that make <em>risk visible.</em></>,lead:"Each example connects a business question with a Gherkin scenario, a design technique and a public implementation.",collection:"Gherkin scenarios",hint:"Open each scenario to see its traceability.",risk:"Risk covered",scenario:"Gherkin scenario",technique:"Technique",code:"View implementation",footerLabel:"Real evidence",footerTitle:"From expected behaviour to executable code.",repositories:"Explore repositories",talk:"Let’s talk"},
+  es:{back:"Portfolio",process:"Flujo de QA",testsNav:"Casos de prueba",reposNav:"Repositorios",contact:"Contacto",label:"Diseño de pruebas · Gherkin",title:<>Casos que hacen visible <em>el riesgo.</em></>,lead:"Cada ejemplo conecta una pregunta de negocio con un escenario Gherkin, una técnica de diseño y una implementación pública.",collection:"Escenarios Gherkin",hint:"Abrí cada escenario para ver su trazabilidad.",risk:"Riesgo cubierto",scenario:"Escenario Gherkin",technique:"Técnica",code:"Ver implementación",footerLabel:"Evidencia real",footerTitle:"Del comportamiento esperado al código ejecutable.",repositories:"Explorar repositorios",talk:"Hablemos"},
+  en:{back:"Portfolio",process:"QA workflow",testsNav:"Test cases",reposNav:"Repositories",contact:"Contact",label:"Test design · Gherkin",title:<>Test cases that make <em>risk visible.</em></>,lead:"Each example connects a business question with a Gherkin scenario, a design technique and a public implementation.",collection:"Gherkin scenarios",hint:"Open each scenario to see its traceability.",risk:"Risk covered",scenario:"Gherkin scenario",technique:"Technique",code:"View implementation",footerLabel:"Real evidence",footerTitle:"From expected behaviour to executable code.",repositories:"Explore repositories",talk:"Let’s talk"},
 };
 
 export default function TestCasesPage(){
@@ -23,8 +23,12 @@ export default function TestCasesPage(){
   useEffect(()=>{
     const saved=window.localStorage.getItem("portfolio-theme");
     const preferred=saved==="dark"||saved==="light"?saved:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    const savedLanguage=window.localStorage.getItem("portfolio-language");
+    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
     setTheme(preferred);
+    setLang(preferredLanguage);
     document.documentElement.dataset.theme=preferred;
+    document.documentElement.lang=preferredLanguage;
   },[]);
   const toggleTheme=()=>setTheme(current=>{
     const next=current==="light"?"dark":"light";
@@ -32,15 +36,21 @@ export default function TestCasesPage(){
     window.localStorage.setItem("portfolio-theme",next);
     return next;
   });
+  const toggleLanguage=()=>setLang(current=>{
+    const next=current==="es"?"en":"es";
+    window.localStorage.setItem("portfolio-language",next);
+    document.documentElement.lang=next;
+    return next;
+  });
   const c=copy[lang];
 
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación de casos de prueba":"Test cases navigation"}>
       <Link className={styles.logo} href="/" aria-label={lang==="es"?"Ir al inicio":"Go home"}>IM<span>.</span></Link>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><Link href="/como-trabajo">{c.process}</Link><Link href="/repositorios">{c.reposNav}</Link><Link href="/#contact">{c.contact}</Link></div>
+      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><Link href="/como-trabajo">01 — {c.process}</Link><Link href="/casos-de-prueba" aria-current="page">02 — {c.testsNav}</Link><Link href="/repositorios">03 — {c.reposNav}</Link><Link href="/#contact">{c.contact}</Link></div>
       <div className={styles.controls}>
         <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
-        <button className={styles.language} type="button" onClick={()=>setLang(lang==="es"?"en":"es")} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
+        <button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
       </div>
     </nav>
 

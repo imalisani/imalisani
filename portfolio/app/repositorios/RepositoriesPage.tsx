@@ -13,8 +13,8 @@ const repositories=[
 ] as const;
 
 const copy={
-  es:{back:"Portfolio",process:"Flujo de QA",tests:"Casos de prueba",contact:"Contacto",label:"Código y evidencia",title:<>Repositorios que respaldan <em>el criterio.</em></>,lead:"Cada proyecto público conecta una decisión de calidad con estrategia, arquitectura, automatización, trazabilidad y resultados observables.",collection:"Trabajo abierto",hint:"Tres formas de llevar el razonamiento a código.",repo:"Explorar repositorio",footerLabel:"El recorrido completo",footerTitle:"Del requerimiento a la evidencia pública.",workflow:"Ver cómo trabajo",talk:"Hablemos"},
-  en:{back:"Portfolio",process:"QA workflow",tests:"Test cases",contact:"Contact",label:"Code and evidence",title:<>Repositories that back <em>the judgement.</em></>,lead:"Each public project connects a quality decision with strategy, architecture, automation, traceability and observable results.",collection:"Open work",hint:"Three ways to turn reasoning into code.",repo:"Explore repository",footerLabel:"The complete journey",footerTitle:"From requirement to public evidence.",workflow:"See how I work",talk:"Let’s talk"},
+  es:{back:"Portfolio",process:"Flujo de QA",tests:"Casos de prueba",reposNav:"Repositorios",contact:"Contacto",label:"Código y evidencia",title:<>Repositorios que respaldan <em>el criterio.</em></>,lead:"Cada proyecto público conecta una decisión de calidad con estrategia, arquitectura, automatización, trazabilidad y resultados observables.",collection:"Trabajo abierto",hint:"Tres formas de llevar el razonamiento a código.",repo:"Explorar repositorio",footerLabel:"El recorrido completo",footerTitle:"Del requerimiento a la evidencia pública.",workflow:"Ver cómo trabajo",talk:"Hablemos"},
+  en:{back:"Portfolio",process:"QA workflow",tests:"Test cases",reposNav:"Repositories",contact:"Contact",label:"Code and evidence",title:<>Repositories that back <em>the judgement.</em></>,lead:"Each public project connects a quality decision with strategy, architecture, automation, traceability and observable results.",collection:"Open work",hint:"Three ways to turn reasoning into code.",repo:"Explore repository",footerLabel:"The complete journey",footerTitle:"From requirement to public evidence.",workflow:"See how I work",talk:"Let’s talk"},
 };
 
 export default function RepositoriesPage(){
@@ -23,8 +23,12 @@ export default function RepositoriesPage(){
   useEffect(()=>{
     const saved=window.localStorage.getItem("portfolio-theme");
     const preferred=saved==="dark"||saved==="light"?saved:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    const savedLanguage=window.localStorage.getItem("portfolio-language");
+    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
     setTheme(preferred);
+    setLang(preferredLanguage);
     document.documentElement.dataset.theme=preferred;
+    document.documentElement.lang=preferredLanguage;
   },[]);
   const toggleTheme=()=>setTheme(current=>{
     const next=current==="light"?"dark":"light";
@@ -32,15 +36,21 @@ export default function RepositoriesPage(){
     window.localStorage.setItem("portfolio-theme",next);
     return next;
   });
+  const toggleLanguage=()=>setLang(current=>{
+    const next=current==="es"?"en":"es";
+    window.localStorage.setItem("portfolio-language",next);
+    document.documentElement.lang=next;
+    return next;
+  });
   const c=copy[lang];
 
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación de repositorios":"Repositories navigation"}>
       <Link className={styles.logo} href="/" aria-label={lang==="es"?"Ir al inicio":"Go home"}>IM<span>.</span></Link>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><Link href="/como-trabajo">{c.process}</Link><Link href="/casos-de-prueba">{c.tests}</Link><Link href="/#contact">{c.contact}</Link></div>
+      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><Link href="/como-trabajo">01 — {c.process}</Link><Link href="/casos-de-prueba">02 — {c.tests}</Link><Link href="/repositorios" aria-current="page">03 — {c.reposNav}</Link><Link href="/#contact">{c.contact}</Link></div>
       <div className={styles.controls}>
         <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
-        <button className={styles.language} type="button" onClick={()=>setLang(lang==="es"?"en":"es")} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
+        <button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
       </div>
     </nav>
 
