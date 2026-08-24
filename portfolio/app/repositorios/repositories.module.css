@@ -10,3 +10,16 @@
 @media(max-width:800px){.nav{padding:14px 20px;grid-template-columns:1fr auto;row-gap:14px}.navLinks{grid-column:1/-1;grid-row:2;justify-content:flex-start;border-top:1px solid var(--line);padding-top:14px;width:100%;gap:20px;font-size:8px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.navLinks::-webkit-scrollbar{display:none}.hero{padding:80px 20px}.hero h1{font-size:clamp(52px,15vw,78px);line-height:.96;letter-spacing:-.045em;overflow-wrap:anywhere;margin:35px 0 55px}.lead{font-size:16px;margin:0}.collection,.footer{padding:80px 20px}.collection>header{align-items:start;flex-direction:column;gap:18px}.repoGrid{grid-template-columns:1fr}.repoCard,.repoCard:last-child{grid-column:auto;min-height:390px}.footer h2{font-size:clamp(46px,13vw,66px)}.footer>div{flex-direction:column;align-items:flex-start}}
 @media(max-width:380px){.controls{gap:6px}.navLinks{font-size:7.5px}.hero h1{font-size:48px}.footer a{padding:18px 20px}}
 @media(prefers-reduced-motion:reduce){.theme,.footer a,.repoCard{transition:none}}
+
+.navLinks{align-items:center}
+.navGroup{position:relative}
+.navGroup summary{list-style:none;cursor:pointer}
+.navGroup summary::-webkit-details-marker{display:none}
+.navParent{display:flex;align-items:center;gap:5px}
+.navParent span{font-size:12px;transition:transform .2s}
+.navDropdown{position:absolute;top:calc(100% + 18px);left:50%;min-width:220px;padding:10px;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 40px #21172d24;transform:translate(-50%,-6px);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;z-index:30}
+.navDropdown a{display:block;padding:11px 12px;font-size:9px;white-space:nowrap}
+.navDropdown a:hover{background:var(--inverse);color:var(--on-inverse);opacity:1}
+.navGroup[open] .navDropdown{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.navGroup[open] .navParent span{transform:rotate(180deg)}
+@media(max-width:800px){.navLinks{justify-content:space-between;overflow:visible;white-space:normal}.navGroup{position:static}.navParent{min-height:28px}.navDropdown{top:100%;left:20px;right:20px;min-width:0;padding:8px;transform:translateY(-6px)}.navGroup[open] .navDropdown{transform:translateY(0)}.navDropdown a{padding:13px 12px;font-size:9px}}
