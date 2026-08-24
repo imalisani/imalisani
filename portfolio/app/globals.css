@@ -21,3 +21,4 @@ html,body{max-width:100%;overflow-x:hidden;overflow-x:clip}img{max-width:100%}
 @media(max-width:380px){.hero h1,main[lang="es"] .hero h1{font-size:clamp(47px,14vw,54px);margin-top:34px}.qaUniverse{width:min(96%,330px)}.orbit span{font-size:5.5px}.herofoot p{max-width:calc(100% - 60px)}.round{width:48px;height:48px;flex-basis:48px}.case{padding:20px}.impact strong{font-size:50px}.impact span{max-width:125px}.contact{padding:19px 22px;font-size:10px}}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee>div{animation:none}.case,.round,.pageIndexCard,.cvBanner>a{transition:none}.planet{animation:none}}
+@media(max-width:760px){.navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}}
