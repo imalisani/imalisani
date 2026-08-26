@@ -13,9 +13,7 @@
 .domain h3:after{content:"";display:block;width:10px;height:10px;margin-top:14px;border-radius:50%;border:1px solid currentColor;background:var(--paper)}
 .skills{display:flex;flex-wrap:wrap;gap:9px;align-content:flex-end}
 .skills span{border:1px solid currentColor;border-radius:999px;padding:8px 11px;background:color-mix(in srgb,var(--paper) 64%,transparent);font-size:10px;letter-spacing:.05em;white-space:nowrap}
-.technical .skills span{background:#eee8dcaa}
-.strategy .skills span{background:#21172d33}
-.human .skills span{background:color-mix(in srgb,var(--paper) 55%,transparent)}
+.technical .skills span{background:#eee8dcaa}.strategy .skills span{background:#21172d33}.human .skills span{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 .core{grid-area:core;align-self:center;justify-self:center;width:min(88%,240px);aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:26px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet);z-index:3}
 .core:before,.core:after{content:"";position:absolute;border:1px solid var(--violet);border-radius:50%;pointer-events:none}
 .core:before{width:142%;height:62%;transform:rotate(-18deg)}

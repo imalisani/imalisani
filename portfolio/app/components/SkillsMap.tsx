@@ -4,7 +4,7 @@ type Lang="en"|"es";
 
 const copy={
   es:{
-    label:"05 — Mapa de capacidades",
+    label:"Mapa de capacidades",
     title:"Mi sistema de calidad.",
     intro:"Tecnología, estrategia y habilidades humanas conectadas por un mismo criterio de calidad.",
     technical:{action:"Construir",side:"Técnicas",title:"Competencias técnicas",skills:["Playwright · TS","Appium · Python","Selenium · Pytest","APIs · Postman","SQL · Datos","k6 · CI/CD"]},
@@ -15,7 +15,7 @@ const copy={
     coreCopy:"Criterio humano como centro",
   },
   en:{
-    label:"05 — Capability map",
+    label:"Capability map",
     title:"My quality system.",
     intro:"Technology, strategy and human skills connected by one consistent quality judgement.",
     technical:{action:"Build",side:"Technical",title:"Technical skills",skills:["Playwright · TS","Appium · Python","Selenium · Pytest","APIs · Postman","SQL · Data","k6 · CI/CD"]},
