@@ -48,7 +48,7 @@ Repositorio que respalda la demostración: [`imalisani/qa-agents-demo`](https://
 
 El [dashboard Allure](https://imalisani.github.io/qa-agents-demo/) permite explorar los resultados reales, suites, tiempos y detalle de cada caso. El workflow `publish-allure.yml` lo publica automáticamente mediante GitHub Pages en cada push a `main`.
 
-La página también reproduce dos videos `.webm` reales generados con `npm run test:portfolio`: `RF-T01` para refund completo y `RF-T02` para refund parcial. Las pruebas API no incluyen video porque no abren navegador.
+La página también reproduce `public/evidence/videos/ecommerce-showcase.webm`, un showcase E2E real de 29,2 segundos generado con `npm run test:portfolio`. El flujo recorre autenticación, búsqueda de producto, carrito y checkout en Chromium headed.
 
 ## Tecnologías
 

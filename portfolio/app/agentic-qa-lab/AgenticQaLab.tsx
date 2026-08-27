@@ -9,10 +9,6 @@ type Theme="light"|"dark";
 
 const repo="https://github.com/imalisani/qa-agents-demo";
 const allureReport="https://imalisani.github.io/qa-agents-demo/";
-const executionVideos={
-  full:"https://imalisani.github.io/qa-agents-demo/data/attachments/6273bb6927e12f2e.webm",
-  partial:"https://imalisani.github.io/qa-agents-demo/data/attachments/dcf2bed7f59619b.webm",
-} as const;
 
 const stages=[
   {
@@ -88,8 +84,8 @@ const stages=[
 ] as const;
 
 const copy={
-  es:{back:"Portfolio",index:"Cómo trabajo",about:"Sobre mí",flow:"Flujo de QA",cases:"Casos de prueba",repos:"Repositorios",lab:"Agentic QA Lab",metrics:"Mis métricas",story:"Mi historia",cv:"Descargar CV",contact:"Contacto",eyebrow:"Agentic Quality Engineering · Caso real",title:<>De una historia ambigua a una <em>decisión trazable.</em></>,lead:"Reproducí una ejecución verificada del QA Agent System. Cada etapa muestra qué recibió el agente, qué produjo y dónde intervino el criterio humano.",verified:"Replay de una ejecución verificada · 27 AGO 2026",run:"Ejecutar demo",pause:"Pausar",restart:"Reiniciar",previous:"Anterior",next:"Siguiente",step:"Etapa",of:"de",agentProposes:"MI AGENTE PROPONE.",humanDecides:"YO DECIDO.",artifact:"Artefacto",openEvidence:"Abrir evidencia real",videoLabel:"Evidencia de ejecución · 2 videos reales",videoTitle:"Mirá los escenarios UI ejecutarse.",videoIntro:"Playwright grabó únicamente los casos que abren un navegador. Las cuatro pruebas API se validan en el mismo reporte, pero no generan video.",fullTitle:"Refund completo",fullCopy:"La automatización solicita el reembolso total y verifica importe pagado, estado, saldo restante y distribución del medio de pago.",partialTitle:"Refund parcial",partialCopy:"La automatización ingresa un monto parcial y valida el registro, la distribución proporcional y el saldo restante.",videoFallback:"Abrir video",allureFull:"Explorar ejecución completa en Allure",reportLabel:"Resultado de la corrida",reportTitle:"6 pasaron. 6 quedaron fuera por decisión, no por olvido.",reportCopy:"La fortaleza del sistema no es automatizar todo: es hacer visible qué está validado, qué permanece bloqueado y por qué.",passed:"Passed",failed:"Failed",duration:"Duración",blocked:"Bloqueados",allureEyebrow:"Evidencia interactiva · GitHub Pages",allureTitle:"Abrir dashboard Allure",allureCopy:"Resultados reales, suites, tiempos y detalle de cada caso. Se publica automáticamente en cada push a main.",allureMeta:"6 passed · 0 failed · Chromium",code:"Ver código",summary:"Ver reporte",investigation:"Ver investigación de falla",note:"Los datos mostrados pertenecen a una corrida real documentada. El botón reproduce su recorrido; no ejecuta Playwright dentro del portfolio."},
-  en:{back:"Portfolio",index:"How I work",about:"About me",flow:"QA workflow",cases:"Test cases",repos:"Repositories",lab:"Agentic QA Lab",metrics:"My metrics",story:"My story",cv:"Download CV",contact:"Contact",eyebrow:"Agentic Quality Engineering · Real case",title:<>From an ambiguous story to a <em>traceable decision.</em></>,lead:"Replay a verified QA Agent System run. Every stage shows what the agent received, what it produced and where human judgement intervened.",verified:"Verified execution replay · AUG 27 2026",run:"Run demo",pause:"Pause",restart:"Restart",previous:"Previous",next:"Next",step:"Stage",of:"of",agentProposes:"MY AGENT PROPOSES.",humanDecides:"I DECIDE.",artifact:"Artifact",openEvidence:"Open real evidence",videoLabel:"Execution evidence · 2 real videos",videoTitle:"Watch the UI scenarios run.",videoIntro:"Playwright recorded only the cases that open a browser. The four API tests are validated in the same report, but they do not generate video.",fullTitle:"Full refund",fullCopy:"The automation requests a full refund and verifies paid amount, status, remaining balance and payment-method allocation.",partialTitle:"Partial refund",partialCopy:"The automation enters a partial amount and validates the record, proportional allocation and remaining balance.",videoFallback:"Open video",allureFull:"Explore the complete run in Allure",reportLabel:"Run result",reportTitle:"6 passed. 6 stayed out by decision, not by omission.",reportCopy:"The system's strength is not automating everything: it makes visible what is validated, what remains blocked and why.",passed:"Passed",failed:"Failed",duration:"Duration",blocked:"Blocked",allureEyebrow:"Interactive evidence · GitHub Pages",allureTitle:"Open Allure dashboard",allureCopy:"Real results, suites, timings and test-level details. It is automatically published on every push to main.",allureMeta:"6 passed · 0 failed · Chromium",code:"View code",summary:"View report",investigation:"View failure investigation",note:"The displayed data belongs to a documented real run. The button replays its journey; it does not execute Playwright inside the portfolio."},
+  es:{back:"Portfolio",index:"Cómo trabajo",about:"Sobre mí",flow:"Flujo de QA",cases:"Casos de prueba",repos:"Repositorios",lab:"Agentic QA Lab",metrics:"Mis métricas",story:"Mi historia",cv:"Descargar CV",contact:"Contacto",eyebrow:"Agentic Quality Engineering · Caso real",title:<>De una historia ambigua a una <em>decisión trazable.</em></>,lead:"Reproducí una ejecución verificada del QA Agent System. Cada etapa muestra qué recibió el agente, qué produjo y dónde intervino el criterio humano.",verified:"Replay de una ejecución verificada · 27 AGO 2026",run:"Ejecutar demo",pause:"Pausar",restart:"Reiniciar",previous:"Anterior",next:"Siguiente",step:"Etapa",of:"de",agentProposes:"MI AGENTE PROPONE.",humanDecides:"YO DECIDO.",artifact:"Artefacto",openEvidence:"Abrir evidencia real",videoLabel:"Evidencia de ejecución · Showcase real",videoTitle:"Mirá un flujo E2E completo.",videoIntro:"Una ejecución de 29,2 segundos en Chromium headed, grabada deliberadamente para mostrar el comportamiento real sin ralentizar la suite habitual.",showcaseTitle:"De producto a checkout",showcaseCopy:"El test inicia sesión, busca Blue Top, valida precio y stock, lo agrega al carrito, revisa el checkout y muestra un resultado PASS. Si no recibe credenciales, crea y elimina una cuenta descartable.",videoFallback:"Abrir video",allureFull:"Explorar evidencia histórica en Allure",reportLabel:"Resultado de la corrida",reportTitle:"6 pasaron. 6 quedaron fuera por decisión, no por olvido.",reportCopy:"La fortaleza del sistema no es automatizar todo: es hacer visible qué está validado, qué permanece bloqueado y por qué.",passed:"Passed",failed:"Failed",duration:"Duración",blocked:"Bloqueados",allureEyebrow:"Evidencia interactiva · GitHub Pages",allureTitle:"Abrir dashboard Allure",allureCopy:"Resultados reales, suites, tiempos y detalle de cada caso. Se publica automáticamente en cada push a main.",allureMeta:"6 passed · 0 failed · Chromium",code:"Ver código",summary:"Ver reporte",investigation:"Ver investigación de falla",note:"Los datos mostrados pertenecen a una corrida real documentada. El botón reproduce su recorrido; no ejecuta Playwright dentro del portfolio."},
+  en:{back:"Portfolio",index:"How I work",about:"About me",flow:"QA workflow",cases:"Test cases",repos:"Repositories",lab:"Agentic QA Lab",metrics:"My metrics",story:"My story",cv:"Download CV",contact:"Contact",eyebrow:"Agentic Quality Engineering · Real case",title:<>From an ambiguous story to a <em>traceable decision.</em></>,lead:"Replay a verified QA Agent System run. Every stage shows what the agent received, what it produced and where human judgement intervened.",verified:"Verified execution replay · AUG 27 2026",run:"Run demo",pause:"Pause",restart:"Restart",previous:"Previous",next:"Next",step:"Stage",of:"of",agentProposes:"MY AGENT PROPOSES.",humanDecides:"I DECIDE.",artifact:"Artifact",openEvidence:"Open real evidence",videoLabel:"Execution evidence · Real showcase",videoTitle:"Watch a complete E2E flow.",videoIntro:"A 29.2-second headed Chromium run, deliberately recorded to show real behaviour without slowing down the regular suite.",showcaseTitle:"From product to checkout",showcaseCopy:"The test signs in, searches for Blue Top, validates price and stock, adds it to the cart, reviews checkout and displays a PASS result. Without configured credentials, it creates and removes a disposable account.",videoFallback:"Open video",allureFull:"Explore historical evidence in Allure",reportLabel:"Run result",reportTitle:"6 passed. 6 stayed out by decision, not by omission.",reportCopy:"The system's strength is not automating everything: it makes visible what is validated, what remains blocked and why.",passed:"Passed",failed:"Failed",duration:"Duration",blocked:"Blocked",allureEyebrow:"Interactive evidence · GitHub Pages",allureTitle:"Open Allure dashboard",allureCopy:"Real results, suites, timings and test-level details. It is automatically published on every push to main.",allureMeta:"6 passed · 0 failed · Chromium",code:"View code",summary:"View report",investigation:"View failure investigation",note:"The displayed data belongs to a documented real run. The button replays its journey; it does not execute Playwright inside the portfolio."},
 } as const;
 
 export default function AgenticQaLab(){
@@ -196,28 +192,16 @@ export default function AgenticQaLab(){
         <div><p className={styles.eyebrow}>{c.videoLabel}</p><h2 id="video-evidence-title">{c.videoTitle}</h2></div>
         <p>{c.videoIntro}</p>
       </header>
-      <div className={styles.videoGrid}>
-        <figure className={styles.videoCard}>
-          <div className={styles.videoFrame}>
-            <video controls preload="metadata" playsInline aria-label={`${c.fullTitle} · RF-T01`}>
-              <source src={executionVideos.full} type="video/webm"/>
-              <a href={executionVideos.full} target="_blank" rel="noreferrer">{c.videoFallback}</a>
-            </video>
-            <span>Passed · UI</span>
-          </div>
-          <figcaption><div><span>RF-T01 · Critical · Chromium</span><h3>{c.fullTitle}</h3></div><p>{c.fullCopy}</p></figcaption>
-        </figure>
-        <figure className={styles.videoCard}>
-          <div className={styles.videoFrame}>
-            <video controls preload="metadata" playsInline aria-label={`${c.partialTitle} · RF-T02`}>
-              <source src={executionVideos.partial} type="video/webm"/>
-              <a href={executionVideos.partial} target="_blank" rel="noreferrer">{c.videoFallback}</a>
-            </video>
-            <span>Passed · UI</span>
-          </div>
-          <figcaption><div><span>RF-T02 · High · Chromium</span><h3>{c.partialTitle}</h3></div><p>{c.partialCopy}</p></figcaption>
-        </figure>
-      </div>
+      <figure className={styles.showcaseCard}>
+        <div className={styles.videoFrame}>
+          <video controls muted preload="metadata" playsInline aria-label={c.showcaseTitle}>
+            <source src="/evidence/videos/ecommerce-showcase.webm" type="video/webm"/>
+            <a href="/evidence/videos/ecommerce-showcase.webm">{c.videoFallback}</a>
+          </video>
+          <span>29.2 s · Passed · E2E</span>
+        </div>
+        <figcaption><div><span>Portfolio showcase · Chromium headed</span><h3>{c.showcaseTitle}</h3></div><p>{c.showcaseCopy}</p></figcaption>
+      </figure>
       <a className={styles.videoReportLink} href={allureReport} target="_blank" rel="noreferrer">{c.allureFull} ↗</a>
     </section>
 
