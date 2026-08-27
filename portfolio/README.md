@@ -1,16 +1,24 @@
 # Portfolio de Irina Malisani
 
-Portfolio bilingüe de QA Engineering preparado para desplegarse con Next.js en Vercel.
+Portfolio bilingüe de **QA Engineering** preparado para desplegarse con Next.js en Vercel. Presenta mi experiencia, mi enfoque preventivo de calidad y evidencia pública de cómo convierto requerimientos y riesgos en decisiones de release.
 
 Sitio publicado: [irina-malisani.vercel.app](https://irina-malisani.vercel.app/)
 
 ## Contenido
 
 - Portfolio responsive en español e inglés, con modo claro y oscuro.
-- Experiencia, métricas mensuales, casos de prueba y repositorios públicos.
-- Habilidades técnicas y humanas, CV descargable y canales de contacto.
-- Página independiente [Cómo trabajo](https://irina-malisani.vercel.app/como-trabajo), con el recorrido completo desde que una historia de usuario llega a QA hasta la decisión de release.
-- Laboratorio interactivo `/agentic-qa-lab`, basado en una ejecución verificada del repositorio público [`qa-agents-demo`](https://github.com/imalisani/qa-agents-demo).
+- Experiencia profesional, métricas de impacto y CV descargable.
+- Mapa visual de skills técnicas, estratégicas y humanas, con movimiento y soporte para `prefers-reduced-motion`.
+- Casos de prueba con trazabilidad, escenarios Gherkin y enlaces a implementaciones públicas.
+- Repositorios de automatización y evidencias de ejecución.
+- Formulario y canales de contacto.
+
+## Recorridos principales
+
+- [Cómo trabajo](https://irina-malisani.vercel.app/como-trabajo): desde que una historia de usuario llega a QA hasta la decisión de release.
+- [Agentic QA Lab](https://irina-malisani.vercel.app/agentic-qa-lab): replay interactivo de una ejecución real, desde la historia de usuario hasta el reporte final.
+- [Casos de prueba](https://irina-malisani.vercel.app/casos-de-prueba): ejemplos basados en riesgo, técnicas de diseño y escenarios Gherkin.
+- [Repositorios](https://irina-malisani.vercel.app/repositorios): estrategia, arquitectura, automatización y evidencia pública.
 
 ## Cómo trabajo
 
@@ -36,6 +44,30 @@ La ruta `/agentic-qa-lab` reproduce el recorrido documentado de un caso de reemb
 
 La experiencia es un replay visual de evidencia pública; no ejecuta Playwright dentro del portfolio.
 
+Repositorio que respalda la demostración: [`imalisani/qa-agents-demo`](https://github.com/imalisani/qa-agents-demo).
+
+El [dashboard Allure](https://imalisani.github.io/qa-agents-demo/) permite explorar los resultados reales, suites, tiempos y detalle de cada caso. El workflow `publish-allure.yml` lo publica automáticamente mediante GitHub Pages en cada push a `main`.
+
+## Tecnologías
+
+- Next.js 16
+- React 19
+- TypeScript
+- CSS Modules
+- Vercel Analytics y Speed Insights
+
+## Ejecutar localmente
+
+Requiere Node.js 22.13 o superior.
+
+```bash
+cd portfolio
+npm install
+npm run dev
+```
+
+Abrir [http://localhost:3000](http://localhost:3000).
+
 ## Despliegue en Vercel
 
 1. Importar el repositorio `imalisani/imalisani`.
@@ -44,3 +76,9 @@ La experiencia es un replay visual de evidencia pública; no ejecuta Playwright 
 4. Mantener el framework detectado como **Next.js** y desplegar.
 
 No requiere variables de entorno.
+
+## Contacto
+
+- [LinkedIn](https://www.linkedin.com/in/imalisani/)
+- [GitHub](https://github.com/imalisani)
+- [Portfolio](https://irina-malisani.vercel.app/)
