@@ -45,9 +45,8 @@ with Appium from scratch** — structure, environment configuration and first fl
 |---|---|---|
 | [playwright-portfolio-typescript](https://github.com/imalisani/playwright-portfolio-typescript) | Playwright + TypeScript suite — Page Object Model, CI workflow, execution evidence | 🚧 active |
 | [selenium-portfolio-python](https://github.com/imalisani/selenium-portfolio-python) | Selenium + Python + Pytest suite | 🚧 active |
-| `imalisani.github.io` | Portfolio and knowledge hub | 🚧 in progress |
-| `agentic-qa-agents` | QA agents with golden sets and evals | 📋 planned |
-| `agentic-qa-knowledge` | Test plans in Gherkin, structured bug reports, documentation | 📋 planned |
+| [imalisani.vercel.app](https://irina-malisani.vercel.app/) | Portfolio and knowledge hub | 🚧 active |
+| [agentic-qa-agents](https://github.com/imalisani/qa-agents-demo) | QA agents with Test plans in Gherkin, structured bug reports, documentation and execution | 🚧 in progress |
 
 Where this is going: an open set of quality engineering artifacts — test plans, bug
 reports, and QA agents with evaluation — plus an automation layer where the tool is an
