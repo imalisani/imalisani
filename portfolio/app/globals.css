@@ -51,3 +51,9 @@ main[lang="es"] .about h2{line-height:1.03}
 /* Keep metric cards readable through the tablet range. */
 @media(min-width:761px) and (max-width:1050px){.case{min-width:0}.casebody h3,.impact strong,.impact span{overflow-wrap:anywhere}.impact{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}.impact strong{font-size:clamp(48px,7vw,64px)}.impact span{max-width:none;text-align:left}}
 @media(min-width:761px) and (max-width:900px){.cases{grid-template-columns:minmax(0,1fr)}.case:nth-child(1),.case:nth-child(2),.case:nth-child(3){grid-column:auto;min-height:520px}}
+
+/* Four-path index: QA workflow, Agentic QA Lab, test cases and repositories. */
+.pageIndexGrid{grid-template-columns:repeat(4,1fr)}
+.pageIndexCard:nth-child(4){background:var(--paper);color:var(--ink)}
+@media(max-width:1050px){.pageIndexGrid{grid-template-columns:1fr 1fr}.pageIndexCard:last-child{grid-column:auto}}
+@media(max-width:760px){.pageIndexGrid{grid-template-columns:1fr}}
