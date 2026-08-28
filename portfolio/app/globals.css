@@ -89,7 +89,10 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
 /* Persistent social dock with a restrained macOS-like magnification. */
 .socialDock{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));z-index:100;display:flex;align-items:flex-end;gap:7px;padding:9px 11px;border:1px solid color-mix(in srgb,var(--on-inverse) 23%,transparent);border-radius:24px;background:color-mix(in srgb,var(--inverse) 86%,transparent);color:var(--on-inverse);box-shadow:0 16px 55px #0007,0 0 35px color-mix(in srgb,var(--violet) 28%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateX(-50%)}
 .socialDockLink{position:relative;display:grid;width:42px;height:42px;place-items:center;border:1px solid color-mix(in srgb,var(--on-inverse) 18%,transparent);border-radius:13px;background:color-mix(in srgb,var(--violet) 34%,transparent);color:var(--on-inverse);transform-origin:50% 100%;transition:transform .24s cubic-bezier(.2,.8,.2,1),background-color .2s,color .2s,border-color .2s;will-change:transform}
-.socialDockLink svg{width:20px;height:20px;fill:currentColor;overflow:visible}
+.socialDockLink svg{width:20px;height:20px;overflow:visible}
+.socialDockLink svg:not(.socialOutlineIcon){fill:currentColor}
+.socialDockLink svg.socialOutlineIcon{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.socialDockLink svg.socialOutlineIcon .socialIconDot{fill:currentColor;stroke:none}
 .socialDockLink:after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 12px);padding:6px 9px;border:1px solid color-mix(in srgb,var(--on-inverse) 20%,transparent);border-radius:6px;background:var(--inverse);color:var(--on-inverse);font:9px Arial,sans-serif;letter-spacing:.06em;white-space:nowrap;opacity:0;pointer-events:none;transform:translate(-50%,7px);transition:opacity .16s,transform .16s}
 .socialDockLink:hover,.socialDockLink:focus-visible{z-index:2;background:var(--lime);border-color:var(--lime);color:#21172d;outline:none;transform:translateY(-12px) scale(1.42)}
 .socialDockLink:hover:after,.socialDockLink:focus-visible:after{opacity:1;transform:translate(-50%,0)}
