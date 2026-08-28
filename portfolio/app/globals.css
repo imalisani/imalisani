@@ -64,3 +64,38 @@ main[lang] .hero h1.heroMotto{font-size:clamp(48px,6.2vw,102px);line-height:.92;
 @media(max-width:900px){main[lang] .hero h1.heroMotto{max-width:100%;font-size:clamp(58px,9.4vw,82px);line-height:.94}}
 @media(max-width:760px){main[lang] .hero h1.heroMotto{font-size:clamp(42px,11.6vw,58px);line-height:.97;letter-spacing:-.04em;margin-top:38px}}
 @media(max-width:380px){main[lang] .hero h1.heroMotto{font-size:clamp(38px,11vw,47px)}}
+
+/* Contact: direct message and Google Calendar booking, side by side. */
+footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
+.footerbottom{grid-template-columns:minmax(0,.92fr) minmax(430px,1.08fr);gap:clamp(38px,6vw,96px);align-items:stretch}
+.footerbottom>.bookingArea{display:flex;min-width:0;text-align:left;text-transform:none;letter-spacing:normal}
+.bookingCard{position:relative;isolation:isolate;display:flex;width:100%;min-height:520px;overflow:hidden;flex-direction:column;padding:clamp(34px,4vw,58px);border:1px solid color-mix(in srgb,var(--on-inverse) 28%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--violet) 78%,#171120),#171120 68%);color:#f3ede4;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px));box-shadow:0 28px 70px #0004;transition:transform .28s,box-shadow .28s,border-color .28s}
+.bookingCard:before{content:"CALENDAR / DIRECT CONNECTION / 01";position:absolute;right:28px;top:24px;color:color-mix(in srgb,var(--lime) 75%,transparent);font:8px "Courier New",Courier,monospace;letter-spacing:.14em}
+.bookingCard:hover,.bookingCard:focus-visible{border-color:var(--lime);outline:none;transform:translateY(-8px);box-shadow:0 35px 90px #0006,0 0 45px color-mix(in srgb,var(--violet) 35%,transparent)}
+.bookingEyebrow{position:relative;z-index:2;display:flex;align-items:center;gap:10px;margin:0 0 18px;color:var(--lime);font:10px "Courier New",Courier,monospace;letter-spacing:.18em;text-transform:uppercase}
+.bookingEyebrow:before{content:"";width:7px;height:7px;border:1px solid currentColor;transform:rotate(45deg);box-shadow:0 0 12px color-mix(in srgb,currentColor 70%,transparent)}
+.bookingTitle{position:relative;z-index:2;max-width:620px;margin:auto 0 22px;color:#f3ede4;font-family:Georgia,serif;font-size:clamp(42px,4.3vw,70px);font-weight:400;line-height:.96;letter-spacing:-.045em}
+.bookingCopy{position:relative;z-index:2;max-width:520px;margin:0 0 34px;font-size:15px;line-height:1.68}
+.bookingAction{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:auto;padding:18px 20px;border-radius:50px;background:var(--lime);color:#21172d;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;transition:background-color .2s,transform .2s}
+.bookingAction span{font-size:18px}
+.bookingCard:hover .bookingAction,.bookingCard:focus-visible .bookingAction{background:#f3ede4;transform:translateY(-2px)}
+.bookingOrbit{position:absolute;z-index:-1;border:1px solid color-mix(in srgb,var(--lime) 48%,transparent);border-radius:50%;pointer-events:none;animation:bookingOrbit 13s linear infinite}
+.bookingOrbitOne{width:390px;height:170px;right:-105px;top:68px;transform:rotate(-22deg)}
+.bookingOrbitTwo{width:250px;height:430px;right:-55px;top:18px;border-color:color-mix(in srgb,#f3ede4 28%,transparent);animation-direction:reverse;animation-duration:18s}
+.bookingNode{position:absolute;right:70px;top:128px;width:12px;height:12px;border:2px solid #171120;border-radius:50%;background:var(--lime);box-shadow:0 0 22px var(--lime);animation:bookingPulse 2.4s ease-in-out infinite}
+@keyframes bookingOrbit{to{rotate:360deg}}
+@keyframes bookingPulse{50%{scale:1.35;opacity:.65}}
+
+/* Persistent social dock with a restrained macOS-like magnification. */
+.socialDock{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));z-index:100;display:flex;align-items:flex-end;gap:7px;padding:9px 11px;border:1px solid color-mix(in srgb,var(--on-inverse) 23%,transparent);border-radius:24px;background:color-mix(in srgb,var(--inverse) 86%,transparent);color:var(--on-inverse);box-shadow:0 16px 55px #0007,0 0 35px color-mix(in srgb,var(--violet) 28%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateX(-50%)}
+.socialDockLink{position:relative;display:grid;width:42px;height:42px;place-items:center;border:1px solid color-mix(in srgb,var(--on-inverse) 18%,transparent);border-radius:13px;background:color-mix(in srgb,var(--violet) 34%,transparent);color:var(--on-inverse);transform-origin:50% 100%;transition:transform .24s cubic-bezier(.2,.8,.2,1),background-color .2s,color .2s,border-color .2s;will-change:transform}
+.socialDockLink svg{width:20px;height:20px;fill:currentColor;overflow:visible}
+.socialDockLink:after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 12px);padding:6px 9px;border:1px solid color-mix(in srgb,var(--on-inverse) 20%,transparent);border-radius:6px;background:var(--inverse);color:var(--on-inverse);font:9px Arial,sans-serif;letter-spacing:.06em;white-space:nowrap;opacity:0;pointer-events:none;transform:translate(-50%,7px);transition:opacity .16s,transform .16s}
+.socialDockLink:hover,.socialDockLink:focus-visible{z-index:2;background:var(--lime);border-color:var(--lime);color:#21172d;outline:none;transform:translateY(-12px) scale(1.42)}
+.socialDockLink:hover:after,.socialDockLink:focus-visible:after{opacity:1;transform:translate(-50%,0)}
+.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:translateY(-5px) scale(1.14)}
+
+@media(max-width:1050px){.footerbottom{grid-template-columns:1fr;gap:72px}.bookingCard{min-height:480px}}
+@media(max-width:760px){footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}.footerbottom{gap:64px}.bookingCard{min-height:460px;padding:30px 26px;clip-path:none}.bookingCard:before{right:22px;font-size:7px}.bookingTitle{font-size:clamp(38px,10.5vw,50px)}.bookingCopy{font-size:14px}.bookingOrbitOne{right:-190px}.bookingOrbitTwo{right:-120px}.socialDock{width:max-content;max-width:calc(100vw - 20px);gap:4px;padding:7px 8px;border-radius:20px}.socialDockLink{width:36px;height:36px;border-radius:11px}.socialDockLink svg{width:18px;height:18px}.socialDockLink:hover,.socialDockLink:focus-visible{transform:translateY(-7px) scale(1.18)}.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:translateY(-3px) scale(1.06)}}
+@media(hover:none){.socialDockLink:after{display:none}.socialDockLink:hover{transform:none}.socialDockLink:active{background:var(--lime);color:#21172d;transform:translateY(-3px) scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.bookingCard,.bookingAction,.socialDockLink,.socialDockLink:after{transition:none}.bookingOrbit,.bookingNode{animation:none}.bookingCard:hover,.bookingCard:focus-visible,.bookingCard:hover .bookingAction,.bookingCard:focus-visible .bookingAction,.socialDockLink:hover,.socialDockLink:focus-visible,.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:none}}
