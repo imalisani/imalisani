@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import {useEffect,useRef,useState} from "react";
+import {useEffect,useState} from "react";
+import AgentSystemScroll from "./AgentSystemScroll";
 import styles from "./agentic-qa-lab.module.css";
 
 type Lang="es"|"en";
@@ -91,10 +92,6 @@ const copy={
 export default function AgenticQaLab(){
   const [lang,setLang]=useState<Lang>("es");
   const [theme,setTheme]=useState<Theme>("light");
-  const [active,setActive]=useState(0);
-  const [running,setRunning]=useState(false);
-  const [reducedMotion,setReducedMotion]=useState(false);
-  const timer=useRef<ReturnType<typeof setTimeout>|null>(null);
 
   useEffect(()=>{
     const savedTheme=window.localStorage.getItem("portfolio-theme");
@@ -103,17 +100,9 @@ export default function AgenticQaLab(){
     const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
     setTheme(preferredTheme);
     setLang(preferredLanguage);
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     document.documentElement.dataset.theme=preferredTheme;
     document.documentElement.lang=preferredLanguage;
   },[]);
-
-  useEffect(()=>{
-    if(!running)return;
-    if(active>=stages.length-1){setRunning(false);return;}
-    timer.current=setTimeout(()=>setActive(current=>current+1),1450);
-    return()=>{if(timer.current)clearTimeout(timer.current);};
-  },[active,running]);
 
   const toggleTheme=()=>setTheme(current=>{
     const next=current==="light"?"dark":"light";
@@ -127,18 +116,7 @@ export default function AgenticQaLab(){
     document.documentElement.lang=next;
     return next;
   });
-  const selectStage=(index:number)=>{setRunning(false);setActive(index);};
-  const run=()=>{
-    if(running){setRunning(false);return;}
-    if(reducedMotion){setActive(stages.length-1);return;}
-    if(active>=stages.length-1)setActive(0);
-    setRunning(true);
-  };
-  const restart=()=>{setRunning(false);setActive(0);};
   const c=copy[lang];
-  const stage=stages[active];
-  const content=stage[lang];
-  const progress=((active+1)/stages.length)*100;
 
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación del Agentic QA Lab":"Agentic QA Lab navigation"}>
@@ -153,39 +131,7 @@ export default function AgenticQaLab(){
       <div className={styles.heroBottom}><p>{c.lead}</p><span>{c.verified}</span></div>
     </header>
 
-    <section className={styles.lab} aria-labelledby="lab-title">
-      <div className={styles.labTop}>
-        <div><p className={styles.eyebrow}>01 — {c.lab}</p><h2 id="lab-title">{c.workflow}</h2></div>
-        <div className={styles.runControls}><button type="button" className={styles.runButton} onClick={run}>{running?c.pause:c.run} <span aria-hidden="true">{running?"Ⅱ":"▶"}</span></button><button type="button" className={styles.secondaryButton} onClick={restart}>{c.restart}</button></div>
-      </div>
-
-      <div className={styles.progressMeta}><span>{c.step} {active+1} {c.of} {stages.length}</span><span>{Math.round(progress)}%</span></div>
-      <div className={styles.progressTrack} role="progressbar" aria-valuemin={1} aria-valuemax={stages.length} aria-valuenow={active+1} aria-label={lang==="es"?"Progreso de la ejecución":"Execution progress"}><span style={{width:`${progress}%`}}/></div>
-
-      <ol className={styles.stageNav}>{stages.map((item,index)=><li key={item.id} className={index<active?styles.complete:index===active?styles.current:""}><button type="button" onClick={()=>selectStage(index)} aria-current={index===active?"step":undefined}><span>{item.n}</span><b>{item.agent[lang]}</b></button></li>)}</ol>
-
-      <div className={styles.stage} aria-live="polite">
-        <article className={styles.narrative}>
-          <p>{stage.agent[lang]}</p>
-          <h3>{content.title}</h3>
-          <p>{content.copy}</p>
-          <div className={styles.judgement}><strong>{c.agentProposes}</strong><span>{c.humanDecides}</span></div>
-          <a href={stage.url} target="_blank" rel="noreferrer">{c.openEvidence} ↗</a>
-        </article>
-
-        <div className={`${styles.evidenceWindow} ${running?styles.isRunning:""}`}>
-          <div className={styles.windowBar}><span/><span/><span/><b>qa-agent-system / {stage.id}</b></div>
-          <div className={styles.windowBody}>
-            <div className={styles.metric}><strong>{stage.metric}</strong><span>{stage.metricLabel[lang]}</span></div>
-            <div className={styles.terminal}>{content.log.map((line,index)=><p key={line}><span>{String(index+1).padStart(2,"0")}</span><code>{line}</code><b>{index===content.log.length-1?"●":"✓"}</b></p>)}</div>
-            <div className={styles.artifact}><span>{c.artifact}</span><strong>{content.artifact}</strong></div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.stepControls}><button type="button" onClick={()=>selectStage(Math.max(0,active-1))} disabled={active===0}>← {c.previous}</button><button type="button" onClick={()=>selectStage(Math.min(stages.length-1,active+1))} disabled={active===stages.length-1}>{c.next} →</button></div>
-      <p className={styles.disclosure}>{c.note}</p>
-    </section>
+    <AgentSystemScroll lang={lang}/>
 
     <section className={styles.videoEvidence} aria-labelledby="video-evidence-title">
       <header className={styles.videoHeader}>

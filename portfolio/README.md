@@ -16,7 +16,7 @@ Sitio publicado: [irina-malisani.vercel.app](https://irina-malisani.vercel.app/)
 ## Recorridos principales
 
 - [Cómo trabajo](https://irina-malisani.vercel.app/como-trabajo): desde que una historia de usuario llega a QA hasta la decisión de release.
-- [Agentic QA Lab](https://irina-malisani.vercel.app/agentic-qa-lab): replay interactivo de una ejecución real, desde la historia de usuario hasta el reporte final.
+- [Agentic QA Lab](https://irina-malisani.vercel.app/agentic-qa-lab): recorrido animado por scroll del sistema de agentes, desde la historia de usuario hasta el reporte final.
 - [Casos de prueba](https://irina-malisani.vercel.app/casos-de-prueba): ejemplos basados en riesgo, técnicas de diseño y escenarios Gherkin.
 - [Repositorios](https://irina-malisani.vercel.app/repositorios): estrategia, arquitectura, automatización y evidencia pública.
 
@@ -33,7 +33,7 @@ La ruta `/como-trabajo` presenta un proceso trazable que combina:
 
 ## Agentic QA Lab
 
-La ruta `/agentic-qa-lab` reproduce el recorrido documentado de un caso de reembolsos:
+La ruta `/agentic-qa-lab` presenta un scrollytelling bilingüe: el QA Orchestrator permanece como núcleo, activa los especialistas necesarios y consolida el resultado final. El recorrido documentado incluye:
 
 1. Historia de usuario y análisis de requerimientos.
 2. Ambigüedades, preguntas y riesgos priorizados.
