@@ -63,8 +63,8 @@ const base=copy[lang];
 const directionBase=directionCopy[lang];
 const direction={...directionBase,futureLabel:lang==="es"?"05 — Próximo horizonte":"05 — Next horizon",storyLabel:lang==="es"?"06 — Mi historia":"06 — My story"};
 const heroMotto=lang==="es"
-?<>La calidad no es <em className="heroLuck">suerte.</em><br/>Se diseña, se planifica,<br/>se valida y se protege<br/>de principio a fin.</>
-:<>Quality isn&apos;t <em className="heroLuck">luck.</em><br/>It&apos;s designed, planned,<br/>validated and protected<br/>from start to finish.</>;
+?<>La calidad no es <em className="heroLuck">suerte.</em><br/>Se diseña, se planifica,<br/>se valida y se protege<br/><em>de principio a fin.</em></>
+:<>Quality isn&apos;t <em className="heroLuck">luck.</em><br/>It&apos;s designed, planned,<br/>validated and protected<br/><em>from start to finish.</em></>;
 const c={...base,indexTitle:lang==="es"?"Cuatro recorridos para conocer cómo pienso y ejecuto.":"Four paths to see how I think and execute.",hero:heroMotto,workLabel:lang==="es"?"03 — Mis métricas":"03 — My metrics",toolbox:lang==="es"?"07 — Herramientas":"07 — Toolbox",talk:lang==="es"?"08 — Hablemos":"08 — Let’s talk"};
 const labCard=lang==="es"?{title:"Agentic QA Lab",copy:"Reproducí una ejecución verificada: de una historia de usuario compleja al análisis, la automatización y el reporte final.",link:"Ejecutar la demo"}:{title:"Agentic QA Lab",copy:"Replay a verified execution: from a complex user story through analysis, automation and the final report.",link:"Run the demo"};
 const f=formCopy[lang];
