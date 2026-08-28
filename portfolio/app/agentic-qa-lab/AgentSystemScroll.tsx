@@ -214,7 +214,7 @@ export default function AgentSystemScroll({lang}:{lang:Lang}){
           <div className={styles.outputPanel} aria-live="polite">
             <div className={styles.outputTop}><span>{current.agent[lang]}</span>{current.conditional&&<b>{c.conditional}</b>}</div>
             <div className={styles.outputBody}>
-              <div className={styles.metric}><strong>{current.metric}</strong><span>{current.metricLabel[lang]}</span></div>
+              <div className={styles.metric}><strong className={current.metric.length>3?styles.metricWord:undefined}>{current.metric}</strong><span>{current.metricLabel[lang]}</span></div>
               <div className={styles.logs}>{current.logs[lang].map((log,index)=><p key={log}><span>{String(index+1).padStart(2,"0")}</span><code>{log}</code><b>{index===current.logs[lang].length-1?"●":"✓"}</b></p>)}</div>
               {current.code&&<pre className={styles.codeSample}>{current.code.join("\n")}</pre>}
               <div className={styles.outputFooter}><span>{c.artifact}</span><strong>{current.artifact[lang]}</strong><a href={current.url} target="_blank" rel="noreferrer">{c.open} ↗</a></div>

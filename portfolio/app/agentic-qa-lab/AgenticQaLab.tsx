@@ -140,11 +140,11 @@ export default function AgenticQaLab(){
       </header>
       <figure className={styles.showcaseCard}>
         <div className={styles.videoFrame}>
-          <video controls muted preload="metadata" playsInline aria-label={c.showcaseTitle}>
+          <video controls autoPlay loop muted preload="auto" playsInline aria-label={c.showcaseTitle}>
             <source src="/evidence/videos/ecommerce-showcase.webm" type="video/webm"/>
             <a href="/evidence/videos/ecommerce-showcase.webm">{c.videoFallback}</a>
           </video>
-          <span>29.2 s · Passed · E2E</span>
+          <span>26.2 s · Passed · E2E</span>
         </div>
         <figcaption><div><span>Portfolio showcase · Chromium headed</span><h3>{c.showcaseTitle}</h3></div><p>{c.showcaseCopy}</p></figcaption>
       </figure>
