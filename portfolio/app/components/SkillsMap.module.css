@@ -1,5 +1,5 @@
-.section{padding:clamp(72px,7vw,112px) 4vw;background:var(--paper);overflow:hidden}
-.map{position:relative;display:grid;grid-template-columns:1.08fr .78fr .9fr;grid-template-rows:1fr 1fr;grid-template-areas:"technical core strategy" "technical core human";gap:14px;min-height:520px}
+.section{padding:clamp(58px,5.6vw,90px) 4vw;background:var(--paper);overflow:hidden}
+.map{position:relative;display:grid;grid-template-columns:1.08fr .78fr .9fr;grid-template-rows:1fr 1fr;grid-template-areas:"technical core strategy" "technical core human";gap:12px;min-height:416px}
 .orbits{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;color:var(--violet)}
 .orbits ellipse,.orbits path{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.62}
 .orbitTrack ellipse{stroke-dasharray:5 9;animation:orbitFlow 16s linear infinite}
@@ -11,7 +11,7 @@
 .signal{transform-box:fill-box;transform-origin:center;animation:signalPulse 2.8s ease-in-out infinite}
 .signalOne{animation-delay:0s}.signalTwo{animation-delay:-.9s}.signalThree{animation-delay:-1.8s}
 .domain,.core{position:relative;z-index:1}
-.domain{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:18px;padding:22px 24px;min-width:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+.domain{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;padding:18px 20px;min-width:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
 .domain:hover{transform:translateY(-6px);box-shadow:0 18px 34px color-mix(in srgb,var(--ink) 12%,transparent)}
 .technical{grid-area:technical;background:var(--lime);color:#21172d}
 .strategy{grid-area:strategy;background:var(--violet);color:white}
@@ -23,7 +23,7 @@
 .skills span{border:1px solid currentColor;border-radius:999px;padding:7px 10px;background:color-mix(in srgb,var(--paper) 64%,transparent);font-size:10px;letter-spacing:.05em;white-space:nowrap;transition:transform .28s ease,background-color .28s ease}
 .skills span:hover{transform:translateY(-3px)}
 .technical .skills span{background:#eee8dcaa}.strategy .skills span{background:#21172d33}.human .skills span{background:color-mix(in srgb,var(--paper) 55%,transparent)}
-.core{grid-area:core;align-self:center;justify-self:center;width:min(88%,240px);aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:26px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet);z-index:3;animation:coreFloat 5s ease-in-out infinite,corePulse 4s ease-in-out infinite}
+.core{grid-area:core;align-self:center;justify-self:center;width:min(84%,210px);aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:22px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet);z-index:3;animation:coreFloat 5s ease-in-out infinite,corePulse 4s ease-in-out infinite}
 .core:before,.core:after{content:"";position:absolute;border:1px solid var(--violet);border-radius:50%;pointer-events:none}
 .core:before{width:142%;height:62%;transform:rotate(-18deg);animation:coreOrbitOne 14s linear infinite}
 .core:after{width:70%;height:145%;transform:rotate(28deg);animation:coreOrbitTwo 18s linear infinite reverse}
@@ -38,7 +38,7 @@
 @keyframes corePulse{0%,100%{box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet)}50%{box-shadow:0 0 0 13px color-mix(in srgb,var(--paper) 58%,transparent),0 0 0 14px color-mix(in srgb,var(--violet) 74%,transparent)}}
 @keyframes coreOrbitOne{from{transform:rotate(-18deg)}to{transform:rotate(342deg)}}
 @keyframes coreOrbitTwo{from{transform:rotate(28deg)}to{transform:rotate(388deg)}}
-@media(max-width:900px){.map{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;grid-template-areas:"core core" "technical strategy" "human human";min-height:0}.orbits{display:none}.core{margin:30px 0 38px;width:210px}.domain{min-height:320px}.human{min-height:270px}}
-@media(max-width:760px){.section{padding:72px 20px}.map{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"core" "technical" "strategy" "human";gap:14px}.core{margin:24px auto 38px;width:190px}.domain{min-height:300px;padding:22px 20px}.human{min-height:280px}.domain h3{font-size:clamp(38px,11vw,50px);line-height:1.02}.skills span{font-size:9px;white-space:normal}}
-@media(max-width:380px){.core{width:170px}.domain{min-height:280px}.topline{gap:10px}.skills{gap:7px}.skills span{padding:7px 9px}}
+@media(max-width:900px){.map{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;grid-template-areas:"core core" "technical strategy" "human human";min-height:0}.orbits{display:none}.core{margin:24px 0 30px;width:190px}.domain{min-height:270px}.human{min-height:230px}}
+@media(max-width:760px){.section{padding:60px 20px}.map{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"core" "technical" "strategy" "human";gap:12px}.core{margin:20px auto 30px;width:170px}.domain{min-height:255px;padding:18px 18px}.human{min-height:240px}.domain h3{font-size:clamp(36px,10vw,46px);line-height:1.02}.skills span{font-size:9px;white-space:normal}}
+@media(max-width:380px){.core{width:155px}.domain{min-height:240px}.topline{gap:10px}.skills{gap:7px}.skills span{padding:7px 9px}}
 @media(prefers-reduced-motion:reduce){.orbitTrack ellipse,.connector,.signal,.core,.core:before,.core:after{animation:none}.movingNode{display:none}.domain,.skills span{transition:none}.domain:hover,.skills span:hover{transform:none}}

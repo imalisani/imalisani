@@ -102,3 +102,59 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
 @media(max-width:760px){footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}.footerbottom{gap:64px}.bookingCard{min-height:460px;padding:30px 26px;clip-path:none}.bookingCard:before{right:22px;font-size:7px}.bookingTitle{font-size:clamp(38px,10.5vw,50px)}.bookingCopy{font-size:14px}.bookingOrbitOne{right:-190px}.bookingOrbitTwo{right:-120px}.socialDock{width:max-content;max-width:calc(100vw - 20px);gap:4px;padding:7px 8px;border-radius:20px}.socialDockLink{width:36px;height:36px;border-radius:11px}.socialDockLink svg{width:18px;height:18px}.socialDockLink:hover,.socialDockLink:focus-visible{transform:translateY(-7px) scale(1.18)}.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:translateY(-3px) scale(1.06)}}
 @media(hover:none){.socialDockLink:after{display:none}.socialDockLink:hover{transform:none}.socialDockLink:active{background:var(--lime);color:#21172d;transform:translateY(-3px) scale(1.07)}}
 @media(prefers-reduced-motion:reduce){.bookingCard,.bookingAction,.socialDockLink,.socialDockLink:after{transition:none}.bookingOrbit,.bookingNode{animation:none}.bookingCard:hover,.bookingCard:focus-visible,.bookingCard:hover .bookingAction,.bookingCard:focus-visible .bookingAction,.socialDockLink:hover,.socialDockLink:focus-visible,.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:none}}
+
+/* Stable bilingual header: controls keep the same footprint in both languages. */
+.navActions{gap:0;padding:4px;border:1px solid var(--line);border-radius:30px;background:color-mix(in srgb,var(--paper) 72%,transparent)}
+.navActions .themeSwitch,.navActions .langSwitch,.navActions .status{border:0}
+.navActions .themeSwitch{flex:0 0 31px}
+.navActions .langSwitch{margin-left:3px;border-left:1px solid var(--line);border-radius:0;padding-inline:11px}
+.navActions .status{display:inline-flex;width:190px;min-height:31px;align-items:center;justify-content:center;margin-left:3px;border-left:1px solid var(--line);border-radius:0;padding:0 10px;white-space:nowrap;text-align:center}
+
+/* Keep the hero baseline fixed when translated copy changes. */
+.heroMotto{min-block-size:3.8em}
+@media(min-width:1051px){
+  .nav{display:grid;grid-template-columns:minmax(315px,1fr) auto minmax(315px,1fr)}
+  .logo{justify-self:start}.navlinks{justify-self:center}.navActions{justify-self:end}
+  .hero{height:calc(100svh - 78px);min-height:680px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;align-content:stretch;justify-content:initial}
+  .hero h1{align-self:center;margin:clamp(24px,4vh,52px) 0}
+  .herofoot{align-self:end;min-height:74px}
+}
+
+/* Compact desktop rhythm: roughly 20% less empty vertical space. */
+@media(min-width:1061px){
+  .statement{padding:6.4vw 4vw}
+  .pageIndex{padding:4.8vw 4vw}.pageIndex>header{margin-bottom:36px}.pageIndexCard{min-height:280px;padding:22px}.pageIndexCard>div{margin:auto 0 22px}
+  .work{padding:6.4vw 4vw}.head{margin-bottom:44px}.case{min-height:456px;padding:22px}
+  .future{padding:7.2vw 4vw}.future header{margin-bottom:56px}.futureGrid article{min-height:272px;padding:22px}.valueStatement{padding:36px}
+  .about{padding:7.2vw 4vw}.aboutcopy{padding-top:40px}
+  .cvBanner{padding:4.8vw 4vw}.cvBanner>a{width:165px;height:165px}
+  .toolbox{padding:5.6vw 0}
+  footer{padding-top:6.4vw}.bookingCard{min-height:416px;padding:clamp(30px,3.2vw,46px)}footer h2{margin-bottom:5.6vw}.signature{margin-top:8vw}
+}
+
+/* Gentle section alignment without trapping variable-height content. */
+@media(min-width:1051px) and (prefers-reduced-motion:no-preference){
+  html{scroll-snap-type:y proximity;scroll-padding-top:78px}
+  main>section,main>footer{scroll-snap-align:start}
+}
+
+@media(min-width:761px) and (max-width:1050px){
+  .pageIndexCard{min-height:285px}
+  .case:nth-child(1),.case:nth-child(2),.case:nth-child(3){min-height:440px}
+  .futureGrid article{min-height:230px}
+  .bookingCard{min-height:420px}
+}
+
+@media(max-width:1050px){
+  .navActions{flex:0 0 auto}.navActions .status{display:none}
+}
+
+@media(max-width:760px){
+  .heroMotto{min-block-size:3.95em}
+  .statement,.pageIndex,.work,.about,.cvBanner{padding:64px 20px}
+  .pageIndexCard,.pageIndexCard:last-child{min-height:260px;padding:20px}
+  .case{min-height:395px}
+  .future{padding:64px 20px}.futureGrid article{min-height:230px}.valueStatement{padding:24px}
+  .toolbox{padding:56px 0}
+  footer{padding:64px 20px calc(104px + env(safe-area-inset-bottom))}.footerbottom{gap:52px}.bookingCard{min-height:400px;padding:26px 24px}.signature{margin-top:72px}
+}
