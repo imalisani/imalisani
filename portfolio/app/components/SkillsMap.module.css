@@ -23,13 +23,13 @@
 .skills span{border:1px solid currentColor;border-radius:999px;padding:7px 10px;background:color-mix(in srgb,var(--paper) 64%,transparent);font-size:10px;letter-spacing:.05em;white-space:nowrap;transition:transform .28s ease,background-color .28s ease}
 .skills span:hover{transform:translateY(-3px)}
 .technical .skills span{background:#eee8dcaa}.strategy .skills span{background:#21172d33}.human .skills span{background:color-mix(in srgb,var(--paper) 55%,transparent)}
-.core{grid-area:core;align-self:center;justify-self:center;width:min(84%,210px);aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:22px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet);z-index:3;animation:coreFloat 5s ease-in-out infinite,corePulse 4s ease-in-out infinite}
-.core:before,.core:after{content:"";position:absolute;border:1px solid var(--violet);border-radius:50%;pointer-events:none}
+.core{grid-area:core;align-self:center;justify-self:center;width:min(92%,232px);aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:18px;border-radius:50%;border:1px solid var(--ink);background:var(--paper);box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet);isolation:isolate;z-index:3;animation:coreFloat 5s ease-in-out infinite,corePulse 4s ease-in-out infinite}
+.core:before,.core:after{content:"";position:absolute;border:1px solid var(--violet);border-radius:50%;pointer-events:none;z-index:0}
 .core:before{width:142%;height:62%;transform:rotate(-18deg);animation:coreOrbitOne 14s linear infinite}
 .core:after{width:70%;height:145%;transform:rotate(28deg);animation:coreOrbitTwo 18s linear infinite reverse}
-.coreContent{position:relative;z-index:1}
+.coreContent{position:relative;z-index:2;display:grid;width:calc(100% - 4px);min-height:72%;place-items:center;align-content:center;padding:20px 6px;border-radius:50%;background:var(--paper)}
 .coreContent>span{display:block;margin-bottom:10px;color:var(--violet);text-transform:uppercase;letter-spacing:.16em;font-size:9px}
-.coreContent strong{display:block;font-family:Georgia,serif;font-size:clamp(27px,3vw,42px);font-weight:400;line-height:.95;letter-spacing:-.035em}
+.coreContent strong{display:block;max-width:100%;font-family:Georgia,serif;font-size:clamp(24px,1.8vw,32px);font-weight:400;line-height:.92;letter-spacing:-.035em;overflow-wrap:normal}
 .coreContent p{margin:12px 0 0;color:var(--ink);font-size:11px;line-height:1.45}
 @keyframes orbitFlow{to{stroke-dashoffset:-140}}
 @keyframes connectorFlow{to{stroke-dashoffset:-108}}
@@ -38,7 +38,7 @@
 @keyframes corePulse{0%,100%{box-shadow:0 0 0 9px color-mix(in srgb,var(--paper) 75%,transparent),0 0 0 10px var(--violet)}50%{box-shadow:0 0 0 13px color-mix(in srgb,var(--paper) 58%,transparent),0 0 0 14px color-mix(in srgb,var(--violet) 74%,transparent)}}
 @keyframes coreOrbitOne{from{transform:rotate(-18deg)}to{transform:rotate(342deg)}}
 @keyframes coreOrbitTwo{from{transform:rotate(28deg)}to{transform:rotate(388deg)}}
-@media(max-width:900px){.map{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;grid-template-areas:"core core" "technical strategy" "human human";min-height:0}.orbits{display:none}.core{margin:24px 0 30px;width:190px}.domain{min-height:270px}.human{min-height:230px}}
-@media(max-width:760px){.section{padding:60px 20px}.map{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"core" "technical" "strategy" "human";gap:12px}.core{margin:20px auto 30px;width:170px}.domain{min-height:255px;padding:18px 18px}.human{min-height:240px}.domain h3{font-size:clamp(36px,10vw,46px);line-height:1.02}.skills span{font-size:9px;white-space:normal}}
-@media(max-width:380px){.core{width:155px}.domain{min-height:240px}.topline{gap:10px}.skills{gap:7px}.skills span{padding:7px 9px}}
+@media(max-width:900px){.map{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;grid-template-areas:"core core" "technical strategy" "human human";min-height:0}.orbits{display:none}.core{margin:24px 0 30px;width:210px}.coreContent strong{font-size:29px}.coreContent p{font-size:10px}.domain{min-height:270px}.human{min-height:230px}}
+@media(max-width:760px){.section{padding:60px 20px}.map{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"core" "technical" "strategy" "human";gap:12px}.core{margin:20px auto 30px;width:195px}.coreContent{padding-inline:4px}.coreContent strong{font-size:27px}.coreContent>span{font-size:8px}.domain{min-height:255px;padding:18px 18px}.human{min-height:240px}.domain h3{font-size:clamp(36px,10vw,46px);line-height:1.02}.skills span{font-size:9px;white-space:normal}}
+@media(max-width:380px){.core{width:178px}.coreContent strong{font-size:24px}.coreContent p{font-size:9px}.domain{min-height:240px}.topline{gap:10px}.skills{gap:7px}.skills span{padding:7px 9px}}
 @media(prefers-reduced-motion:reduce){.orbitTrack ellipse,.connector,.signal,.core,.core:before,.core:after{animation:none}.movingNode{display:none}.domain,.skills span{transition:none}.domain:hover,.skills span:hover{transform:none}}
