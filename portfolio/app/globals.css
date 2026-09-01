@@ -132,12 +132,6 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
   footer{padding-top:6.4vw}.bookingCard{min-height:416px;padding:clamp(30px,3.2vw,46px)}footer h2{margin-bottom:5.6vw}.signature{margin-top:8vw}
 }
 
-/* Gentle section alignment without trapping variable-height content. */
-@media(min-width:1051px) and (prefers-reduced-motion:no-preference){
-  html{scroll-snap-type:y proximity;scroll-padding-top:78px}
-  main>section,main>footer{scroll-snap-align:start}
-}
-
 @media(min-width:761px) and (max-width:1050px){
   .pageIndexCard{min-height:285px}
   .case:nth-child(1),.case:nth-child(2),.case:nth-child(3){min-height:440px}
@@ -158,3 +152,6 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
   .toolbox{padding:56px 0}
   footer{padding:64px 20px calc(104px + env(safe-area-inset-bottom))}.footerbottom{gap:52px}.bookingCard{min-height:400px;padding:26px 24px}.signature{margin-top:72px}
 }
+
+/* The longer Spanish orbit label needs clearance from the hero divider. */
+main[lang="es"] .orbitTwo span:nth-child(3){bottom:calc(5% + 20px)}
