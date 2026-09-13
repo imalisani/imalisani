@@ -28,6 +28,10 @@ Boundary Value Analysis). Both the test-plan generation agent and the plan revie
 invoke them, so test design criteria became shared infrastructure rather than
 individual improvisation.
 
+That workflow now has a public, bilingual [Agentic QA Lab](https://irina-malisani.vercel.app/agentic-qa-lab):
+an interactive walkthrough from an ambiguous user story to traceable Gherkin scenarios,
+Playwright UI and API tests, and a final decision backed by [Allure execution evidence](https://imalisani.github.io/qa-agents-demo/).
+
 **Testing is a gate, not a formality.**
 Validating 3–6 features per week with a one-day average QA turnaround, **~25% of the
 tasks I tested went back to development** with defects found before release.
@@ -45,9 +49,8 @@ with Appium from scratch** — structure, environment configuration and first fl
 |---|---|---|
 | [playwright-portfolio-typescript](https://github.com/imalisani/playwright-portfolio-typescript) | Playwright + TypeScript suite — Page Object Model, CI workflow, execution evidence | 🚧 active |
 | [selenium-portfolio-python](https://github.com/imalisani/selenium-portfolio-python) | Selenium + Python + Pytest suite | 🚧 active |
-| `imalisani.github.io` | Portfolio and knowledge hub | 🚧 in progress |
-| `agentic-qa-agents` | QA agents with golden sets and evals | 📋 planned |
-| `agentic-qa-knowledge` | Test plans in Gherkin, structured bug reports, documentation | 📋 planned |
+| [irina-malisani.vercel.app](https://irina-malisani.vercel.app/) | Bilingual portfolio and knowledge hub — QA workflow, Gherkin test cases, Agentic QA Lab | 🚧 active |
+| [qa-agents-demo](https://github.com/imalisani/qa-agents-demo) | QA agent system — risk analysis, traceable test design, Playwright UI/API automation, Allure evidence | 🚧 active |
 
 Where this is going: an open set of quality engineering artifacts — test plans, bug
 reports, and QA agents with evaluation — plus an automation layer where the tool is an
@@ -68,7 +71,7 @@ repositories marked as finished.
 **Data** PostgreSQL · MongoDB
 **Practices** Agile / Scrum · Gherkin · Shift-left · ISTQB test design techniques
 **AI for QA** Claude Code · Cursor · GitHub Copilot · MCP (Playwright, GitHub, Notion) · QA agent design · reusable agent skills
-**Platform** Git · GitHub Actions · GitHub Pages · Docker
+**Platform** Next.js · React · Vercel · Vercel Analytics · Git · GitHub Actions · GitHub Pages · Docker
 
 ---
 
