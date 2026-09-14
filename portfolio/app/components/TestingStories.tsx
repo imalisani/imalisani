@@ -26,7 +26,7 @@ const copy = {
     simpleReaction: "Simple... hasta que deja de serlo.",
     questions: ["¿Qué pasa con clientes que todavía envían segundos?", "¿Y con los datos existentes?", "¿Backend, frontend e integraciones cambian al mismo tiempo?"],
     missed: "Eso no lo habíamos contemplado.", missing: "Definición faltante",
-    aligned: "Comportamiento acordado", alignedCopy: "QA, Dev y Product alinean reglas y cobertura antes del desarrollo.",
+    aligned: "Comportamiento acordado", alignedCopy: "QA, Dev y Product alinean reglas y cobertura antes del desarrollo.", alignmentSteps: ["Ambigüedad", "Conversación", "Acuerdo"],
     found: "Ok... esto definitivamente no debería pasar.", poor: "Esto está roto.", poorLabel: "Sin contexto",
     useful: "En este escenario el usuario no puede completar la operación.", reproduction: "Reproducción", attachments: "Evidencia y datos utilizados", attachmentLabel: "Adjuntos",
     impact: "Además afecta el flujo principal. Recomendaría resolverlo antes del release.", understood: "Perfecto, ahora veo exactamente dónde está el problema.",
@@ -53,7 +53,7 @@ const copy = {
     simpleReaction: "Simple... until it isn't.",
     questions: ["What happens to clients that still send seconds?", "What about existing data?", "Do backend, frontend and integrations change at the same time?"],
     missed: "We hadn't considered that.", missing: "Missing definition",
-    aligned: "Behaviour agreed", alignedCopy: "QA, Dev and Product align rules and coverage before development.",
+    aligned: "Behaviour agreed", alignedCopy: "QA, Dev and Product align rules and coverage before development.", alignmentSteps: ["Ambiguity", "Conversation", "Agreement"],
     found: "Okay... this definitely shouldn't happen.", poor: "This is broken.", poorLabel: "Without context",
     useful: "In this scenario the user cannot complete the operation.", reproduction: "Reproduction", attachments: "Evidence and test data attached", attachmentLabel: "Attachments",
     impact: "It also affects the main flow. I'd recommend fixing it before release.", understood: "Perfect, now I can see exactly where the problem is.",
@@ -141,7 +141,7 @@ function AskPanels({ lang }: { lang: Lang }) {
     <Scene number="04" label={c.panel} className={styles.resolutionScene}>
       <div className={styles.alignmentComposition}>
         <QACharacter pose="ready" size="medium"/>
-        <div className={styles.alignmentBoard}><span>AMBIGUITY</span><i/><span>CONVERSATION</span><i/><span>AGREEMENT</span><b>✓</b></div>
+        <div className={styles.alignmentBoard}><span>{c.alignmentSteps[0]}</span><i/><span>{c.alignmentSteps[1]}</span><i/><span>{c.alignmentSteps[2]}</span><b>✓</b></div>
         <div className={styles.roleStack}><RoleToken role="dev" compact/><RoleToken role="pm" compact/></div>
       </div>
       <Outcome title={c.aligned}>{c.alignedCopy}</Outcome>
@@ -180,7 +180,6 @@ function ReportPanels({ lang }: { lang: Lang }) {
       <div className={styles.fixComposition}>
         <QACharacter pose="ready" size="medium"/>
         <div className={styles.issueTrack} aria-hidden="true"><span>EVIDENCE</span><i/><span>BUG</span><i/><span>DEV</span><i/><span>FIX</span></div>
-        <RoleToken role="dev" compact/>
       </div>
       <Outcome title={c.issueReady}>{c.issueReadyCopy}</Outcome>
     </Scene>
