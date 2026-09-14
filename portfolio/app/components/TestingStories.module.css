@@ -216,3 +216,73 @@
   .story,.bubble,.labLink a{animation:none;transition:none}
   .labLink a:hover,.storyPanel:hover .bubble{transform:none}
 }
+
+/* Human editorial art direction: richer bust illustrations and scene-led composition. */
+.portrait{width:112px}
+.sizeSmall .portrait{width:76px}
+.sizeMedium .portrait{width:112px}
+.sizeLarge .portrait{width:148px}
+.portrait:before{width:96px;height:96px;bottom:10px;background:radial-gradient(circle,color-mix(in srgb,var(--sand) 42%,transparent),transparent 70%)}
+.characterEmphasis .portrait:before{width:126px;height:126px}
+.character small{margin-top:-10px;padding:4px 9px;box-shadow:2px 2px 0 color-mix(in srgb,var(--violet) 18%,transparent)}
+.qaHairBack,.qaFringe,.qaHairLayer{fill:var(--qa-hair);stroke:#21172d;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.qaHairBack{fill:color-mix(in srgb,var(--qa-hair) 84%,#6d3440)}
+.qaHairLayer{fill:color-mix(in srgb,var(--qa-hair) 92%,var(--sand))}
+.qaHairHighlight{fill:none;stroke:color-mix(in srgb,var(--sand) 48%,var(--qa-hair));stroke-width:2.2;stroke-linecap:round;opacity:.72}
+.qaFace,.qaEar,.qaNeck,.qaHand{fill:var(--qa-skin);stroke:#21172d;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+.qaTorso{fill:color-mix(in srgb,var(--violet) 72%,var(--inverse));stroke:#21172d;stroke-width:1.8}
+.qaCardigan{fill:var(--violet);stroke:#21172d;stroke-width:1.7;stroke-linejoin:round}
+.qaBlouse{fill:color-mix(in srgb,var(--sand) 88%,#fff);stroke:#21172d;stroke-width:1.4}
+.qaSleeve{fill:var(--violet);stroke:#21172d;stroke-width:1.7;stroke-linejoin:round}
+.qaArm{fill:none;stroke:var(--qa-skin);stroke-width:13;stroke-linecap:round}
+.qaFinger,.qaSeam{fill:none;stroke:#21172d;stroke-width:1.25;stroke-linecap:round}
+.qaBrow{fill:none;stroke:#4a2632;stroke-width:2.25;stroke-linecap:round}
+.qaEye{fill:color-mix(in srgb,var(--paper) 94%,#fff);stroke:#21172d;stroke-width:1.35;stroke-linejoin:round}
+.qaIris{fill:#4d334e;stroke:#21172d;stroke-width:.7}
+.qaNose{fill:none;stroke:color-mix(in srgb,#21172d 70%,transparent);stroke-width:1.25;stroke-linecap:round}
+.qaMouth{fill:color-mix(in srgb,var(--qa-hair) 48%,var(--paper));stroke:#4a2632;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.qaCheek{fill:none;stroke:color-mix(in srgb,var(--qa-hair) 28%,transparent);stroke-width:2;stroke-linecap:round}
+.qaClipboard{fill:var(--sand);stroke:#21172d;stroke-width:1.5}.qaClipboardTop{fill:var(--lime);stroke:#21172d;stroke-width:1.3}.qaChecklist{fill:none;stroke:#21172d;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.supportFace,.supportFaceAlt,.supportEar,.supportNeck,.supportNeckAlt,.supportHand{fill:var(--qa-skin);stroke:#21172d;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+.supportFaceAlt,.supportNeckAlt{fill:color-mix(in srgb,var(--sand) 78%,#9d6d52)}
+.pmTorso{fill:var(--sand);stroke:#21172d;stroke-width:1.8}.devTorso{fill:color-mix(in srgb,var(--violet) 72%,var(--inverse));stroke:#21172d;stroke-width:1.8}
+.supportShirt{fill:var(--lime);stroke:#21172d;stroke-width:1.35}
+.supportHair,.pmHair,.devHair{stroke:#21172d;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.supportHair{fill:#3c273e}.pmHair{fill:color-mix(in srgb,var(--violet) 68%,#34233d)}.devHair{fill:#2d2435}
+.supportHairDetail{fill:none;stroke:color-mix(in srgb,var(--sand) 35%,transparent);stroke-width:2;stroke-linecap:round}
+.supportBrow{fill:none;stroke:#21172d;stroke-width:2.1;stroke-linecap:round}.supportEye{fill:var(--paper);stroke:#21172d;stroke-width:1.3}.supportIris{fill:var(--violet);stroke:#21172d;stroke-width:.7}
+.supportNose,.supportFeatures{fill:none;stroke:#21172d;stroke-width:1.3;stroke-linecap:round}.supportMouth{fill:color-mix(in srgb,var(--violet) 20%,var(--paper));stroke:#21172d;stroke-width:1.25}
+.supportSleeve{fill:currentColor;stroke:#21172d;stroke-width:1.7;stroke-linejoin:round}.characterPM{color:var(--sand)}.characterDEV{color:var(--violet)}
+.supportArm{fill:none;stroke:var(--qa-skin);stroke-width:12;stroke-linecap:round}
+.teamBack{fill:var(--violet);stroke:#21172d;stroke-width:1.8}.teamFront{fill:var(--lime);stroke:#21172d;stroke-width:1.8}
+.deskScene,.bugDesk,.deployScene{min-height:222px;align-items:flex-end}
+.qaSpotlight{min-height:230px}
+.questionComposition{min-height:232px}
+.teamComposition,.fixScene,.teamDecision{min-height:220px}
+.deskScene>.character,.bugDesk>.character,.deployScene>.character{flex:0 0 36%}
+.sceneDesk{position:relative;z-index:2;margin:0 -26px 18px}
+.laptop{width:92px}.laptop>span{height:59px}.laptop em{width:108px}
+.questionComposition>.character{flex:0 0 38%}
+.questionBubble{flex:1}
+.reactionLine{margin-top:-8px;background:color-mix(in srgb,var(--paper) 88%,transparent)}
+.teamComposition>.character:first-child,.fixScene>.character:last-child,.teamDecision>.character:last-child{flex:0 0 32%}
+.evidenceCharacter>.character{flex:0 0 42%}
+.dialogueRow>.character,.dialogueRowReverse>.character{flex:0 0 31%}
+.riskScene>.panelContent>.character{width:40%;align-self:flex-end;margin-top:-42px}
+@media(max-width:1250px){
+  .portrait{width:126px}.sizeLarge .portrait{width:162px}.sizeSmall .portrait{width:82px}
+  .panelContent{min-height:430px}
+  .deskScene,.bugDesk,.deployScene,.qaSpotlight,.questionComposition,.teamComposition,.fixScene,.teamDecision{min-height:260px}
+}
+@media(max-width:800px){
+  .panelContent{min-height:410px}
+  .portrait{width:116px}.sizeLarge .portrait{width:150px}
+}
+@media(max-width:560px){
+  .portrait{width:108px}.sizeSmall .portrait{width:72px}.sizeLarge .portrait{width:142px}
+  .panelContent{min-height:0}
+  .deskScene,.bugDesk,.deployScene,.qaSpotlight,.questionComposition,.teamComposition,.fixScene,.teamDecision{min-height:235px}
+  .questionComposition{align-items:flex-end}
+  .questionComposition>.character{flex-basis:42%}
+  .dialogueRow>.character,.dialogueRowReverse>.character{flex-basis:34%}
+}
