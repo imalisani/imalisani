@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {useEffect,useState} from "react";
+import TestingStories from "../components/TestingStories";
 import styles from "./process.module.css";
 
 type Lang="es"|"en";
@@ -123,6 +124,8 @@ export default function ProcessJourney(){
         <div className={styles.outcomeGrid}>{outcomes.map(outcome=>{const item=outcome[lang];return <article key={outcome.key} className={styles[outcome.key]}><span>{outcome.code}</span><h3>{item.title}</h3><p>{item.copy}</p></article>})}</div>
       </div>
     </section>
+
+    <TestingStories lang={lang}/>
 
     <footer className={styles.footer}><p className={styles.eyebrow}>{c.ctaLabel}</p><h2>{c.ctaTitle}</h2><div><Link href="/casos-de-prueba">{c.evidence} ↗</Link><Link href="/repositorios">{c.repos} ↗</Link><Link href="/#contact">{c.talk} ↗</Link></div></footer>
   </main>;
