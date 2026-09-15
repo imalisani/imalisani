@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {useEffect,useState} from "react";
+import qaEvidence from "../../public/qa-evidence.json";
 import AgentSystemScroll from "./AgentSystemScroll";
 import QaEvidencePack from "./QaEvidencePack";
 import styles from "./agentic-qa-lab.module.css";
@@ -118,6 +119,8 @@ export default function AgenticQaLab(){
     return next;
   });
   const c=copy[lang];
+  const verifiedDate=new Intl.DateTimeFormat(lang==="es"?"es-AR":"en-US",{day:"2-digit",month:"short",year:"numeric",timeZone:"America/Buenos_Aires"}).format(new Date(qaEvidence.generatedAt)).toUpperCase();
+  const verifiedLabel=lang==="es"?"Replay de una ejecución verificada":"Verified execution replay";
 
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación del Agentic QA Lab":"Agentic QA Lab navigation"}>
@@ -129,7 +132,7 @@ export default function AgenticQaLab(){
     <header className={styles.hero}>
       <p className={styles.eyebrow}>{c.eyebrow}</p>
       <h1>{c.title}</h1>
-      <div className={styles.heroBottom}><p>{c.lead}</p><span>{c.verified}</span></div>
+      <div className={styles.heroBottom}><p>{c.lead}</p><span>{verifiedLabel} · {verifiedDate}</span></div>
     </header>
 
     <AgentSystemScroll lang={lang}/>

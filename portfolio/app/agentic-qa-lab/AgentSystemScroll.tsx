@@ -1,6 +1,7 @@
 "use client";
 
 import {useEffect,useRef,useState,type CSSProperties} from "react";
+import qaEvidence from "../../public/qa-evidence.json";
 import styles from "./agent-system-scroll.module.css";
 
 type Lang="es"|"en";
@@ -8,6 +9,9 @@ type Localized={es:string;en:string};
 
 const repo="https://github.com/imalisani/qa-agents-demo";
 const allureReport="https://imalisani.github.io/qa-agents-demo/";
+const tests=qaEvidence.tests;
+const functionalTests=qaEvidence.gates.functional.tests;
+const supportingTests=tests.total-functionalTests;
 
 type WorkflowStep={
   id:string;
@@ -39,7 +43,7 @@ const workflow:WorkflowStep[]=[
     id:"orchestrator",number:"02",agent:{es:"QA Orchestrator",en:"QA Orchestrator"},eyebrow:{es:"Inspección y delegación",en:"Inspection and delegation"},
     title:{es:"El orquestador decide la ruta",en:"The orchestrator chooses the route"},
     body:{es:"Inspecciona el proyecto, determina qué especialistas hacen falta, coordina el orden y conserva el contexto hasta el resultado final.",en:"It inspects the project, determines which specialists are needed, coordinates their order and preserves context through the final result."},
-    metric:"11",metricLabel:{es:"agentes disponibles",en:"available agents"},artifact:{es:"Plan de orquestación",en:"Orchestration plan"},
+    metric:"13",metricLabel:{es:"agentes disponibles",en:"available agents"},artifact:{es:"Plan de orquestación",en:"Orchestration plan"},
     logs:{es:["proyecto: inspeccionado","ruta: requirements → risk → design","especialistas: seleccionados bajo demanda"],en:["project: inspected","route: requirements → risk → design","specialists: selected on demand"]},
     activeNodes:["orchestrator","pr","accessibility","performance"],url:`${repo}#agentes-disponibles`,
   },
@@ -71,25 +75,25 @@ const workflow:WorkflowStep[]=[
   {
     id:"automation",number:"06",agent:{es:"Automation Agent",en:"Automation Agent"},eyebrow:{es:"Decisión de cobertura",en:"Coverage decision"},
     title:{es:"Solo automatiza lo seguro y útil",en:"It automates only what is safe and useful"},
-    body:{es:"Prioriza escenarios Critical y High con resultados deterministas. Selecciona la cobertura y delega la implementación a UI Automation o API.",en:"It prioritizes Critical and High scenarios with deterministic outcomes. It selects coverage and delegates implementation to UI Automation or API."},
-    metric:"06",metricLabel:{es:"casos automatizables",en:"automatable cases"},artifact:{es:"Estrategia de automatización",en:"Automation strategy"},
-    logs:{es:["prioridad: critical + high","automatizables: 06","bloqueados_por_requisitos: 06"],en:["priority: critical + high","automatable: 06","blocked_by_requirements: 06"]},
+    body:{es:`El plan inicial priorizó 6 escenarios trazables. Desde esa base, el laboratorio amplió la cobertura a ${tests.total} checks automatizados sin ocultar los 6 escenarios que siguen bloqueados por reglas de Producto.`,en:`The initial plan prioritized 6 traceable scenarios. From that baseline, the lab expanded coverage to ${tests.total} automated checks without hiding the 6 scenarios still blocked by Product rules.`},
+    metric:String(tests.total),metricLabel:{es:"checks en el quality gate",en:"quality-gate checks"},artifact:{es:"Estrategia de automatización",en:"Automation strategy"},
+    logs:{es:["plan_inicial: 06 automatizables",`quality_gate: ${tests.passed} passed · ${tests.failed} failed`,"bloqueados_por_producto: 06 escenarios"],en:["initial_plan: 06 automatable",`quality_gate: ${tests.passed} passed · ${tests.failed} failed`,"blocked_by_product: 06 scenarios"]},
     activeNodes:["automation"],url:`${repo}/tree/main/tests/refund`,
   },
   {
     id:"implementation",number:"07",agent:{es:"UI Automation + API",en:"UI Automation + API"},eyebrow:{es:"Implementación especializada",en:"Specialist implementation"},
-    title:{es:"La cobertura se divide por interfaz",en:"Coverage branches by interface"},
-    body:{es:"UI Automation usa locators accesibles, assertions web-first y datos aislados. API valida contratos, autenticación, errores, idempotencia, estados y efectos secundarios.",en:"UI Automation uses accessible locators, web-first assertions and isolated data. API validates contracts, authentication, errors, idempotency, states and side effects."},
-    metric:"2+4",metricLabel:{es:"UI + API",en:"UI + API"},artifact:{es:"Playwright + TypeScript",en:"Playwright + TypeScript"},
-    logs:{es:["ui: 02 escenarios visibles","api: 04 validaciones","esperas_fijas: 00"],en:["ui: 02 visible scenarios","api: 04 validations","fixed_waits: 00"]},
+    title:{es:"La cobertura se divide por capa",en:"Coverage branches by quality layer"},
+    body:{es:"UI y API mantienen la cobertura funcional. Accesibilidad, datos, integración, seguridad y unit tests profundizan la evidencia sin duplicar el mismo comportamiento.",en:"UI and API retain functional coverage. Accessibility, data, integration, security and unit tests deepen the evidence without duplicating the same behaviour."},
+    metric:`${tests.ui}+${tests.api}`,metricLabel:{es:"UI + API",en:"UI + API"},artifact:{es:"Cobertura automatizada por capas",en:"Layered automated coverage"},
+    logs:{es:[`ui: ${tests.ui} · api: ${tests.api}`,`a11y: ${tests.accessibility} · unit: ${tests.unit}`,`data: ${tests.data} · int: ${tests.integration} · security: ${tests.security}`],en:[`ui: ${tests.ui} · api: ${tests.api}`,`a11y: ${tests.accessibility} · unit: ${tests.unit}`,`data: ${tests.data} · int: ${tests.integration} · security: ${tests.security}`]},
     activeNodes:["ui","api"],url:`${repo}/tree/main/tests`,
   },
   {
-    id:"playwright",number:"08",agent:{es:"Playwright",en:"Playwright"},eyebrow:{es:"Ejecución",en:"Execution"},
-    title:{es:"La suite produce evidencia real",en:"The suite produces real evidence"},
-    body:{es:"Playwright ejecuta los tests. En modo portfolio abre Chromium headed, aplica el pacing del showcase y genera video, trazas y screenshots sin alterar la suite normal.",en:"Playwright runs the tests. Portfolio mode opens headed Chromium, applies showcase pacing and generates video, traces and screenshots without changing the regular suite."},
-    metric:"6/6",metricLabel:{es:"tests aprobados",en:"tests passed"},artifact:{es:"Ejecución verificada",en:"Verified execution"},
-    logs:{es:["comando: npm run test:portfolio","navegador: chromium headed","video: ecommerce-showcase.webm"],en:["command: npm run test:portfolio","browser: headed chromium","video: ecommerce-showcase.webm"]},
+    id:"playwright",number:"08",agent:{es:"CI/CD Quality Pipeline",en:"CI/CD Quality Pipeline"},eyebrow:{es:"Ejecución",en:"Execution"},
+    title:{es:"El quality gate produce evidencia real",en:"The quality gate produces real evidence"},
+    body:{es:"La pipeline ejecuta la cobertura funcional y las capas de soporte, valida el gate de branches y corre k6 smoke antes de publicar Allure y el Evidence Pack.",en:"The pipeline runs functional coverage and supporting layers, validates the branch gate and runs k6 smoke before publishing Allure and the Evidence Pack."},
+    metric:`${tests.passed}/${tests.total}`,metricLabel:{es:"checks aprobados",en:"checks passed"},artifact:{es:"Quality gate verificado",en:"Verified quality gate"},
+    logs:{es:[`functional: ${functionalTests} passed`,`supporting: ${supportingTests} passed`,`performance: ${qaEvidence.performance.profile} passed`],en:[`functional: ${functionalTests} passed`,`supporting: ${supportingTests} passed`,`performance: ${qaEvidence.performance.profile} passed`]},
     activeNodes:["playwright"],url:allureReport,
   },
   {
@@ -105,7 +109,7 @@ const workflow:WorkflowStep[]=[
     title:{es:"Todo vuelve como una decisión trazable",en:"Everything returns as a traceable decision"},
     body:{es:"El orquestador reúne cobertura, límites, resultados y evidencia. Allure presenta la ejecución; las trazas, screenshots y el video permiten auditarla.",en:"The orchestrator consolidates coverage, limits, results and evidence. Allure presents the run; traces, screenshots and video make it auditable."},
     metric:"PASS",metricLabel:{es:"dentro del alcance",en:"within scope"},artifact:{es:"Reporte y evidencia final",en:"Final report and evidence"},
-    logs:{es:["resultado: 06 passed · 00 failed","evidencia: allure + traces + video","decisión: verificado dentro del alcance"],en:["result: 06 passed · 00 failed","evidence: allure + traces + video","decision: verified within scope"]},
+    logs:{es:[`resultado: ${tests.passed} passed · ${tests.failed} failed`,`branches: ${qaEvidence.coverage.branches}% · gate ≥ ${qaEvidence.coverage.gateMinimum}%`,"evidencia: Allure + QA Evidence Pack"],en:[`result: ${tests.passed} passed · ${tests.failed} failed`,`branches: ${qaEvidence.coverage.branches}% · gate ≥ ${qaEvidence.coverage.gateMinimum}%`,"evidence: Allure + QA Evidence Pack"]},
     activeNodes:["report","orchestrator"],url:allureReport,
   },
 ];
@@ -123,7 +127,7 @@ const nodes:SystemNode[]=[
   {id:"automation",label:{es:"Automatización",en:"Automation"},x:88,y:48,step:5},
   {id:"ui",label:{es:"UI",en:"UI"},x:74,y:79,step:6},
   {id:"api",label:{es:"API",en:"API"},x:55,y:89,step:6},
-  {id:"playwright",label:{es:"Playwright",en:"Playwright"},x:31,y:83,step:7},
+  {id:"playwright",label:{es:"Quality gate",en:"Quality gate"},x:31,y:83,step:7},
   {id:"failure",label:{es:"Análisis de falla",en:"Failure analysis"},x:10,y:76,step:8,conditional:true},
   {id:"report",label:{es:"Reporte",en:"Report"},x:12,y:23,step:9},
 ] ;
