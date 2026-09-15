@@ -66,18 +66,18 @@ const workflow:WorkflowStep[]=[
   {
     id:"design",number:"05",agent:{es:"Test Design Agent",en:"Test Design Agent"},eyebrow:{es:"Trazabilidad y Gherkin",en:"Traceability and Gherkin"},
     title:{es:"Los riesgos se convierten en escenarios",en:"Risks become scenarios"},
-    body:{es:"Genera la tabla de trazabilidad y casos Gherkin con Feature, Scenario, Given, When y Then. Los supuestos no confirmados permanecen visibles como bloqueados.",en:"It generates the traceability table and Gherkin cases with Feature, Scenario, Given, When and Then. Unconfirmed assumptions remain visibly blocked."},
+    body:{es:"Genera la tabla de trazabilidad y casos Gherkin con Feature, Scenario, Given, When y Then. Los supuestos no confirmados se convierten en preguntas y decisiones trazables, sin inventar reglas de Producto.",en:"It generates the traceability table and Gherkin cases with Feature, Scenario, Given, When and Then. Unconfirmed assumptions become traceable questions and decisions instead of invented Product rules."},
     metric:"12",metricLabel:{es:"escenarios trazables",en:"traceable scenarios"},artifact:{es:"Plan y casos en Gherkin",en:"Plan and Gherkin cases"},
-    logs:{es:["RF-T04 · critical · automated","RF-T07 · critical · blocked","trazabilidad: riesgo ↔ escenario"],en:["RF-T04 · critical · automated","RF-T07 · critical · blocked","traceability: risk ↔ scenario"]},
+    logs:{es:["RF-T04 · critical · automated","RF-T07 · requiere decisión de Producto","trazabilidad: riesgo ↔ escenario"],en:["RF-T04 · critical · automated","RF-T07 · requires Product decision","traceability: risk ↔ scenario"]},
     activeNodes:["design"],url:`${repo}/blob/main/test-plans/refund-test-plan.md`,
     code:["@RF-T04 @critical @risk-R03","Scenario: retry does not duplicate a refund","Given an order with refundable balance","When the request is submitted twice","Then exactly one refund exists"],
   },
   {
     id:"automation",number:"06",agent:{es:"Automation Agent",en:"Automation Agent"},eyebrow:{es:"Decisión de cobertura",en:"Coverage decision"},
     title:{es:"Solo automatiza lo seguro y útil",en:"It automates only what is safe and useful"},
-    body:{es:`El plan inicial priorizó 6 escenarios trazables. Desde esa base, el laboratorio amplió la cobertura a ${tests.total} checks automatizados sin ocultar los 6 escenarios que siguen bloqueados por reglas de Producto.`,en:`The initial plan prioritized 6 traceable scenarios. From that baseline, the lab expanded coverage to ${tests.total} automated checks without hiding the 6 scenarios still blocked by Product rules.`},
+    body:{es:`El plan inicial identificó 6 escenarios que requerían definición de Producto. QA convirtió esos vacíos en preguntas trazables y, en paralelo, amplió la cobertura verificable hasta ${tests.total} checks automatizados.`,en:`The initial plan identified 6 scenarios that required Product decisions. QA turned those gaps into traceable questions and, in parallel, expanded verifiable coverage to ${tests.total} automated checks.`},
     metric:String(tests.total),metricLabel:{es:"checks en el quality gate",en:"quality-gate checks"},artifact:{es:"Estrategia de automatización",en:"Automation strategy"},
-    logs:{es:["plan_inicial: 06 automatizables",`quality_gate: ${tests.passed} passed · ${tests.failed} failed`,"bloqueados_por_producto: 06 escenarios"],en:["initial_plan: 06 automatable",`quality_gate: ${tests.passed} passed · ${tests.failed} failed`,"blocked_by_product: 06 scenarios"]},
+    logs:{es:["decisiones_de_producto: 06 trazadas",`quality_gate: ${tests.passed} passed · ${tests.failed} failed`,"cobertura_ampliada: 07 capas"],en:["product_decisions: 06 traced",`quality_gate: ${tests.passed} passed · ${tests.failed} failed`,"expanded_coverage: 07 layers"]},
     activeNodes:["automation"],url:`${repo}/tree/main/tests/refund`,
   },
   {

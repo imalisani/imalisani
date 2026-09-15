@@ -32,7 +32,7 @@ The 33 functional checks are API + UI + accessibility. The other 26 counted chec
 
 ## Why the old “6” was not entirely wrong
 
-The original risk-based plan contains RF-T01 through RF-T12. Six were initially automatable and six remained blocked by unresolved Product rules. That is a test-design decision, not the current execution total.
+The original risk-based plan contains RF-T01 through RF-T12. Six were initially automatable and six required Product decisions before their expected behaviour could be asserted safely. QA made those decisions traceable instead of inventing rules. That is a test-design decision, not the current execution total.
 
 The repository later expanded the executable evidence with accessibility, deterministic provider integration, security, PostgreSQL and unit layers. The portfolio still displayed the original six as if they represented the whole pipeline, which made it conflict with the Evidence Pack.
 
@@ -41,7 +41,7 @@ The repository later expanded the executable evidence with accessibility, determ
 | Location | Previous value | Correct interpretation |
 | --- | --- | --- |
 | Orchestrator inventory | 11 agents | 13 agent files currently exist |
-| Automation Agent | 6 automatable cases | 6 initial scenarios; 59 current gate checks |
+| Automation Agent | 6 automatable cases | 6 Product decisions traced; 59 current gate checks |
 | Specialist implementation | 2 UI + 4 API | 13 UI + 18 API, plus five supporting quality layers |
 | Execution | 6/6 Playwright tests | 59/59 checks across the complete quality pipeline |
 | Final consolidation | 6 passed | 59 passed, 0 failed, 100% branch coverage |
@@ -51,7 +51,7 @@ The repository later expanded the executable evidence with accessibility, determ
 
 The scrollytelling now imports the same versioned `public/qa-evidence.json` snapshot used by the Evidence Pack. Numeric execution metrics are derived from that file instead of being repeated as unrelated literals.
 
-The initial six automatable and six blocked scenarios remain visible only as historical planning context. The execution stage is described as the CI/CD Quality Pipeline because the 59 checks include Playwright suites and Node unit tests; attributing the whole total to Playwright would be inaccurate.
+The six Product-dependent scenarios remain visible as owned, traceable decision scope rather than passive blockers. In parallel, QA expanded everything that could be verified safely. The execution stage is described as the CI/CD Quality Pipeline because the 59 checks include Playwright suites and Node unit tests; attributing the whole total to Playwright would be inaccurate.
 
 ## Notes
 
