@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {useEffect,useState} from "react";
 import AgentSystemScroll from "./AgentSystemScroll";
+import QaEvidencePack from "./QaEvidencePack";
 import styles from "./agentic-qa-lab.module.css";
 
 type Lang="es"|"en";
@@ -151,14 +152,6 @@ export default function AgenticQaLab(){
       <a className={styles.videoReportLink} href={allureReport} target="_blank" rel="noreferrer">{c.allureFull} ↗</a>
     </section>
 
-    <section className={styles.report} aria-labelledby="report-title">
-      <header><div><p className={styles.eyebrow}>{c.reportLabel}</p><h2 id="report-title">{c.reportTitle}</h2></div><p>{c.reportCopy}</p></header>
-      <div className={styles.reportGrid}><article><span>{c.passed}</span><strong>06</strong></article><article><span>{c.failed}</span><strong>00</strong></article><article><span>{c.duration}</span><strong>3.89s</strong></article><article><span>{c.blocked}</span><strong>06</strong></article></div>
-      <a className={styles.allureCard} href={allureReport} target="_blank" rel="noreferrer">
-        <div><span>{c.allureEyebrow}</span><h3>{c.allureTitle}</h3><p>{c.allureCopy}</p></div>
-        <div className={styles.allureAction}><span>{c.allureMeta}</span><b aria-hidden="true">↗</b></div>
-      </a>
-      <div className={styles.reportLinks}><a href={`${repo}/tree/main/tests/refund`} target="_blank" rel="noreferrer">{c.code} ↗</a><a href={`${repo}/blob/main/reports/execution-summary.md`} target="_blank" rel="noreferrer">{c.summary} ↗</a><a href={`${repo}/blob/main/reports/failure-investigation-2026-08-26.md`} target="_blank" rel="noreferrer">{c.investigation} ↗</a></div>
-    </section>
+    <QaEvidencePack lang={lang}/>
   </main>;
 }

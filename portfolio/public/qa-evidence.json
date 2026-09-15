@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "commit": "38f8efe1c84e58b5210b630c3409b4eddc11c264",
+  "runId": "34868472530",
+  "generatedAt": "2026-09-14T16:26:33.228Z",
+  "source": "generated from available unit, Playwright, PostgreSQL, and k6 execution outputs",
+  "tests": {
+    "total": 59,
+    "passed": 59,
+    "failed": 0,
+    "skipped": 0,
+    "api": 18,
+    "ui": 13,
+    "accessibility": 2,
+    "data": 5,
+    "integration": 6,
+    "security": 7,
+    "unit": 8
+  },
+  "coverage": {
+    "branches": 100,
+    "gateMinimum": 90
+  },
+  "performance": {
+    "profile": "smoke",
+    "p95Ms": 1.2206588999999997,
+    "errorRate": 0,
+    "throughputRps": 1533.1058885575108,
+    "requests": 15,
+    "checksRate": 1,
+    "guardrail": "p95 < 500 ms; HTTP failure rate < 1%; checks > 99%",
+    "guardrailType": "demo/CI guardrail, not a product SLO"
+  },
+  "gates": {
+    "functional": {"status": "passed", "tests": 33, "failed": 0},
+    "integration": {"status": "passed", "tests": 6, "failed": 0},
+    "security": {"status": "passed", "tests": 7, "failed": 0},
+    "data": {"status": "passed", "tests": 5, "failed": 0},
+    "unit": {"status": "passed", "tests": 8, "failed": 0},
+    "performance": {"status": "passed", "profile": "smoke"}
+  },
+  "missingRequiredEvidence": [],
+  "limitations": [
+    "Performance values describe the current runner and are not a production SLO.",
+    "The external refund provider is simulated and deterministic.",
+    "Authentication and authorization are outside the current demo scope."
+  ]
+}
