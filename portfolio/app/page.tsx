@@ -31,13 +31,18 @@ const copy={
     evidenceLabel:"03 — Evidencia rápida",evidenceTitle:"Impacto que se entiende en segundos.",evidenceIntro:"Tres señales de una práctica orientada a prevenir, validar y decidir.",
     evidence:[
       {value:"90%",progress:90,label:"planes de prueba listos antes del desarrollo"},
-      {value:"3–6",progress:72,label:"funcionalidades validadas por semana"},
+      {value:"3–6",progress:null,label:"funcionalidades validadas por semana"},
       {value:"25%",progress:25,label:"tareas con riesgos o defectos detectados antes de producción"},
     ],
     storyLabel:"05 — Mi historia",storyTitle:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,
     storyCopy:"Mi recorrido por web, mobile, APIs, integraciones y logística convirtió el testing en algo más amplio: hacer mejores preguntas, alinear al equipo y diseñar confianza antes del release.",
     storyCta:"Conocer mi recorrido",
     futureLabel:"06 — Visión",futureTitle:"QA como inteligencia para el producto.",futureCopy:"Quiero ayudar a construir equipos donde el criterio humano, la automatización y los agentes conviertan incertidumbre en decisiones trazables.",futureCta:"Ver mi visión completa",
+    futurePillars:[
+      {title:"Prevenir desde el diseño",copy:"Hacer visibles las preguntas y los riesgos antes de construir, no recién antes del release."},
+      {title:"Automatizar con criterio",copy:"Elegir cobertura útil y agentes con contexto, límites y decisiones que puedan auditarse."},
+      {title:"Decidir con evidencia",copy:"Conectar resultados e impacto de negocio para que el equipo entienda qué riesgo está aceptando."},
+    ],
     contactLabel:"07 — Hablemos",contactTitle:<>¿Estás construyendo algo<br/>que necesita <em>confianza?</em></>,contactHeading:"Trabajemos juntos",
     name:"Nombre",email:"Email",subject:"Asunto",message:"Mensaje",send:"Enviar mensaje",sending:"Enviando…",success:"¡Gracias! Tu mensaje fue enviado.",error:"No se pudo enviar el mensaje. Intentá nuevamente.",
     calendarLabel:"Reserva directa",calendarTitle:"¿Preferís coordinar directamente?",calendarCopy:"Evitá el ida y vuelta: elegí el horario que mejor te quede y agendemos una conversación.",calendarLink:"Ver horarios disponibles",
@@ -59,13 +64,18 @@ const copy={
     evidenceLabel:"03 — Quick evidence",evidenceTitle:"Impact understood in seconds.",evidenceIntro:"Three signals from a practice focused on preventing, validating and deciding.",
     evidence:[
       {value:"90%",progress:90,label:"test plans ready before development"},
-      {value:"3–6",progress:72,label:"features validated each week"},
+      {value:"3–6",progress:null,label:"features validated each week"},
       {value:"25%",progress:25,label:"tasks with risks or defects caught before production"},
     ],
     storyLabel:"05 — My story",storyTitle:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,
     storyCopy:"My work across web, mobile, APIs, integrations and logistics turned testing into something broader: asking better questions, aligning the team and designing confidence before release.",
     storyCta:"Explore my journey",
     futureLabel:"06 — Vision",futureTitle:"QA as product intelligence.",futureCopy:"I want to help build teams where human judgement, automation and agents turn uncertainty into traceable decisions.",futureCta:"See my complete vision",
+    futurePillars:[
+      {title:"Prevent through design",copy:"Surface questions and risks before building, not only before release."},
+      {title:"Automate with judgement",copy:"Choose useful coverage and agents with context, boundaries and auditable decisions."},
+      {title:"Decide with evidence",copy:"Connect results to business impact so the team understands the risk it is accepting."},
+    ],
     contactLabel:"07 — Let’s talk",contactTitle:<>Building something<br/>that needs <em>confidence?</em></>,contactHeading:"Let’s work together",
     name:"Name",email:"Email",subject:"Subject",message:"Message",send:"Send message",sending:"Sending…",success:"Thanks! Your message was sent.",error:"The message could not be sent. Please try again.",
     calendarLabel:"Direct booking",calendarTitle:"Prefer to coordinate directly?",calendarCopy:"Skip the back-and-forth: choose the time that works best for you and let’s schedule a conversation.",calendarLink:"View available times",
@@ -142,7 +152,7 @@ export default function Home(){
 
     <section className="evidence" id="evidence" aria-labelledby="evidence-title">
       <header className="evidenceHead"><div><p className="label">{c.evidenceLabel}</p><h2 id="evidence-title">{c.evidenceTitle}</h2></div><p>{c.evidenceIntro}</p></header>
-      <div className="evidenceGrid">{c.evidence.map((item,index)=><article key={item.value+item.label}><div className="evidenceRing" style={{"--progress":item.progress} as CSSProperties}><span>{item.value}</span></div><div><span>0{index+1}</span><p>{item.label}</p></div></article>)}</div>
+      <div className="evidenceGrid">{c.evidence.map((item,index)=><article key={item.value+item.label}><div className={item.progress===null?"evidenceRange":"evidenceRing"} style={item.progress===null?undefined:{"--progress":item.progress} as CSSProperties}><span>{item.value}</span>{item.progress===null?<small>{lang==="es"?"por semana":"per week"}</small>:null}</div><div><span>0{index+1}</span><p>{item.label}</p></div></article>)}</div>
     </section>
 
     <SkillsMap lang={lang}/>
@@ -152,8 +162,10 @@ export default function Home(){
       <div><p>{c.storyCopy}</p><Link className="textlink" href="/sobre-mi">{c.storyCta} <Arrow/></Link></div>
     </section>
 
-    <section className="futureCompact" id="vision" aria-labelledby="vision-title">
-      <p className="label">{c.futureLabel}</p><div><h2 id="vision-title">{c.futureTitle}</h2><p>{c.futureCopy}</p><Link href="/sobre-mi#vision">{c.futureCta} <Arrow/></Link></div>
+    <section className="futureCompact futureFocused" id="vision" aria-labelledby="vision-title">
+      <header><p className="label">{c.futureLabel}</p><h2 id="vision-title">{c.futureTitle}</h2><p>{c.futureCopy}</p></header>
+      <ol className="visionPillars">{c.futurePillars.map((pillar,index)=><li key={pillar.title}><span aria-hidden="true">0{index+1}</span><h3>{pillar.title}</h3><p>{pillar.copy}</p></li>)}</ol>
+      <Link className="visionMore" href="/sobre-mi#vision">{c.futureCta} <Arrow/></Link>
     </section>
 
     <footer id="contact">

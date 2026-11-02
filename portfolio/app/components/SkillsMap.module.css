@@ -13,7 +13,7 @@
 .domain,.core{position:relative;z-index:1}
 .domain{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;padding:18px 20px;min-width:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
 .domain:hover{transform:translateY(-6px);box-shadow:0 18px 34px color-mix(in srgb,var(--ink) 12%,transparent)}
-.technical{grid-area:technical;background:var(--lime);color:#21172d}
+.technical{grid-area:technical;background:var(--lime);color:#21172d;align-self:center;grid-template-rows:auto auto auto;gap:26px}
 .strategy{grid-area:strategy;background:var(--violet);color:white}
 .human{grid-area:human;background:var(--sand);color:var(--ink)}
 .topline{display:flex;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid currentColor;text-transform:uppercase;letter-spacing:.13em;font-size:9px}

@@ -215,3 +215,22 @@ html{scroll-padding-top:108px}
   .aboutNav{grid-template-columns:1fr auto;padding-bottom:12px}.aboutNav .aboutBack{grid-column:1/-1;grid-row:2;justify-self:start;padding:12px 0 0;border-top:1px solid var(--line);width:100%}.aboutHero{padding:72px 20px 64px}.aboutHero h1{font-size:clamp(52px,15vw,72px);line-height:.92}.aboutLead{margin-top:38px;font-size:25px}.aboutNarrative{padding:0 20px}.aboutNarrative>div{grid-template-columns:1fr;padding:32px 0;gap:15px}.aboutNarrative p{font-size:18px}.aboutScope,.aboutVision,.aboutClose{padding-left:20px;padding-right:20px}.aboutScope{gap:45px}.aboutScope h2,.aboutVision h2{font-size:clamp(45px,13vw,58px)}.aboutVision>div{grid-template-columns:1fr}.aboutVision article{min-height:250px}.aboutClose{padding-bottom:calc(110px + env(safe-area-inset-bottom))}.aboutClose>div{display:grid}.aboutClose .buttonPrimary,.aboutClose .buttonSecondary{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.buttonPrimary,.buttonSecondary{transition:none}.buttonPrimary:hover,.buttonSecondary:hover,.buttonPrimary:focus-visible,.buttonSecondary:focus-visible{transform:none}}
+
+/* Distinct evidence routes in dark mode; retain the brand's sand on the fourth route. */
+html[data-theme="dark"] .compactIndex .pageIndexCard:nth-child(4){background:#d8bda0;color:#21172d}
+html[data-theme="dark"] .compactIndex .pageIndexCard:nth-child(4):hover{background:var(--lime);color:#21172d}
+.evidenceRange{width:clamp(112px,10vw,160px);aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;align-items:center;border-block:2px solid var(--lime);gap:8px}
+.evidenceRange>span{font-family:Georgia,serif;font-size:clamp(34px,3.4vw,52px);color:var(--lime);letter-spacing:-.04em}
+.evidenceRange>small{font:9px "Courier New",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--on-inverse)}
+.futureFocused{display:block;background:#7652a3}
+.futureFocused>header{display:grid;grid-template-columns:.4fr 1fr .7fr;gap:4vw;align-items:start}
+.futureFocused>header>p:last-child{font-size:15px;line-height:1.65}
+.visionPillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:40px 0 28px;padding:0;border-block:1px solid #ffffff59}
+.visionPillars li{padding:24px 26px;border-right:1px solid #ffffff59}
+.visionPillars li:first-child{padding-left:0}.visionPillars li:last-child{border:0}
+.visionPillars li>span{font:10px "Courier New",monospace;color:var(--lime)}
+.visionPillars h3{margin:20px 0 12px;font-family:Georgia,serif;font-size:clamp(28px,2.8vw,40px);line-height:1.04;font-weight:400;letter-spacing:-.035em}
+.futureFocused .visionPillars p{font-size:14px;line-height:1.65}
+.futureFocused .visionMore{display:inline-block;white-space:normal;line-height:1.6}
+@media(max-width:1050px){.futureFocused>header{grid-template-columns:1fr 1fr}.futureFocused>header>.label{grid-column:1/-1}}
+@media(max-width:760px){.evidenceRange{width:106px}.futureFocused>header{grid-template-columns:1fr;gap:24px}.visionPillars{grid-template-columns:1fr;margin-top:30px}.visionPillars li,.visionPillars li:first-child{padding:24px 0;border-right:0;border-bottom:1px solid #ffffff59}.visionPillars h3{margin-top:14px}}
