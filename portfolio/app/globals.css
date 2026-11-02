@@ -171,7 +171,7 @@ html{scroll-padding-top:108px}
 .buttonPrimary,.buttonSecondary{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:48px;padding:0 20px;border:1px solid var(--ink);border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:transform .2s,background-color .2s,color .2s}
 .buttonPrimary{background:var(--ink);color:var(--paper)}.buttonSecondary{background:transparent;color:var(--ink)}
 .buttonPrimary:hover,.buttonSecondary:hover,.buttonPrimary:focus-visible,.buttonSecondary:focus-visible{transform:translateY(-3px);outline:none}.buttonSecondary:hover,.buttonSecondary:focus-visible{background:var(--lime);color:#21172d;border-color:var(--lime)}
-.heroMinimal .qaUniverse{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:1;min-width:0;min-height:0;justify-self:center}
+.heroMinimal .qaUniverse{grid-area:auto;position:relative;inset:auto;width:100%;height:auto;aspect-ratio:1;min-width:0;min-height:0;justify-self:center}
 .compactIndex{padding-block:clamp(64px,6vw,94px)}
 .compactIndex .pageIndexCard{min-height:245px}
 
@@ -234,3 +234,20 @@ html[data-theme="dark"] .compactIndex .pageIndexCard:nth-child(4):hover{backgrou
 .futureFocused .visionMore{display:inline-block;white-space:normal;line-height:1.6}
 @media(max-width:1050px){.futureFocused>header{grid-template-columns:1fr 1fr}.futureFocused>header>.label{grid-column:1/-1}}
 @media(max-width:760px){.evidenceRange{width:106px}.futureFocused>header{grid-template-columns:1fr;gap:24px}.visionPillars{grid-template-columns:1fr;margin-top:30px}.visionPillars li,.visionPillars li:first-child{padding:24px 0;border-right:0;border-bottom:1px solid #ffffff59}.visionPillars h3{margin-top:14px}}
+
+/* Isolate the new hero from legacy named grid areas and language-specific title rules. */
+.heroMinimal .heroIdentity{min-width:0}
+@media(max-width:900px){
+  .heroMinimal .heroGrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"identity" "planet";min-height:0;gap:24px}
+  .heroMinimal .heroIdentity{grid-area:identity}
+  .heroMinimal .qaUniverse{grid-area:planet;width:min(82vw,390px);margin:0 auto}
+}
+@media(max-width:760px){
+  .heroMinimal .heroIdentity{padding-top:26px}
+  main[lang] .heroMinimal h1.heroName{grid-area:auto;max-width:100%;margin:0;font-size:clamp(64px,19vw,82px);line-height:.86}
+  .heroMinimal .heroPromise{font-size:clamp(25px,6.5vw,32px);line-height:1.12;margin:22px 0 16px}
+  .heroMinimal .heroEyebrow{font-size:10px;line-height:1.6;letter-spacing:.08em}
+  .heroMinimal .heroSummary{font-size:14px;line-height:1.6}
+  .heroMinimal .heroActions{margin-top:24px;gap:10px}
+  .heroMinimal .qaUniverse{width:min(78vw,300px)}
+}
