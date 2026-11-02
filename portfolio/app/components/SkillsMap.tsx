@@ -39,7 +39,7 @@ function SkillDomain({number,domain,tone}:{number:string;domain:Domain;tone:"tec
 
 export default function SkillsMap({lang}:{lang:Lang}){
   const c=copy[lang];
-  return <section className={styles.section} aria-labelledby="skills-map-title">
+  return <section className={styles.section} id="capabilities" aria-labelledby="skills-map-title">
     <header className="head"><div><p className="label">{c.label}</p><h2 id="skills-map-title">{c.title}</h2></div><p>{c.intro}</p></header>
     <div className={styles.map}>
       <svg className={styles.orbits} viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">

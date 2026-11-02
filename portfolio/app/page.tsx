@@ -1,99 +1,169 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import {type FormEvent,useEffect,useState} from "react";
+import {type CSSProperties,type FormEvent,useEffect,useState} from "react";
 import SkillsMap from "./components/SkillsMap";
 import SocialDock from "./components/SocialDock";
 
-const tools=["Playwright","TypeScript","JavaScript","Python","Appium","Postman","Jira","TestRail","Xray","SQL","k6","Jenkins","GitHub Actions","Claude Code"];
-const work=[
-{n:"01",tag:"SHIFT-LEFT · TEST STRATEGY",en:{title:"Quality before the first line of code",copy:"Designed test plans from requirements and acceptance criteria before development began, making risks visible when they were still inexpensive to solve.",value:"90%",label:"of monthly test plans ready before development"},es:{title:"Calidad antes de la primera línea de código",copy:"Diseñé planes de prueba desde los requerimientos y criterios de aceptación antes de comenzar el desarrollo, haciendo visibles los riesgos cuando todavía era económico resolverlos.",value:"90%",label:"de los planes mensuales listos antes del desarrollo"},tone:"lime"},
-{n:"02",tag:"AGENTIC QA · PLAYWRIGHT",en:{title:"An AI-assisted review workflow",copy:"Built QA agents grounded in ISTQB techniques to compare test plans against pull requests, expose missing scenarios, and keep coverage consistent and auditable.",value:"Weekly",label:"automation and agent maintenance"},es:{title:"Un flujo de revisión asistido por IA",copy:"Construí agentes de QA basados en técnicas ISTQB para comparar planes de prueba con pull requests, detectar escenarios faltantes y mantener una cobertura consistente y auditable.",value:"Semanal",label:"mantenimiento de automatización y agentes"},tone:"violet"},
-{n:"03",tag:"LOGISTICS · END-TO-END QUALITY",en:{title:"Confidence for complex routing flows",copy:"Validated web, mobile, APIs, integrations and route-optimization algorithms across real operational constraints and critical business scenarios.",value:"25%",label:"of tasks tested each month returned before production"},es:{title:"Confianza para flujos complejos",copy:"Validé web, mobile, APIs, integraciones y algoritmos de optimización de rutas con restricciones operativas reales y escenarios críticos de negocio.",value:"25%",label:"de las tareas testeadas por mes volvieron antes de producción"},tone:"sand"}];
+type Language="en"|"es";
 
-const softSkills=[
-{en:{title:"Assertive communication",copy:"I make risks, blockers and decisions visible without creating friction."},es:{title:"Comunicación asertiva",copy:"Hago visibles riesgos, bloqueos y decisiones sin generar fricción."}},
-{en:{title:"Critical thinking",copy:"I challenge assumptions and look for the question behind the requirement."},es:{title:"Pensamiento crítico",copy:"Cuestiono supuestos y busco la pregunta que existe detrás del requerimiento."}},
-{en:{title:"Team collaboration",copy:"I work closely with Product and Development from refinement to release."},es:{title:"Colaboración",copy:"Trabajo junto a Producto y Desarrollo desde el refinamiento hasta el release."}},
-{en:{title:"Adaptability",copy:"I move across teams, products and technical contexts while keeping quality consistent."},es:{title:"Adaptabilidad",copy:"Me adapto a equipos, productos y contextos técnicos manteniendo una calidad consistente."}}];
+const cvFiles:Record<Language,string>={
+  en:"/CV-Irina-Malisani-QA-Engineer.pdf",
+  // Replace only this path when the Spanish CV is ready.
+  es:"/CV-Irina-Malisani-QA-Engineer.pdf",
+};
 
 const copy={
-en:{nav:["How I work","About me"],metricsNav:"My metrics",experienceNav:"My story",cvNav:"Download CV",contactNav:"Contact",available:"Available for work",location:"Argentina · Remote",hero:<>I question the<br/>product <em>before</em><br/>the user has to.</>,heroCopy:"Shift-left testing, thoughtful automation and AI-powered quality practices for products that need to move fast without losing confidence.",philosophy:"01 — Philosophy",quote:<>“The developer builds the answer.<br/>I make sure we asked the <em>right question.</em>”</>,indexLabel:"02 — How I work",indexTitle:"Three paths to see how I think and execute.",processTitle:"QA workflow",processCopy:"From requirements to release: early questions, agent-assisted coverage, evidence and quality decisions.",processLink:"Explore the workflow",testsTitle:"Test cases",testsCopy:"Risk-based Gherkin scenarios, design techniques and links to public implementations.",testsLink:"View test cases",reposTitle:"Repositories",reposCopy:"Public code with strategy, architecture, automation, traceability and execution evidence.",reposLink:"Explore repositories",workLabel:"04 — My metrics",workTitle:"Quality in numbers.",workIntro:"Selected indicators that show how I turn ambiguity, technical complexity and product risk into reliable releases.",softLabel:"05 — Human skills",softTitle:"How I contribute to the team.",softIntro:"Quality also depends on how we communicate, collaborate and make decisions.",aboutLabel:"07 — My story",aboutTitle:<>Quality is<br/>a team sport.</>,lead:"I’m Irina, a QA Engineer with five years of experience helping product teams prevent problems—not only find them.",about1:"I worked across web, mobile, APIs and integrations in a complex logistics platform. My strongest work happens early: refining requirements with Product and Development, challenging assumptions, mapping risks and designing test coverage before implementation.",about2:"Today, I combine that collaborative approach with Playwright, Appium and AI agents grounded in testing fundamentals. The goal stays the same: clearer decisions, stronger releases and less friction for the team.",linkedin:"Connect on LinkedIn",cvLabel:"Open to new opportunities",cvTitle:"Want the complete picture?",cvCopy:"Download my CV for a concise overview of my experience, technical stack, education and measurable impact.",cvButton:"Download CV · PDF",toolbox:"08 — Toolbox",talk:"09 — Let’s talk",footer:<>Building something<br/>that needs <em>confidence?</em></>,contact:"Let’s work together"},
-es:{nav:["Cómo trabajo","Sobre mí"],metricsNav:"Mis métricas",experienceNav:"Mi historia",cvNav:"Descargar CV",contactNav:"Contacto",available:"Disponible para trabajar",location:"Argentina · Remoto",hero:<>Cuestiono el<br/>producto <em>antes</em><br/>de que lo haga el usuario.</>,heroCopy:"Shift-left testing, automatización con criterio y prácticas de calidad potenciadas por IA para productos que necesitan avanzar rápido sin perder confianza.",philosophy:"01 — Filosofía",quote:<>“El developer construye la respuesta.<br/>Yo verifico que hayamos hecho la <em>pregunta correcta.</em>”</>,indexLabel:"02 — Cómo trabajo",indexTitle:"Tres recorridos para conocer cómo pienso y ejecuto.",processTitle:"Flujo de QA",processCopy:"Del requerimiento al release: preguntas tempranas, cobertura asistida por agentes, evidencia y decisiones de calidad.",processLink:"Explorar el flujo",testsTitle:"Casos de prueba",testsCopy:"Escenarios Gherkin basados en riesgo, técnicas de diseño y enlaces a implementaciones públicas.",testsLink:"Ver los casos",reposTitle:"Repositorios",reposCopy:"Código público con estrategia, arquitectura, automatización, trazabilidad y evidencia de ejecución.",reposLink:"Explorar repositorios",workLabel:"04 — Mis métricas",workTitle:"Calidad en números.",workIntro:"Indicadores concretos que muestran cómo convierto ambigüedad, complejidad técnica y riesgos de producto en releases confiables.",softLabel:"05 — Habilidades humanas",softTitle:"Cómo aporto al equipo.",softIntro:"La calidad también depende de cómo nos comunicamos, colaboramos y tomamos decisiones.",aboutLabel:"07 — Mi historia",aboutTitle:<>La calidad es<br/>un trabajo en equipo.</>,lead:"Soy Irina, QA Engineer con cinco años de experiencia ayudando a equipos de producto a prevenir problemas, no solo a encontrarlos.",about1:"Trabajé sobre web, mobile, APIs e integraciones en una plataforma logística compleja. Mi mejor trabajo comienza temprano: refinando requerimientos con Producto y Desarrollo, cuestionando supuestos, mapeando riesgos y diseñando cobertura antes de implementar.",about2:"Hoy combino ese enfoque colaborativo con Playwright, Appium y agentes de IA basados en fundamentos de testing. El objetivo sigue siendo el mismo: decisiones más claras, releases más sólidos y menos fricción para el equipo.",linkedin:"Conectar en LinkedIn",cvLabel:"Abierta a nuevas oportunidades",cvTitle:"¿Querés conocer el recorrido completo?",cvCopy:"Descargá mi CV para ver en detalle mi experiencia, stack técnico, formación e impacto medible.",cvButton:"Descargar CV · PDF",toolbox:"08 — Herramientas",talk:"09 — Hablemos",footer:<>¿Estás construyendo algo<br/>que necesita <em>confianza?</em></>,contact:"Trabajemos juntos"}};
-
-const directionCopy={
-es:{showroomLabel:"03 — Showroom técnico",showroomTitle:"No solo lo cuento. Lo pongo en acción.",showroomIntro:"Explorá agentes, automatización y estrategia. Cada vista conecta una decisión de calidad con evidencia concreta.",showroomAction:"Abrir evidencia",futureLabel:"06 — Próximo horizonte",futureTitle:<>La calidad que quiero<br/>ayudar a construir.</>,futureLead:"Mi norte es llevar QA de una etapa de validación a un sistema de inteligencia para el producto.",future:[{title:"Agentes con contexto, límites y trazabilidad",copy:"IA que amplifica el análisis sin ocultar cómo llegó a una conclusión."},{title:"Evidencia continua para decidir",copy:"Señales de calidad conectadas al cambio, al riesgo y al impacto real."},{title:"QA como motor de innovación",copy:"Equipos que experimentan más rápido porque la confianza también se diseña."}],valueLabel:"Mi propuesta de valor",value:"Conecto criterio humano, automatización y agentes para transformar incertidumbre en decisiones de producto confiables.",storyLabel:"07 — Mi historia",storyTitle:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,storyLead:"Soy Irina, QA Engineer con cinco años de experiencia. Mi recorrido me enseñó que el mayor impacto de calidad ocurre antes de ejecutar un solo caso de prueba.",story1:"Trabajando con web, mobile, APIs, integraciones y algoritmos logísticos, entendí que probar no era solamente confirmar una respuesta: era hacer mejores preguntas, descubrir supuestos y acercar al equipo a la intención real del producto.",story2:"Esa búsqueda me llevó del testing reactivo al shift-left, la automatización y los agentes de IA. Me motiva construir una práctica donde la tecnología acelera el trabajo, pero el criterio humano conserva la responsabilidad."},
-en:{showroomLabel:"03 — Technical showroom",showroomTitle:"I do not just describe it. I put it to work.",showroomIntro:"Explore agents, automation and strategy. Each view connects a quality decision with concrete evidence.",showroomAction:"Open evidence",futureLabel:"06 — Next horizon",futureTitle:<>The quality practice<br/>I want to help build.</>,futureLead:"My direction is to move QA from a validation stage into a product intelligence system.",future:[{title:"Agents with context, boundaries and traceability",copy:"AI that expands analysis without hiding how it reached a conclusion."},{title:"Continuous evidence for decisions",copy:"Quality signals connected to the change, its risk and real impact."},{title:"QA as an innovation engine",copy:"Teams that experiment faster because confidence is designed too."}],valueLabel:"My value proposition",value:"I connect human judgement, automation and agents to turn uncertainty into confident product decisions.",storyLabel:"07 — My story",storyTitle:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,storyLead:"I am Irina, a QA Engineer with five years of experience. My journey taught me that quality has its greatest impact before a single test case is run.",story1:"Working across web, mobile, APIs, integrations and logistics algorithms, I learned that testing was not only about confirming an answer. It was about asking better questions, uncovering assumptions and bringing the team closer to the product's real intent.",story2:"That pursuit took me from reactive testing to shift-left, automation and AI agents. I want to build a practice where technology accelerates the work while human judgement retains responsibility."}
+  es:{
+    navWork:"Cómo trabajo",navAbout:"Sobre mí",available:"Disponible para trabajar",location:"Argentina · Remoto",
+    heroEyebrow:"Quality Engineer · Shift-left · Automatización · Agentic QA",
+    heroMotto:<>La calidad no es <em>suerte.</em><br/>Se diseña, se planifica, se valida y se protege <strong>de principio a fin.</strong></>,
+    heroCopy:"Conecto criterio humano, estrategia de pruebas y automatización para que los riesgos aparezcan antes que los problemas.",
+    workCta:"Ver cómo trabajo",cvCta:"Descargar CV",
+    indexLabel:"02 — Trabajo en acción",indexTitle:"Elegí la evidencia que querés explorar.",
+    paths:[
+      {title:"Cómo trabajo",copy:"El proceso completo: preguntas tempranas, cobertura, evidencia y decisiones de calidad.",action:"Ver el flujo",href:"/como-trabajo"},
+      {title:"Agentic QA Lab",copy:"Una ejecución verificable desde la historia de usuario hasta la automatización y el reporte.",action:"Ejecutar la demo",href:"/agentic-qa-lab"},
+      {title:"Casos de prueba",copy:"Escenarios Gherkin basados en riesgo y técnicas de diseño aplicadas.",action:"Ver los casos",href:"/casos-de-prueba"},
+      {title:"Repositorios",copy:"Código público, arquitectura, trazabilidad y evidencia de ejecución.",action:"Explorar código",href:"/repositorios"},
+    ],
+    evidenceLabel:"03 — Evidencia rápida",evidenceTitle:"Impacto que se entiende en segundos.",evidenceIntro:"Tres señales de una práctica orientada a prevenir, validar y decidir.",
+    evidence:[
+      {value:"90%",progress:90,label:"planes de prueba listos antes del desarrollo"},
+      {value:"3–6",progress:72,label:"funcionalidades validadas por semana"},
+      {value:"25%",progress:25,label:"tareas con riesgos o defectos detectados antes de producción"},
+    ],
+    storyLabel:"05 — Mi historia",storyTitle:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,
+    storyCopy:"Mi recorrido por web, mobile, APIs, integraciones y logística convirtió el testing en algo más amplio: hacer mejores preguntas, alinear al equipo y diseñar confianza antes del release.",
+    storyCta:"Conocer mi recorrido",
+    futureLabel:"06 — Visión",futureTitle:"QA como inteligencia para el producto.",futureCopy:"Quiero ayudar a construir equipos donde el criterio humano, la automatización y los agentes conviertan incertidumbre en decisiones trazables.",futureCta:"Ver mi visión completa",
+    contactLabel:"07 — Hablemos",contactTitle:<>¿Estás construyendo algo<br/>que necesita <em>confianza?</em></>,contactHeading:"Trabajemos juntos",
+    name:"Nombre",email:"Email",subject:"Asunto",message:"Mensaje",send:"Enviar mensaje",sending:"Enviando…",success:"¡Gracias! Tu mensaje fue enviado.",error:"No se pudo enviar el mensaje. Intentá nuevamente.",
+    calendarLabel:"Reserva directa",calendarTitle:"¿Preferís coordinar directamente?",calendarCopy:"Evitá el ida y vuelta: elegí el horario que mejor te quede y agendemos una conversación.",calendarLink:"Ver horarios disponibles",
+    aboutLinks:["Mi historia","Mis capacidades","Mi visión","Contacto"],
+  },
+  en:{
+    navWork:"How I work",navAbout:"About me",available:"Available for work",location:"Argentina · Remote",
+    heroEyebrow:"Quality Engineer · Shift-left · Automation · Agentic QA",
+    heroMotto:<>Quality isn&apos;t <em>luck.</em><br/>It&apos;s designed, planned, validated and protected <strong>from start to finish.</strong></>,
+    heroCopy:"I connect human judgement, test strategy and automation so risks become visible before they become problems.",
+    workCta:"See how I work",cvCta:"Download CV",
+    indexLabel:"02 — Work in action",indexTitle:"Choose the evidence you want to explore.",
+    paths:[
+      {title:"How I work",copy:"The complete process: early questions, coverage, evidence and quality decisions.",action:"See the workflow",href:"/como-trabajo"},
+      {title:"Agentic QA Lab",copy:"A verifiable run from user story through automation and reporting.",action:"Run the demo",href:"/agentic-qa-lab"},
+      {title:"Test cases",copy:"Risk-based Gherkin scenarios and applied test design techniques.",action:"View the cases",href:"/casos-de-prueba"},
+      {title:"Repositories",copy:"Public code, architecture, traceability and execution evidence.",action:"Explore code",href:"/repositorios"},
+    ],
+    evidenceLabel:"03 — Quick evidence",evidenceTitle:"Impact understood in seconds.",evidenceIntro:"Three signals from a practice focused on preventing, validating and deciding.",
+    evidence:[
+      {value:"90%",progress:90,label:"test plans ready before development"},
+      {value:"3–6",progress:72,label:"features validated each week"},
+      {value:"25%",progress:25,label:"tasks with risks or defects caught before production"},
+    ],
+    storyLabel:"05 — My story",storyTitle:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,
+    storyCopy:"My work across web, mobile, APIs, integrations and logistics turned testing into something broader: asking better questions, aligning the team and designing confidence before release.",
+    storyCta:"Explore my journey",
+    futureLabel:"06 — Vision",futureTitle:"QA as product intelligence.",futureCopy:"I want to help build teams where human judgement, automation and agents turn uncertainty into traceable decisions.",futureCta:"See my complete vision",
+    contactLabel:"07 — Let’s talk",contactTitle:<>Building something<br/>that needs <em>confidence?</em></>,contactHeading:"Let’s work together",
+    name:"Name",email:"Email",subject:"Subject",message:"Message",send:"Send message",sending:"Sending…",success:"Thanks! Your message was sent.",error:"The message could not be sent. Please try again.",
+    calendarLabel:"Direct booking",calendarTitle:"Prefer to coordinate directly?",calendarCopy:"Skip the back-and-forth: choose the time that works best for you and let’s schedule a conversation.",calendarLink:"View available times",
+    aboutLinks:["My story","My capabilities","My vision","Contact"],
+  },
 } as const;
 
-const formCopy={
-en:{name:"Name",email:"Email",subject:"Subject",message:"Message",send:"Send message",sending:"Sending…",success:"Thanks! Your message was sent.",error:"The message could not be sent. Please try again.",calendarLabel:"Direct booking",calendarTitle:"Prefer to coordinate directly?",calendarCopy:"Skip the back-and-forth: choose the time that works best for you and let’s schedule a conversation.",calendarLink:"View available times"},
-es:{name:"Nombre",email:"Email",subject:"Asunto",message:"Mensaje",send:"Enviar mensaje",sending:"Enviando…",success:"¡Gracias! Tu mensaje fue enviado.",error:"No se pudo enviar el mensaje. Intentá nuevamente.",calendarLabel:"Reserva directa",calendarTitle:"¿Preferís coordinar directamente?",calendarCopy:"Evitá el ida y vuelta: elegí el horario que mejor te quede y agendemos una conversación.",calendarLink:"Ver horarios disponibles"}
-};
-
 const Arrow=()=> <span aria-hidden="true">↗</span>;
+
 export default function Home(){
-const [lang,setLang]=useState<"en"|"es">("es");
-const [theme,setTheme]=useState<"light"|"dark">("light");
-const [formStatus,setFormStatus]=useState<"idle"|"sending"|"success"|"error">("idle");
-useEffect(()=>{
-const savedTheme=window.localStorage.getItem("portfolio-theme");
-const preferredTheme=savedTheme==="dark"||savedTheme==="light"
-?savedTheme
-:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
-const savedLanguage=window.localStorage.getItem("portfolio-language");
-const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
-setTheme(preferredTheme);
-setLang(preferredLanguage);
-document.documentElement.dataset.theme=preferredTheme;
-document.documentElement.lang=preferredLanguage;
-},[]);
-const toggleTheme=()=>setTheme(current=>{
-const next=current==="light"?"dark":"light";
-document.documentElement.dataset.theme=next;
-window.localStorage.setItem("portfolio-theme",next);
-return next;
-});
-const toggleLanguage=()=>setLang(current=>{
-const next=current==="en"?"es":"en";
-window.localStorage.setItem("portfolio-language",next);
-document.documentElement.lang=next;
-return next;
-});
-const base=copy[lang];
-const directionBase=directionCopy[lang];
-const direction={...directionBase,futureLabel:lang==="es"?"05 — Próximo horizonte":"05 — Next horizon",storyLabel:lang==="es"?"06 — Mi historia":"06 — My story"};
-const heroMotto=lang==="es"
-?<>La calidad no es <em className="heroLuck">suerte.</em><br/>Se diseña, se planifica,<br/>se valida y se protege<br/>de principio a fin.</>
-:<>Quality isn&apos;t <em className="heroLuck">luck.</em><br/>It&apos;s designed, planned,<br/>validated and protected<br/>from start to finish.</>;
-const c={...base,indexTitle:lang==="es"?"Cuatro recorridos para conocer cómo pienso y ejecuto.":"Four paths to see how I think and execute.",hero:heroMotto,workLabel:lang==="es"?"03 — Mis métricas":"03 — My metrics",toolbox:lang==="es"?"07 — Herramientas":"07 — Toolbox",talk:lang==="es"?"08 — Hablemos":"08 — Let’s talk"};
-const labCard=lang==="es"?{title:"Agentic QA Lab",copy:"Reproducí una ejecución verificada: de una historia de usuario compleja al análisis, la automatización y el reporte final.",link:"Ejecutar la demo"}:{title:"Agentic QA Lab",copy:"Replay a verified execution: from a complex user story through analysis, automation and the final report.",link:"Run the demo"};
-const f=formCopy[lang];
-const handleContactSubmit=async(event:FormEvent<HTMLFormElement>)=>{
-event.preventDefault();
-const form=event.currentTarget;
-const data=Object.fromEntries(new FormData(form).entries());
-setFormStatus("sending");
-try{
-const response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-if(!response.ok)throw new Error("Contact request failed");
-form.reset();
-setFormStatus("success");
-}catch{
-setFormStatus("error");
+  const [lang,setLang]=useState<Language>("es");
+  const [theme,setTheme]=useState<"light"|"dark">("light");
+  const [formStatus,setFormStatus]=useState<"idle"|"sending"|"success"|"error">("idle");
+
+  useEffect(()=>{
+    const savedTheme=window.localStorage.getItem("portfolio-theme");
+    const preferredTheme=savedTheme==="dark"||savedTheme==="light"?savedTheme:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    const savedLanguage=window.localStorage.getItem("portfolio-language");
+    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
+    setTheme(preferredTheme);setLang(preferredLanguage);
+    document.documentElement.dataset.theme=preferredTheme;document.documentElement.lang=preferredLanguage;
+  },[]);
+
+  const toggleTheme=()=>setTheme(current=>{
+    const next=current==="light"?"dark":"light";
+    document.documentElement.dataset.theme=next;window.localStorage.setItem("portfolio-theme",next);return next;
+  });
+  const toggleLanguage=()=>setLang(current=>{
+    const next=current==="en"?"es":"en";
+    window.localStorage.setItem("portfolio-language",next);document.documentElement.lang=next;return next;
+  });
+  const handleContactSubmit=async(event:FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();const form=event.currentTarget;const data=Object.fromEntries(new FormData(form).entries());setFormStatus("sending");
+    try{
+      const response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+      if(!response.ok)throw new Error("Contact request failed");form.reset();setFormStatus("success");
+    }catch{setFormStatus("error");}
+  };
+
+  const c=copy[lang];
+  const cvHref=cvFiles[lang];
+  return <main lang={lang}>
+    <nav className="nav">
+      <a className="logo" href="#top">IM<span>.</span></a>
+      <div className="navlinks">
+        <details className="navGroup" name="main-navigation"><summary className="navParent">{c.navWork} <span aria-hidden="true">↓</span></summary><div className="navDropdown"><Link href="/como-trabajo">{c.paths[0].title}</Link><Link href="/agentic-qa-lab">Agentic QA Lab</Link><Link href="/casos-de-prueba">{c.paths[2].title}</Link><Link href="/repositorios">{c.paths[3].title}</Link></div></details>
+        <details className="navGroup" name="main-navigation"><summary className="navParent">{c.navAbout} <span aria-hidden="true">↓</span></summary><div className="navDropdown"><Link href="/sobre-mi">{c.aboutLinks[0]}</Link><a href="#capabilities">{c.aboutLinks[1]}</a><Link href="/sobre-mi#vision">{c.aboutLinks[2]}</Link><a href="#contact">{c.aboutLinks[3]}</a></div></details>
+      </div>
+      <div className="navActions">
+        <button className="themeSwitch" type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
+        <button className={`langSwitch ${lang==="es"?"isSpanish":""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="en"?"Ver en español":"View in English"}><span className={lang==="en"?"active":""}>EN</span><i/><span className={lang==="es"?"active":""}>ES</span></button>
+        <a className="status" href="#contact"><i/> {c.available}</a>
+      </div>
+    </nav>
+
+    <section className="hero heroMinimal" id="top">
+      <div className="kicker"><span>QA Engineer</span><span>{c.location}</span></div>
+      <div className="heroGrid">
+        <div className="heroIdentity">
+          <p className="heroEyebrow">{c.heroEyebrow}</p>
+          <h1 className="heroName">Irina<br/>Malisani<span>.</span></h1>
+          <h2 className="heroPromise">{c.heroMotto}</h2>
+          <p className="heroSummary">{c.heroCopy}</p>
+          <div className="heroActions"><a className="buttonPrimary" href="#como-trabajo">{c.workCta} <span aria-hidden="true">↓</span></a><a className="buttonSecondary" href={cvHref} download>{c.cvCta} <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div className="qaUniverse" aria-hidden="true"><div className="orbit orbitOne"><span>{lang==="es"?"ESTRATEGIA":"SHIFT-LEFT"}</span><span>ISTQB</span><span>{lang==="es"?"RIESGOS":"RISK"}</span></div><div className="orbit orbitTwo"><span>PLAYWRIGHT</span><span>APIs</span><span>{lang==="es"?"QA CON IA":"AGENTIC QA"}</span></div><Image className="planet" src="/qa-planet.png" width={1254} height={1254} sizes="(max-width: 760px) 76vw, 38vw" priority alt=""/></div>
+      </div>
+    </section>
+
+    <section className="pageIndex compactIndex" id="como-trabajo" aria-labelledby="page-index-title">
+      <header><p className="label">{c.indexLabel}</p><h2 id="page-index-title">{c.indexTitle}</h2></header>
+      <div className="pageIndexGrid">{c.paths.map((path,index)=><Link className="pageIndexCard" href={path.href} key={path.href}><span>0{index+1}</span><div><h3>{path.title}</h3><p>{path.copy}</p></div><b>{path.action} <Arrow/></b></Link>)}</div>
+    </section>
+
+    <section className="evidence" id="evidence" aria-labelledby="evidence-title">
+      <header className="evidenceHead"><div><p className="label">{c.evidenceLabel}</p><h2 id="evidence-title">{c.evidenceTitle}</h2></div><p>{c.evidenceIntro}</p></header>
+      <div className="evidenceGrid">{c.evidence.map((item,index)=><article key={item.value+item.label}><div className="evidenceRing" style={{"--progress":item.progress} as CSSProperties}><span>{item.value}</span></div><div><span>0{index+1}</span><p>{item.label}</p></div></article>)}</div>
+    </section>
+
+    <SkillsMap lang={lang}/>
+
+    <section className="storyTeaser" id="about" aria-labelledby="story-title">
+      <div><p className="label">{c.storyLabel}</p><h2 id="story-title">{c.storyTitle}</h2></div>
+      <div><p>{c.storyCopy}</p><Link className="textlink" href="/sobre-mi">{c.storyCta} <Arrow/></Link></div>
+    </section>
+
+    <section className="futureCompact" id="vision" aria-labelledby="vision-title">
+      <p className="label">{c.futureLabel}</p><div><h2 id="vision-title">{c.futureTitle}</h2><p>{c.futureCopy}</p><Link href="/sobre-mi#vision">{c.futureCta} <Arrow/></Link></div>
+    </section>
+
+    <footer id="contact">
+      <p className="label">{c.contactLabel}</p><h2>{c.contactTitle}</h2>
+      <div className="footerbottom">
+        <div className="contactArea"><h3 className="contactHeading">{c.contactHeading}</h3><form className="contactForm" onSubmit={handleContactSubmit}><div className="contactFormGrid"><label><span>{c.name}</span><input name="name" type="text" autoComplete="name" maxLength={100} required/></label><label><span>{c.email}</span><input name="email" type="email" autoComplete="email" maxLength={254} required/></label></div><label><span>{c.subject}</span><input name="subject" type="text" maxLength={160} required/></label><label><span>{c.message}</span><textarea name="message" rows={5} maxLength={5000} required/></label><label className="contactHoneypot" aria-hidden="true"><span>Website</span><input name="website" type="text" tabIndex={-1} autoComplete="off"/></label><div className="contactFormActions"><button type="submit" disabled={formStatus==="sending"}>{formStatus==="sending"?c.sending:c.send} <Arrow/></button><p className={`contactFormStatus ${formStatus}`} role="status" aria-live="polite">{formStatus==="success"?c.success:formStatus==="error"?c.error:""}</p></div></form></div>
+        <aside className="bookingArea" aria-labelledby="booking-title"><a className="bookingCard" href="https://calendar.app.google/f3mb9RDYyet8KZa9A" target="_blank" rel="noreferrer"><span className="bookingOrbit bookingOrbitOne" aria-hidden="true"/><span className="bookingOrbit bookingOrbitTwo" aria-hidden="true"/><span className="bookingNode" aria-hidden="true"/><p className="bookingEyebrow">{c.calendarLabel}</p><h3 className="bookingTitle" id="booking-title">{c.calendarTitle}</h3><p className="bookingCopy">{c.calendarCopy}</p><span className="bookingAction">{c.calendarLink} <Arrow/></span></a></aside>
+      </div>
+      <p className="signature">IRINA MALISANI</p>
+    </footer>
+    <SocialDock lang={lang}/>
+  </main>;
 }
-};
-return <main lang={lang}>
-<nav className="nav"><a className="logo" href="#top">IM<span>.</span></a><div className="navlinks"><details className="navGroup" name="main-navigation"><summary className="navParent">{c.nav[0]} <span aria-hidden="true">↓</span></summary><div className="navDropdown" aria-label={lang==="es"?"Índice de subpáginas":"Subpage index"}><Link href="/como-trabajo">{c.processTitle}</Link><Link href="/agentic-qa-lab">{labCard.title}</Link><Link href="/casos-de-prueba">{c.testsTitle}</Link><Link href="/repositorios">{c.reposTitle}</Link></div></details><details className="navGroup" name="main-navigation"><summary className="navParent">{c.nav[1]} <span aria-hidden="true">↓</span></summary><div className="navDropdown" aria-label={lang==="es"?"Índice sobre mí":"About index"}><a href="#work">{c.metricsNav}</a><a href="#about">{c.experienceNav}</a><a href="/CV-Irina-Malisani-QA-Engineer.pdf" download>CV — {c.cvNav}</a><a href="#contact">{c.contactNav}</a></div></details></div><div className="navActions"><button className="themeSwitch" type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")} title={lang==="es"?(theme==="dark"?"Modo claro":"Modo oscuro"):(theme==="dark"?"Light mode":"Dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`langSwitch ${lang==="es"?"isSpanish":""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="en"?"Ver en español":"View in English"}><span className={lang==="en"?"active":""}>EN</span><i/><span className={lang==="es"?"active":""}>ES</span></button><a className="status" href="#contact"><i/> {c.available}</a></div></nav>
-<section className="hero" id="top"><div className="kicker"><span>QA Engineer</span><span>{c.location}</span></div><h1 className="heroMotto">{c.hero}</h1><div className="herofoot"><p>{c.heroCopy}</p><a className="round" href="#como-trabajo" aria-label={lang==="es"?"Ir a cómo trabajo":"Go to how I work"}>↓</a></div><div className="qaUniverse" aria-label={lang==="es"?"Universo de herramientas y conceptos QA":"QA tools and concepts universe"}><div className="orbit orbitOne"><span>{lang==="es"?"ESTRATEGIA":"SHIFT-LEFT"}</span><span>ISTQB</span><span>{lang==="es"?"RIESGOS":"RISK"}</span></div><div className="orbit orbitTwo"><span>PLAYWRIGHT</span><span>APIs</span><span>{lang==="es"?"QA CON IA":"AGENTIC QA"}</span></div><Image className="planet" src="/qa-planet.png" width={1254} height={1254} sizes="(max-width: 760px) 60vw, (max-width: 900px) 46vw, 26vw" priority alt={lang==="es"?"Planeta conceptual de ingeniería de calidad":"Conceptual Quality Engineering planet"}/></div></section>
-<section className="statement"><p className="label">{c.philosophy}</p><blockquote>{c.quote}</blockquote></section>
-<section className="pageIndex" id="como-trabajo" aria-labelledby="page-index-title"><header><p className="label">{c.indexLabel}</p><h2 id="page-index-title">{c.indexTitle}</h2></header><div className="pageIndexGrid"><Link className="pageIndexCard" href="/como-trabajo"><span>01</span><div><h3>{c.processTitle}</h3><p>{c.processCopy}</p></div><b>{c.processLink} <Arrow/></b></Link><Link className="pageIndexCard" href="/agentic-qa-lab"><span>02</span><div><h3>{labCard.title}</h3><p>{labCard.copy}</p></div><b>{labCard.link} <Arrow/></b></Link><Link className="pageIndexCard" href="/casos-de-prueba"><span>03</span><div><h3>{c.testsTitle}</h3><p>{c.testsCopy}</p></div><b>{c.testsLink} <Arrow/></b></Link><Link className="pageIndexCard" href="/repositorios"><span>04</span><div><h3>{c.reposTitle}</h3><p>{c.reposCopy}</p></div><b>{c.reposLink} <Arrow/></b></Link></div></section>
-<section className="work" id="work"><header className="head"><div><p className="label">{c.workLabel}</p><h2>{c.workTitle}</h2></div><p>{c.workIntro}</p></header><div className="cases">{work.map(x=>{const y=x[lang];return <article className={`case ${x.tone}`} key={x.n}><div className="casetop"><span>{x.n}</span><span>{x.tag}</span></div><div className="casebody"><h3>{y.title}</h3><p>{y.copy}</p></div><div className="impact"><strong>{y.value}</strong><span>{y.label}</span></div></article>})}</div></section>
-<SkillsMap lang={lang}/>
-<section className="future" id="vision" aria-labelledby="future-title"><header><p className="label">{direction.futureLabel}</p><h2 id="future-title">{direction.futureTitle}</h2><p>{direction.futureLead}</p></header><div className="futureGrid">{direction.future.map((item,index)=><article key={item.title}><span>0{index+1}</span><h3>{item.title}</h3><p>{item.copy}</p></article>)}</div><div className="valueStatement"><span>{direction.valueLabel}</span><p>{direction.value}</p></div></section>
-<section className="about" id="about"><div><p className="label">{direction.storyLabel}</p><h2>{direction.storyTitle}</h2></div><div className="aboutcopy"><p className="lead">{direction.storyLead}</p><p>{direction.story1}</p><p>{direction.story2}</p><a className="textlink" href="https://www.linkedin.com/in/imalisani/" target="_blank" rel="noreferrer">{c.linkedin} <Arrow/></a></div></section>
-<section className="cvBanner"><div><p className="label">{c.cvLabel}</p><h2>{c.cvTitle}</h2><p>{c.cvCopy}</p></div><a href="/CV-Irina-Malisani-QA-Engineer.pdf" download="CV-Irina-Malisani-QA-Engineer.pdf">{c.cvButton} <span aria-hidden="true">↓</span></a></section>
-<section className="toolbox"><p className="label">{c.toolbox}</p><div className="marquee"><div>{[...tools,...tools].map((t,i)=><span key={i}>{t}<b>✦</b></span>)}</div></div></section>
-<footer id="contact"><p className="label">{c.talk}</p><h2>{c.footer}</h2><div className="footerbottom"><div className="contactArea"><h3 className="contactHeading">{c.contact}</h3><form className="contactForm" onSubmit={handleContactSubmit}><div className="contactFormGrid"><label><span>{f.name}</span><input name="name" type="text" autoComplete="name" maxLength={100} required/></label><label><span>{f.email}</span><input name="email" type="email" autoComplete="email" maxLength={254} required/></label></div><label><span>{f.subject}</span><input name="subject" type="text" maxLength={160} required/></label><label><span>{f.message}</span><textarea name="message" rows={5} maxLength={5000} required/></label><label className="contactHoneypot" aria-hidden="true"><span>Website</span><input name="website" type="text" tabIndex={-1} autoComplete="off"/></label><div className="contactFormActions"><button type="submit" disabled={formStatus==="sending"}>{formStatus==="sending"?f.sending:f.send} <Arrow/></button><p className={`contactFormStatus ${formStatus}`} role="status" aria-live="polite">{formStatus==="success"?f.success:formStatus==="error"?f.error:""}</p></div></form></div><aside className="bookingArea" aria-labelledby="booking-title"><a className="bookingCard" href="https://calendar.app.google/f3mb9RDYyet8KZa9A" target="_blank" rel="noreferrer"><span className="bookingOrbit bookingOrbitOne" aria-hidden="true"/><span className="bookingOrbit bookingOrbitTwo" aria-hidden="true"/><span className="bookingNode" aria-hidden="true"/><p className="bookingEyebrow">{f.calendarLabel}</p><h3 className="bookingTitle" id="booking-title">{f.calendarTitle}</h3><p className="bookingCopy">{f.calendarCopy}</p><span className="bookingAction">{f.calendarLink} <Arrow/></span></a></aside></div><p className="signature">IRINA MALISANI</p></footer>
-<SocialDock lang={lang}/>
-</main>}

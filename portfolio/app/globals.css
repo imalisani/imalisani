@@ -155,3 +155,63 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
 
 /* The longer Spanish orbit label needs clearance from the hero divider. */
 main[lang="es"] .orbitTwo span:nth-child(3){bottom:calc(5% + 20px)}
+
+/* Executive home: the first scan stays concise and deeper context lives on /sobre-mi. */
+html{scroll-padding-top:108px}
+.heroMinimal{height:auto!important;min-height:clamp(690px,calc(100svh - 78px),860px)!important;padding:38px 4vw 58px;display:block!important;overflow:hidden}
+.heroGrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(380px,.85fr);gap:3vw;align-items:center;min-height:600px}
+.heroIdentity{position:relative;z-index:4;max-width:930px}
+.heroEyebrow{margin:0 0 18px;font:10px "Courier New",Courier,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+.heroMinimal h1.heroName{min-block-size:0;max-width:none;margin:0;font-family:Georgia,serif;font-size:clamp(76px,9.2vw,150px);font-weight:400;line-height:.78;letter-spacing:-.065em}
+.heroName span{color:var(--lime)}
+.heroPromise{max-width:830px;margin:28px 0 18px;font-family:Georgia,serif;font-size:clamp(27px,3vw,48px);font-weight:400;line-height:1.03;letter-spacing:-.04em}
+.heroPromise em{color:var(--lime);font-weight:400}.heroPromise strong{color:var(--violet);font-weight:400}
+.heroSummary{max-width:610px;margin:0;font-size:15px;line-height:1.65}
+.heroActions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.buttonPrimary,.buttonSecondary{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:48px;padding:0 20px;border:1px solid var(--ink);border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:transform .2s,background-color .2s,color .2s}
+.buttonPrimary{background:var(--ink);color:var(--paper)}.buttonSecondary{background:transparent;color:var(--ink)}
+.buttonPrimary:hover,.buttonSecondary:hover,.buttonPrimary:focus-visible,.buttonSecondary:focus-visible{transform:translateY(-3px);outline:none}.buttonSecondary:hover,.buttonSecondary:focus-visible{background:var(--lime);color:#21172d;border-color:var(--lime)}
+.heroMinimal .qaUniverse{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:1;min-width:0;min-height:0;justify-self:center}
+.compactIndex{padding-block:clamp(64px,6vw,94px)}
+.compactIndex .pageIndexCard{min-height:245px}
+
+.evidence{padding:clamp(70px,7vw,110px) 4vw;background:var(--inverse);color:var(--on-inverse)}
+.evidenceHead{display:grid;grid-template-columns:1.25fr .55fr;gap:6vw;align-items:end;margin-bottom:52px}
+.evidenceHead h2{max-width:900px;margin:0;font-family:Georgia,serif;font-size:clamp(46px,6vw,92px);font-weight:400;line-height:.94;letter-spacing:-.05em}
+.evidenceHead>p{margin:0;font-size:15px;line-height:1.65}
+.evidenceGrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid color-mix(in srgb,var(--on-inverse) 25%,transparent);border-bottom:1px solid color-mix(in srgb,var(--on-inverse) 25%,transparent)}
+.evidenceGrid article{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;min-height:230px;padding:26px;border-right:1px solid color-mix(in srgb,var(--on-inverse) 25%,transparent)}
+.evidenceGrid article:last-child{border-right:0}
+.evidenceRing{--progress:50;display:grid;width:clamp(112px,10vw,160px);aspect-ratio:1;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--progress)*1%),color-mix(in srgb,var(--on-inverse) 13%,transparent) 0);position:relative}
+.evidenceRing:before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--inverse)}
+.evidenceRing span{position:relative;font-family:Georgia,serif;font-size:clamp(34px,3.4vw,52px);color:var(--lime);letter-spacing:-.04em}
+.evidenceGrid article>div:last-child>span{font:9px "Courier New",monospace;letter-spacing:.14em;color:var(--lav)}
+.evidenceGrid article p{max-width:230px;margin:13px 0 0;font-size:12px;line-height:1.5;text-transform:uppercase;letter-spacing:.08em}
+
+.storyTeaser{display:grid;grid-template-columns:1.08fr .72fr;gap:8vw;padding:clamp(72px,7vw,112px) 4vw;background:var(--lav);align-items:end}
+.storyTeaser h2{margin:0;font-family:Georgia,serif;font-size:clamp(48px,6.6vw,100px);font-weight:400;line-height:.95;letter-spacing:-.055em}.storyTeaser h2 em{color:var(--violet);font-weight:400}
+.storyTeaser>div:last-child>p{margin:0;font-size:17px;line-height:1.72}
+.futureCompact{display:grid;grid-template-columns:.45fr 1.55fr;gap:5vw;padding:clamp(58px,5.5vw,88px) 4vw;background:var(--violet);color:white;align-items:start}
+.futureCompact>div{display:grid;grid-template-columns:1fr .75fr auto;gap:4vw;align-items:end}
+.futureCompact h2{margin:0;font-family:Georgia,serif;font-size:clamp(40px,4.8vw,74px);font-weight:400;line-height:.96;letter-spacing:-.045em}.futureCompact p{margin:0;font-size:15px;line-height:1.65}.futureCompact a{padding-bottom:7px;border-bottom:1px solid var(--lime);color:var(--lime);font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+
+/* Detailed about page: context is available without weighing down the home page. */
+.aboutPage{min-height:100vh}.aboutNav{display:grid;grid-template-columns:1fr auto 1fr}.aboutNav .aboutBack{justify-self:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase}.aboutNav .navActions{justify-self:end}
+.aboutHero{padding:clamp(90px,10vw,155px) 4vw clamp(70px,7vw,110px);background:var(--inverse);color:var(--on-inverse)}
+.aboutHero h1{max-width:1250px;margin:0;font-family:Georgia,serif;font-size:clamp(60px,9.2vw,148px);font-weight:400;line-height:.88;letter-spacing:-.065em}.aboutHero h1 em{color:var(--lime);font-weight:400}
+.aboutLead{max-width:810px;margin:55px 0 0;font-family:Georgia,serif;font-size:clamp(24px,2.6vw,40px);line-height:1.25}
+.aboutNarrative{padding:0 4vw;background:var(--paper)}
+.aboutNarrative>div{display:grid;grid-template-columns:.3fr 1.7fr;gap:4vw;padding:45px 0;border-bottom:1px solid var(--line)}.aboutNarrative span{font:10px "Courier New",monospace;color:var(--violet)}.aboutNarrative p{max-width:900px;margin:0;font-size:clamp(18px,2vw,28px);line-height:1.55}
+.aboutScope{display:grid;grid-template-columns:1.1fr .9fr;gap:8vw;padding:clamp(70px,8vw,120px) 4vw;background:var(--sand)}
+.aboutScope h2,.aboutVision h2{margin:0;font-family:Georgia,serif;font-size:clamp(48px,6vw,92px);font-weight:400;line-height:.94;letter-spacing:-.05em}.aboutScope ul{list-style:none;margin:0;padding:0;border-top:1px solid currentColor}.aboutScope li{padding:20px 0;border-bottom:1px solid currentColor;font-size:15px}
+.aboutVision{padding:clamp(70px,8vw,120px) 4vw}.aboutVision>header{display:grid;grid-template-columns:.4fr 1.2fr .55fr;gap:4vw;align-items:end;margin-bottom:55px}.aboutVision>header>p:last-child{margin:0;font-size:16px;line-height:1.65}.aboutVision>div{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.aboutVision article{min-height:290px;padding:26px;background:var(--violet);color:white;display:flex;flex-direction:column}.aboutVision article:nth-child(2){background:var(--lime);color:#21172d}.aboutVision article:nth-child(3){background:var(--sand);color:#21172d}.aboutVision article>span{font:9px "Courier New",monospace}.aboutVision h3{margin:auto 0 18px;font-family:Georgia,serif;font-size:clamp(30px,3vw,46px);font-weight:400;line-height:1}.aboutVision article p{margin:0;font-size:14px;line-height:1.6}
+.aboutClose{padding:clamp(70px,7vw,110px) 4vw calc(120px + env(safe-area-inset-bottom));background:var(--inverse);color:var(--on-inverse)}.aboutClose h2{max-width:900px;margin:0 0 38px;font-family:Georgia,serif;font-size:clamp(46px,6vw,90px);font-weight:400;line-height:.95}.aboutClose>div{display:flex;flex-wrap:wrap;gap:12px}.aboutClose .buttonPrimary{background:var(--lime);border-color:var(--lime);color:#21172d}.aboutClose .buttonSecondary{border-color:var(--on-inverse);color:var(--on-inverse)}
+
+@media(max-width:1050px){.heroGrid{grid-template-columns:1fr .8fr}.heroMinimal h1.heroName{font-size:clamp(72px,10vw,110px)}.evidenceGrid article{grid-template-columns:1fr;justify-items:start}.futureCompact{grid-template-columns:1fr}.futureCompact>div{grid-template-columns:1fr 1fr}.futureCompact a{justify-self:start}.aboutVision>header{grid-template-columns:1fr}.aboutScope{grid-template-columns:1fr}}
+@media(max-width:760px){
+  html{scroll-padding-top:116px}.heroMinimal{padding:28px 20px 58px!important;min-height:0!important}.heroGrid{grid-template-columns:1fr;gap:24px;min-height:0}.heroIdentity{padding-top:35px}.heroMinimal h1.heroName{font-size:clamp(64px,21vw,92px);line-height:.8}.heroPromise{font-size:clamp(27px,8.5vw,38px);margin-top:24px}.heroSummary{font-size:14px}.heroActions{display:grid;grid-template-columns:1fr}.buttonPrimary,.buttonSecondary{width:100%}.heroMinimal .qaUniverse{width:min(92vw,390px);margin:8px auto 0}.compactIndex{padding-block:64px}.compactIndex .pageIndexCard{min-height:230px}
+  .evidence{padding:64px 20px}.evidenceHead{grid-template-columns:1fr;gap:22px;margin-bottom:35px}.evidenceHead h2{font-size:clamp(44px,13vw,58px)}.evidenceGrid{grid-template-columns:1fr}.evidenceGrid article{grid-template-columns:auto 1fr;min-height:0;padding:24px 0;border-right:0;border-bottom:1px solid color-mix(in srgb,var(--on-inverse) 25%,transparent)}.evidenceGrid article:last-child{border-bottom:0}.evidenceRing{width:106px}
+  .storyTeaser{grid-template-columns:1fr;gap:35px;padding:64px 20px}.storyTeaser h2{font-size:clamp(46px,13vw,62px)}.storyTeaser>div:last-child>p{font-size:15px}.futureCompact{padding:58px 20px}.futureCompact>div{grid-template-columns:1fr;gap:25px}.futureCompact h2{font-size:clamp(42px,12vw,56px)}
+  .aboutNav{grid-template-columns:1fr auto;padding-bottom:12px}.aboutNav .aboutBack{grid-column:1/-1;grid-row:2;justify-self:start;padding:12px 0 0;border-top:1px solid var(--line);width:100%}.aboutHero{padding:72px 20px 64px}.aboutHero h1{font-size:clamp(52px,15vw,72px);line-height:.92}.aboutLead{margin-top:38px;font-size:25px}.aboutNarrative{padding:0 20px}.aboutNarrative>div{grid-template-columns:1fr;padding:32px 0;gap:15px}.aboutNarrative p{font-size:18px}.aboutScope,.aboutVision,.aboutClose{padding-left:20px;padding-right:20px}.aboutScope{gap:45px}.aboutScope h2,.aboutVision h2{font-size:clamp(45px,13vw,58px)}.aboutVision>div{grid-template-columns:1fr}.aboutVision article{min-height:250px}.aboutClose{padding-bottom:calc(110px + env(safe-area-inset-bottom))}.aboutClose>div{display:grid}.aboutClose .buttonPrimary,.aboutClose .buttonSecondary{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.buttonPrimary,.buttonSecondary{transition:none}.buttonPrimary:hover,.buttonSecondary:hover,.buttonPrimary:focus-visible,.buttonSecondary:focus-visible{transform:none}}
