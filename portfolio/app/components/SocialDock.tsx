@@ -15,7 +15,7 @@ const links:SocialLink[]=[
   {name:"YouTube",href:"https://www.youtube.com/@IrinaQAos",icon:"youtube",external:true},
   {name:"X",href:"https://x.com/irinamalisani",icon:"x",external:true},
   {name:"Email",href:"mailto:irinanmalisani@gmail.com",icon:"email"},
-  {name:"WhatsApp",href:"https://wa.me/543424629957",icon:"whatsapp",external:true}
+  {name:"WhatsApp",href:"https://wa.me/5491125464616",icon:"whatsapp",external:true}
 ];
 
 function SocialIcon({name}:{name:SocialLink["icon"]}){
