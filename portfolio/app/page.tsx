@@ -5,14 +5,9 @@ import Link from "next/link";
 import {type CSSProperties,type FormEvent,useEffect,useState} from "react";
 import SkillsMap from "./components/SkillsMap";
 import SocialDock from "./components/SocialDock";
+import {cvFiles} from "./cv-files";
 
 type Language="en"|"es";
-
-const cvFiles:Record<Language,string>={
-  en:"/CV-Irina-Malisani-QA-Engineer.pdf",
-  // Replace only this path when the Spanish CV is ready.
-  es:"/CV-Irina-Malisani-QA-Engineer.pdf",
-};
 
 const copy={
   es:{

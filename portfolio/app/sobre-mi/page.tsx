@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {useEffect,useState} from "react";
+import {cvFiles} from "../cv-files";
 import SocialDock from "../components/SocialDock";
 
 type Language="en"|"es";
@@ -69,7 +70,7 @@ export default function AboutPage(){
     <section className="aboutNarrative" aria-label={lang==="es"?"Recorrido profesional":"Professional journey"}>{c.story.map((paragraph,index)=><div key={paragraph}><span>0{index+1}</span><p>{paragraph}</p></div>)}</section>
     <section className="aboutScope" aria-labelledby="scope-title"><header><p className="label">{c.scopeLabel}</p><h2 id="scope-title">{c.scopeTitle}</h2></header><ul>{c.scope.map(item=><li key={item}>{item}</li>)}</ul></section>
     <section className="aboutVision" id="vision" aria-labelledby="about-vision-title"><header><p className="label">{c.visionLabel}</p><h2 id="about-vision-title">{c.visionTitle}</h2><p>{c.visionLead}</p></header><div>{c.vision.map((item,index)=><article key={item.title}><span>0{index+1}</span><h3>{item.title}</h3><p>{item.copy}</p></article>)}</div></section>
-    <section className="aboutClose"><h2>{c.close}</h2><div><Link className="buttonPrimary" href="/como-trabajo">{c.workflow} <span aria-hidden="true">↗</span></Link><a className="buttonSecondary" href="/CV-Irina-Malisani-QA-Engineer.pdf" download>{c.cv} <span aria-hidden="true">↓</span></a></div></section>
+    <section className="aboutClose"><h2>{c.close}</h2><div><Link className="buttonPrimary" href="/como-trabajo">{c.workflow} <span aria-hidden="true">↗</span></Link><a className="buttonSecondary" href={cvFiles[lang]} download>{c.cv} <span aria-hidden="true">↓</span></a></div></section>
     <SocialDock lang={lang}/>
   </main>;
 }

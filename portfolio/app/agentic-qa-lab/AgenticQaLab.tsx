@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {useEffect,useState} from "react";
+import {cvFiles} from "../cv-files";
 import qaEvidence from "../../public/qa-evidence.json";
 import AgentSystemScroll from "./AgentSystemScroll";
 import QaEvidencePack from "./QaEvidencePack";
@@ -125,7 +126,7 @@ export default function AgenticQaLab(){
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación del Agentic QA Lab":"Agentic QA Lab navigation"}>
       <Link className={styles.logo} href="/" aria-label={lang==="es"?"Ir al inicio":"Go home"}>IM<span>.</span></Link>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown}><Link href="/como-trabajo">{c.flow}</Link><Link href="/agentic-qa-lab" aria-current="page">{c.lab}</Link><Link href="/casos-de-prueba">{c.cases}</Link><Link href="/repositorios">{c.repos}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.about} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown}><Link href="/#work">{c.metrics}</Link><Link href="/#about">{c.story}</Link><a href="/CV-Irina-Malisani-QA-Engineer.pdf" download>CV — {c.cv}</a><Link href="/#contact">{c.contact}</Link></div></details></div>
+      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown}><Link href="/como-trabajo">{c.flow}</Link><Link href="/agentic-qa-lab" aria-current="page">{c.lab}</Link><Link href="/casos-de-prueba">{c.cases}</Link><Link href="/repositorios">{c.repos}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.about} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown}><Link href="/#work">{c.metrics}</Link><Link href="/#about">{c.story}</Link><a href={cvFiles[lang]} download>CV — {c.cv}</a><Link href="/#contact">{c.contact}</Link></div></details></div>
       <div className={styles.controls}><button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button></div>
     </nav>
 
