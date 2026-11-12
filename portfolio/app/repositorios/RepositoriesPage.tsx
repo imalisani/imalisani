@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {useEffect,useState} from "react";
 import {cvFiles} from "../cv-files";
+import MobileQaDemo from "./MobileQaDemo";
 import styles from "./repositories.module.css";
 
 type Lang="es"|"en";
@@ -60,6 +61,8 @@ export default function RepositoriesPage(){
       <h1>{c.title}</h1>
       <p className={styles.lead}>{c.lead}</p>
     </header>
+
+    <MobileQaDemo lang={lang}/>
 
     <section className={styles.collection} aria-labelledby="repositories-title">
       <header><p className={styles.eyebrow} id="repositories-title">01 — {c.collection}</p><p>{c.hint}</p></header>

@@ -21,7 +21,7 @@ const copy={
       {title:"Cómo trabajo",copy:"El proceso completo: preguntas tempranas, cobertura, evidencia y decisiones de calidad.",action:"Ver el flujo",href:"/como-trabajo"},
       {title:"Agentic QA Lab",copy:"Una ejecución verificable desde la historia de usuario hasta la automatización y el reporte.",action:"Ejecutar la demo",href:"/agentic-qa-lab"},
       {title:"Casos de prueba",copy:"Escenarios Gherkin basados en riesgo y técnicas de diseño aplicadas.",action:"Ver los casos",href:"/casos-de-prueba"},
-      {title:"Repositorios",copy:"Código público, arquitectura, trazabilidad y evidencia de ejecución.",action:"Explorar código",href:"/repositorios"},
+      {title:"Repositorios",copy:"Demo de QA mobile con Appium y evidencia de automatización web.",action:"Explorar código",href:"/repositorios#qa-mobile"},
     ],
     evidenceLabel:"03 — Evidencia rápida",evidenceTitle:"Impacto que se entiende en segundos.",evidenceIntro:"Tres señales de una práctica orientada a prevenir, validar y decidir.",
     evidence:[
@@ -54,7 +54,7 @@ const copy={
       {title:"How I work",copy:"The complete process: early questions, coverage, evidence and quality decisions.",action:"See the workflow",href:"/como-trabajo"},
       {title:"Agentic QA Lab",copy:"A verifiable run from user story through automation and reporting.",action:"Run the demo",href:"/agentic-qa-lab"},
       {title:"Test cases",copy:"Risk-based Gherkin scenarios and applied test design techniques.",action:"View the cases",href:"/casos-de-prueba"},
-      {title:"Repositories",copy:"Public code, architecture, traceability and execution evidence.",action:"Explore code",href:"/repositorios"},
+      {title:"Repositories",copy:"Mobile QA demo with Appium and web automation evidence.",action:"Explore code",href:"/repositorios#qa-mobile"},
     ],
     evidenceLabel:"03 — Quick evidence",evidenceTitle:"Impact understood in seconds.",evidenceIntro:"Three signals from a practice focused on preventing, validating and deciding.",
     evidence:[
