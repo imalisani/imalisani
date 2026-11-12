@@ -51,6 +51,7 @@ with Appium from scratch** — structure, environment configuration and first fl
 | [selenium-portfolio-python](https://github.com/imalisani/selenium-portfolio-python) | Selenium + Python + Pytest suite | 🚧 active |
 | [irina-malisani.vercel.app](https://irina-malisani.vercel.app/) | Bilingual portfolio and knowledge hub — QA workflow, Gherkin test cases, Agentic QA Lab | 🚧 active |
 | [qa-agents-demo](https://github.com/imalisani/qa-agents-demo) | QA agent system — risk analysis, traceable test design, Playwright UI/API automation, Allure evidence | 🚧 active |
+| [appium-android-delivery-demo](https://github.com/imalisani/appium-android-delivery-demo) | Android proof-of-delivery demo with Appium, Python and Pytest. Covers missing photos, denied camera permission and persistence after reopening. [Gherkin scenarios](https://github.com/imalisani/appium-android-delivery-demo/blob/main/docs/proof-of-delivery.feature) · [3 tests passed on Android 14](https://github.com/imalisani/appium-android-delivery-demo/actions/runs/43208306966) | 🚧 active |
 
 Where this is going: an open set of quality engineering artifacts — test plans, bug
 reports, and QA agents with evaluation — plus an automation layer where the tool is an
