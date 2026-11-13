@@ -1,0 +1,11 @@
+.logo {
+  justify-self: start;
+  font: 700 clamp(28px, 4.8svh, 40px)/1 Georgia, serif;
+  letter-spacing: -.04em;
+}
+
+@media (max-width: 680px) {
+  .logo {
+    font-size: 30px;
+  }
+}

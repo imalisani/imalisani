@@ -49,11 +49,6 @@
   padding-inline: clamp(20px, 3.5vw, 56px);
 }
 
-.logo {
-  font: 700 clamp(30px, 3.1vw, 46px)/1 Georgia, serif;
-  letter-spacing: -.04em;
-}
-
 .back {
   margin-right: auto;
   font-size: 14px;
@@ -392,10 +387,6 @@
 
   .shell > .header {
     min-height: clamp(48px, 7.6svh, 64px);
-  }
-
-  .shell .logo {
-    font-size: clamp(28px, 4.8svh, 40px);
   }
 
   .intro {

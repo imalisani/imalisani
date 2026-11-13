@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import PortfolioLogo from "../components/PortfolioLogo";
 import {type CSSProperties,useEffect,useState} from "react";
 import {cvFiles} from "../cv-files";
 import SkillsMap from "../components/SkillsMap";
@@ -78,7 +79,7 @@ export default function AboutPage(){
   const toggleLanguage=()=>setLang(current=>{const next=current==="en"?"es":"en";window.localStorage.setItem("portfolio-language",next);document.documentElement.lang=next;return next;});
   const c=copy[lang];
   return <main lang={lang} className="aboutPage">
-    <nav className="nav aboutNav"><Link className="logo" href="/">IM<span>.</span></Link><Link className="aboutBack" href="/">← {c.back}</Link><div className="navActions"><button className="themeSwitch" type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`langSwitch ${lang==="es"?"isSpanish":""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={c.switchLabel}><span className={lang==="en"?"active":""}>EN</span><i/><span className={lang==="es"?"active":""}>ES</span></button></div></nav>
+    <nav className="nav aboutNav"><PortfolioLogo lang={lang}/><Link className="aboutBack" href="/">← {c.back}</Link><div className="navActions"><button className="themeSwitch" type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`langSwitch ${lang==="es"?"isSpanish":""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={c.switchLabel}><span className={lang==="en"?"active":""}>EN</span><i/><span className={lang==="es"?"active":""}>ES</span></button></div></nav>
 
     <article className="aboutHero" id="about">
       <p className="label">{c.label}</p><h1>{c.title}</h1><p className="aboutLead">{c.lead}</p>

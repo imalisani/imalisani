@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PortfolioLogo from "./PortfolioLogo";
 import type { usePortfolioPreferences } from "./usePortfolioPreferences";
 import styles from "../home.module.css";
 
@@ -13,7 +14,7 @@ export default function PortfolioHeader({ lang, theme, toggleLanguage, toggleThe
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logo} aria-label={spanish ? "Ir al inicio" : "Go home"}>IM.</Link>
+      <PortfolioLogo lang={lang}/>
       {showBack && <Link href="/" className={styles.back}>{spanish ? "Volver al portfolio" : "Back to portfolio"}</Link>}
       <div className={styles.preferences}>
         <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={themeLabel}>

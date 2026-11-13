@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import PortfolioLogo from "../components/PortfolioLogo";
 import {useEffect,useState} from "react";
 import {cvFiles} from "../cv-files";
 import styles from "./test-cases.module.css";
@@ -47,7 +48,7 @@ export default function TestCasesPage(){
 
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación de casos de prueba":"Test cases navigation"}>
-      <Link className={styles.logo} href="/" aria-label={lang==="es"?"Ir al inicio":"Go home"}>IM<span>.</span></Link>
+      <PortfolioLogo lang={lang}/>
       <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice de subpáginas":"Subpage index"}><Link href="/como-trabajo">{c.process}</Link><Link href="/agentic-qa-lab">Agentic QA Lab</Link><Link href="/casos-de-prueba" aria-current="page">{c.testsNav}</Link><Link href="/repositorios">{c.reposNav}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.aboutIndex} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice sobre mí":"About index"}><Link href="/sobre-mi#evidence">{c.metricsNav}</Link><Link href="/sobre-mi">{lang==="es"?"Mi historia":"My story"}</Link><a href={cvFiles[lang]} download>CV — {c.cvNav}</a><Link href="/contacto">{c.contact}</Link></div></details></div>
       <div className={styles.controls}>
         <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
