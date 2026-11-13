@@ -385,6 +385,103 @@
   }
 }
 
+@media (min-width: 681px) {
+  .shell {
+    padding-bottom: clamp(12px, 2.4svh, 24px);
+  }
+
+  .shell > .header {
+    min-height: clamp(48px, 7.6svh, 64px);
+  }
+
+  .shell .logo {
+    font-size: clamp(28px, 4.8svh, 40px);
+  }
+
+  .intro {
+    min-height: 0;
+  }
+
+  .identity {
+    padding-block: clamp(12px, 2svh, 22px);
+  }
+
+  .identity h1 {
+    font-size: clamp(40px, min(5.4vw, 8.6svh), 74px);
+  }
+
+  .identity p {
+    margin-top: 8px;
+    font-size: clamp(15px, min(1.75vw, 2.9svh), 23px);
+  }
+
+  .orbital {
+    height: clamp(94px, 23svh, 192px);
+  }
+
+  .planet {
+    width: min(65%, 23svh, 190px);
+  }
+
+  .ring {
+    width: min(96%, 51svh, 440px);
+  }
+
+  .moon {
+    right: max(16%, calc(50% - 19svh));
+    width: min(8%, 4svh, 34px);
+  }
+
+  .explore h2 {
+    margin-bottom: clamp(12px, 2svh, 20px);
+    font-size: clamp(30px, min(4.25vw, 6.2svh), 54px);
+  }
+
+  .card {
+    padding: clamp(12px, 2.5svh, 22px);
+  }
+
+  .card[data-path="teamwork"] {
+    row-gap: clamp(8px, 1.55svh, 15px);
+    padding: clamp(16px, 3.3svh, 29px);
+  }
+
+  .card[data-path="teamwork"] .cardIcon {
+    width: clamp(29px, 6.2svh, 54px);
+  }
+
+  .card[data-path="teamwork"] .cardTitle {
+    font-size: clamp(23px, min(3.2vw, 4.85svh), 41px);
+  }
+
+  .cardIcon {
+    width: clamp(22px, 5.3svh, 43px);
+  }
+
+  .cardCopy {
+    gap: 4px;
+  }
+
+  .cardTitle {
+    font-size: clamp(16px, min(1.7vw, 3.05svh), 23px);
+  }
+
+  .cardDetail {
+    font-size: clamp(12px, min(1.15vw, 2svh), 14px);
+  }
+
+  .actions {
+    margin-top: clamp(12px, 2.25svh, 20px);
+    padding-top: clamp(8px, 1.35svh, 14px);
+    font-size: clamp(14px, 2.25svh, 17px);
+  }
+
+  .cv,
+  .contact {
+    padding: 8px clamp(14px, 2vw, 28px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;
