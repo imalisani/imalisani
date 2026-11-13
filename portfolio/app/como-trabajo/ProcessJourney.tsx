@@ -48,7 +48,7 @@ export default function ProcessJourney(){
 
   useEffect(()=>{
     const saved=window.localStorage.getItem("portfolio-theme");
-    const preferred=saved==="dark"||saved==="light"?saved:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    const preferred=saved==="light"?"light":"dark";
     const savedLanguage=window.localStorage.getItem("portfolio-language");
     const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
     setTheme(preferred);
@@ -76,7 +76,7 @@ export default function ProcessJourney(){
   return <main className={styles.page} lang={lang}>
     <nav className={styles.nav} aria-label={lang==="es"?"Navegación de Cómo trabajo":"How I work navigation"}>
       <Link className={styles.logo} href="/" aria-label={lang==="es"?"Ir al inicio":"Go home"}>IM<span>.</span></Link>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice de subpáginas":"Subpage index"}><Link href="/como-trabajo" aria-current="page">{c.flowNav}</Link><Link href="/agentic-qa-lab">Agentic QA Lab</Link><Link href="/casos-de-prueba">{c.casesNav}</Link><Link href="/repositorios">{c.reposNav}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.aboutIndex} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice sobre mí":"About index"}><Link href="/#work">{c.metricsNav}</Link><Link href="/#about">{lang==="es"?"Mi historia":"My story"}</Link><a href={cvFiles[lang]} download>CV — {c.cvNav}</a><Link href="/#contact">{c.contact}</Link></div></details></div>
+      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice de subpáginas":"Subpage index"}><Link href="/como-trabajo" aria-current="page">{c.flowNav}</Link><Link href="/agentic-qa-lab">Agentic QA Lab</Link><Link href="/casos-de-prueba">{c.casesNav}</Link><Link href="/repositorios">{c.reposNav}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.aboutIndex} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice sobre mí":"About index"}><Link href="/sobre-mi#evidence">{c.metricsNav}</Link><Link href="/sobre-mi">{lang==="es"?"Mi historia":"My story"}</Link><a href={cvFiles[lang]} download>CV — {c.cvNav}</a><Link href="/contacto">{c.contact}</Link></div></details></div>
       <div className={styles.controls}>
         <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
         <button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
@@ -128,6 +128,6 @@ export default function ProcessJourney(){
 
     <TestingStories lang={lang}/>
 
-    <footer className={styles.footer}><p className={styles.eyebrow}>{c.ctaLabel}</p><h2>{c.ctaTitle}</h2><div><Link href="/casos-de-prueba">{c.evidence} ↗</Link><Link href="/repositorios">{c.repos} ↗</Link><Link href="/#contact">{c.talk} ↗</Link></div></footer>
+    <footer className={styles.footer}><p className={styles.eyebrow}>{c.ctaLabel}</p><h2>{c.ctaTitle}</h2><div><Link href="/casos-de-prueba">{c.evidence} ↗</Link><Link href="/repositorios">{c.repos} ↗</Link><Link href="/contacto">{c.talk} ↗</Link></div></footer>
   </main>;
 }

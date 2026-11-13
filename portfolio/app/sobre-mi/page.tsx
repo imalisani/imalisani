@@ -1,14 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import {useEffect,useState} from "react";
+import {type CSSProperties,useEffect,useState} from "react";
 import {cvFiles} from "../cv-files";
-import SocialDock from "../components/SocialDock";
+import SkillsMap from "../components/SkillsMap";
 
 type Language="en"|"es";
 
 const copy={
   es:{
+    heroMotto:<>La calidad no es <em>suerte.</em><br/>Se diseña, se planifica, se valida y se protege <strong>de principio a fin.</strong></>,
+    heroCopy:"Conecto criterio humano, estrategia de pruebas y automatización para que los riesgos aparezcan antes que los problemas.",
+    evidenceLabel:"03 — Evidencia rápida",evidenceTitle:"Impacto que se entiende en segundos.",evidenceIntro:"Tres señales de una práctica orientada a prevenir, validar y decidir.",
+    evidence:[
+      {value:"90%",progress:90,label:"planes de prueba listos antes del desarrollo"},
+      {value:"3–6",progress:null,label:"funcionalidades validadas por semana"},
+      {value:"25%",progress:25,label:"tareas con riesgos o defectos detectados antes de producción"},
+    ],
     back:"Volver al portfolio",switchLabel:"View in English",label:"Sobre mí · Recorrido completo",
     title:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,
     lead:"Soy Irina, QA Engineer con cinco años de experiencia ayudando a equipos de producto a convertir incertidumbre en decisiones de calidad.",
@@ -28,6 +36,14 @@ const copy={
     close:"¿Querés ver este enfoque en acción?",workflow:"Explorar cómo trabajo",cv:"Descargar CV",
   },
   en:{
+    heroMotto:<>Quality isn&apos;t <em>luck.</em><br/>It&apos;s designed, planned, validated and protected <strong>from start to finish.</strong></>,
+    heroCopy:"I connect human judgement, test strategy and automation so risks become visible before they become problems.",
+    evidenceLabel:"03 — Quick evidence",evidenceTitle:"Impact understood in seconds.",evidenceIntro:"Three signals from a practice focused on preventing, validating and deciding.",
+    evidence:[
+      {value:"90%",progress:90,label:"test plans ready before development"},
+      {value:"3–6",progress:null,label:"features validated each week"},
+      {value:"25%",progress:25,label:"tasks with risks or defects caught before production"},
+    ],
     back:"Back to portfolio",switchLabel:"Ver en español",label:"About me · Complete journey",
     title:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,
     lead:"I am Irina, a QA Engineer with five years of experience helping product teams turn uncertainty into quality decisions.",
@@ -53,7 +69,7 @@ export default function AboutPage(){
   const [theme,setTheme]=useState<"light"|"dark">("light");
   useEffect(()=>{
     const savedTheme=window.localStorage.getItem("portfolio-theme");
-    const preferredTheme=savedTheme==="dark"||savedTheme==="light"?savedTheme:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    const preferredTheme=savedTheme==="light"?"light":"dark";
     const savedLanguage=window.localStorage.getItem("portfolio-language");
     const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
     setTheme(preferredTheme);setLang(preferredLanguage);document.documentElement.dataset.theme=preferredTheme;document.documentElement.lang=preferredLanguage;
@@ -64,13 +80,20 @@ export default function AboutPage(){
   return <main lang={lang} className="aboutPage">
     <nav className="nav aboutNav"><Link className="logo" href="/">IM<span>.</span></Link><Link className="aboutBack" href="/">← {c.back}</Link><div className="navActions"><button className="themeSwitch" type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`langSwitch ${lang==="es"?"isSpanish":""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={c.switchLabel}><span className={lang==="en"?"active":""}>EN</span><i/><span className={lang==="es"?"active":""}>ES</span></button></div></nav>
 
-    <article className="aboutHero">
+    <article className="aboutHero" id="about">
       <p className="label">{c.label}</p><h1>{c.title}</h1><p className="aboutLead">{c.lead}</p>
     </article>
     <section className="aboutNarrative" aria-label={lang==="es"?"Recorrido profesional":"Professional journey"}>{c.story.map((paragraph,index)=><div key={paragraph}><span>0{index+1}</span><p>{paragraph}</p></div>)}</section>
     <section className="aboutScope" aria-labelledby="scope-title"><header><p className="label">{c.scopeLabel}</p><h2 id="scope-title">{c.scopeTitle}</h2></header><ul>{c.scope.map(item=><li key={item}>{item}</li>)}</ul></section>
+    <section className="aboutMotto" aria-label={lang==="es"?"Mi enfoque de calidad":"My approach to quality"}><h2 className="heroPromise">{c.heroMotto}</h2><p>{c.heroCopy}</p></section>
+    <section className="evidence" id="evidence" aria-labelledby="evidence-title">
+      <header className="evidenceHead"><div><p className="label">{c.evidenceLabel}</p><h2 id="evidence-title">{c.evidenceTitle}</h2></div><p>{c.evidenceIntro}</p></header>
+      <div className="evidenceGrid">{c.evidence.map((item,index)=><article key={item.value+item.label}><div className={item.progress===null?"evidenceRange":"evidenceRing"} style={item.progress===null?undefined:{"--progress":item.progress} as CSSProperties}><span>{item.value}</span>{item.progress===null?<small>{lang==="es"?"por semana":"per week"}</small>:null}</div><div><span>0{index+1}</span><p>{item.label}</p></div></article>)}</div>
+    </section>
+
+    <SkillsMap lang={lang}/>
+
     <section className="aboutVision" id="vision" aria-labelledby="about-vision-title"><header><p className="label">{c.visionLabel}</p><h2 id="about-vision-title">{c.visionTitle}</h2><p>{c.visionLead}</p></header><div>{c.vision.map((item,index)=><article key={item.title}><span>0{index+1}</span><h3>{item.title}</h3><p>{item.copy}</p></article>)}</div></section>
     <section className="aboutClose"><h2>{c.close}</h2><div><Link className="buttonPrimary" href="/como-trabajo">{c.workflow} <span aria-hidden="true">↗</span></Link><a className="buttonSecondary" href={cvFiles[lang]} download>{c.cv} <span aria-hidden="true">↓</span></a></div></section>
-    <SocialDock lang={lang}/>
   </main>;
 }

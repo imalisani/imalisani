@@ -87,8 +87,7 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
 @keyframes bookingPulse{50%{scale:1.35;opacity:.65}}
 
 /* Persistent social dock with a restrained macOS-like magnification. */
-.socialDock{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));z-index:100;display:flex;align-items:flex-end;gap:7px;padding:9px 11px;border:1px solid color-mix(in srgb,var(--on-inverse) 23%,transparent);border-radius:24px;background:color-mix(in srgb,var(--inverse) 86%,transparent);color:var(--on-inverse);box-shadow:0 16px 55px #0007,0 0 35px color-mix(in srgb,var(--violet) 28%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateX(-50%)}
-.socialDockLink{position:relative;display:grid;width:42px;height:42px;place-items:center;border:1px solid color-mix(in srgb,var(--on-inverse) 18%,transparent);border-radius:13px;background:color-mix(in srgb,var(--violet) 34%,transparent);color:var(--on-inverse);transform-origin:50% 100%;transition:transform .24s cubic-bezier(.2,.8,.2,1),background-color .2s,color .2s,border-color .2s;will-change:transform}
+.socialDockLink{position:relative;display:grid;width:44px;height:44px;place-items:center;border:1px solid color-mix(in srgb,var(--on-inverse) 18%,transparent);border-radius:13px;background:color-mix(in srgb,var(--violet) 34%,transparent);color:var(--on-inverse);transform-origin:50% 100%;transition:transform .24s cubic-bezier(.2,.8,.2,1),background-color .2s,color .2s,border-color .2s;will-change:transform}
 .socialDockLink svg{width:20px;height:20px;overflow:visible}
 .socialDockLink svg:not(.socialOutlineIcon){fill:currentColor}
 .socialDockLink svg.socialOutlineIcon{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
@@ -99,7 +98,7 @@ footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))}
 .socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:translateY(-5px) scale(1.14)}
 
 @media(max-width:1050px){.footerbottom{grid-template-columns:1fr;gap:72px}.bookingCard{min-height:480px}}
-@media(max-width:760px){footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}.footerbottom{gap:64px}.bookingCard{min-height:460px;padding:30px 26px;clip-path:none}.bookingCard:before{right:22px;font-size:7px}.bookingTitle{font-size:clamp(38px,10.5vw,50px)}.bookingCopy{font-size:14px}.bookingOrbitOne{right:-190px}.bookingOrbitTwo{right:-120px}.socialDock{width:max-content;max-width:calc(100vw - 20px);gap:4px;padding:7px 8px;border-radius:20px}.socialDockLink{width:36px;height:36px;border-radius:11px}.socialDockLink svg{width:18px;height:18px}.socialDockLink:hover,.socialDockLink:focus-visible{transform:translateY(-7px) scale(1.18)}.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:translateY(-3px) scale(1.06)}}
+@media(max-width:760px){footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}.footerbottom{gap:64px}.bookingCard{min-height:460px;padding:30px 26px;clip-path:none}.bookingCard:before{right:22px;font-size:7px}.bookingTitle{font-size:clamp(38px,10.5vw,50px)}.bookingCopy{font-size:14px}.bookingOrbitOne{right:-190px}.bookingOrbitTwo{right:-120px}.socialDockLink{width:36px;height:36px;border-radius:11px}.socialDockLink svg{width:18px;height:18px}.socialDockLink:hover,.socialDockLink:focus-visible{transform:translateY(-7px) scale(1.18)}.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:translateY(-3px) scale(1.06)}}
 @media(hover:none){.socialDockLink:after{display:none}.socialDockLink:hover{transform:none}.socialDockLink:active{background:var(--lime);color:#21172d;transform:translateY(-3px) scale(1.07)}}
 @media(prefers-reduced-motion:reduce){.bookingCard,.bookingAction,.socialDockLink,.socialDockLink:after{transition:none}.bookingOrbit,.bookingNode{animation:none}.bookingCard:hover,.bookingCard:focus-visible,.bookingCard:hover .bookingAction,.bookingCard:focus-visible .bookingAction,.socialDockLink:hover,.socialDockLink:focus-visible,.socialDockLink:has(+.socialDockLink:hover),.socialDockLink:hover+.socialDockLink,.socialDockLink:has(+.socialDockLink:focus-visible),.socialDockLink:focus-visible+.socialDockLink{transform:none}}
 
@@ -250,4 +249,56 @@ html[data-theme="dark"] .compactIndex .pageIndexCard:nth-child(4):hover{backgrou
   .heroMinimal .heroSummary{font-size:14px;line-height:1.6}
   .heroMinimal .heroActions{margin-top:24px;gap:10px}
   .heroMinimal .qaUniverse{width:min(78vw,300px)}
+}
+
+.aboutMotto {
+  padding: clamp(32px, 5vw, 72px) clamp(20px, 4vw, 64px);
+  background: var(--inverse);
+  color: var(--on-inverse);
+}
+
+.aboutMotto .heroPromise {
+  margin-top: 0;
+}
+
+.aboutMotto p {
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+.contactPageTitle {
+  font: 400 clamp(48px, 8vw, 120px)/.96 Georgia, serif;
+  letter-spacing: -.06em;
+  margin: 0 0 clamp(32px, 5.6vw, 86px);
+}
+
+.contactPageTitle em {
+  color: var(--lime);
+  font-weight: 400;
+}
+
+.contactPage {
+  padding: clamp(42px, 7vw, 110px) clamp(20px, 4vw, 64px) clamp(48px, 7vw, 100px);
+  background: var(--inverse);
+  color: var(--on-inverse);
+}
+
+.contactPage .socialDock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(30px, 5vw, 72px);
+}
+
+.contactPage .footerbottom {
+  align-items: stretch;
+}
+
+.contactPage .contactArea,
+.contactPage .bookingArea {
+  min-width: 0;
+}
+
+.contactPage .bookingTitle {
+  margin: auto 0 22px;
 }
