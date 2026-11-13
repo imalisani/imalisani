@@ -360,6 +360,9 @@
 
 @media (min-width: 681px) {
   .shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
     padding-bottom: clamp(12px, 2.4svh, 24px);
   }
 
@@ -368,6 +371,7 @@
   }
 
   .intro {
+    flex: 1 0 auto;
     min-height: 0;
   }
 
@@ -401,9 +405,19 @@
     width: min(8%, 4svh, 34px);
   }
 
+  .explore {
+    display: flex;
+    flex: 2 0 auto;
+    flex-direction: column;
+  }
+
   .explore h2 {
     margin-bottom: clamp(12px, 2svh, 20px);
     font-size: clamp(30px, min(4.25vw, 6.2svh), 54px);
+  }
+
+  .cards {
+    flex: 1 0 auto;
   }
 
   .card {
@@ -411,6 +425,8 @@
   }
 
   .card[data-path="teamwork"] {
+    grid-template-rows: auto auto;
+    align-content: center;
     row-gap: clamp(8px, 1.55svh, 15px);
     padding: clamp(16px, 3.3svh, 29px);
   }
