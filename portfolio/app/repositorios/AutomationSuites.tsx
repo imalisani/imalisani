@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./repositories.module.css";
 
 const selenium = "https://github.com/imalisani/selenium-portfolio-python";
@@ -40,7 +39,8 @@ const copy = {
     appium: "Permisos de cámara, captura y persistencia del comprobante en Android.",
     playwright: "Pruebas web E2E de Sauce Demo con Page Objects y cobertura de accesibilidad.",
     repo: "Ver repositorio",
-    demo: "Ver demo en Python",
+    pythonCode: "Ver tests Python",
+    pythonEvidence: "Ver evidencia de Pytest",
     profile: "Ver perfil técnico en GitHub",
   },
   en: {
@@ -53,7 +53,8 @@ const copy = {
     appium: "Android camera permissions, photo capture, and proof-of-delivery persistence.",
     playwright: "Sauce Demo end-to-end web tests with Page Objects and accessibility coverage.",
     repo: "View repository",
-    demo: "View Python demo",
+    pythonCode: "View Python tests",
+    pythonEvidence: "View Pytest evidence",
     profile: "View technical profile on GitHub",
   },
 } as const;
@@ -94,11 +95,14 @@ export default function AutomationSuites({ lang }: { lang: keyof typeof copy }) 
             <p>{content.selenium}</p>
             <div className={styles.suiteLinks}><a href={`${selenium}#readme`}>{content.repo} <span aria-hidden="true">↗</span></a></div>
           </article>
-          <article className={styles.suiteCard}>
+          <article className={styles.suiteCard} id="qa-mobile">
             <p className={styles.eyebrow}>Mobile · Android</p>
             <h4>Appium</h4>
             <p>{content.appium}</p>
-            <div className={styles.suiteLinks}><Link href="#qa-mobile">{content.demo} <span aria-hidden="true">↓</span></Link></div>
+            <div className={styles.suiteLinks}>
+              <a href={`${appium}/blob/6fe37c06a68e4c3cef7ed3f8b8ae88be6e7b7591/tests/test_delivery.py`}>{content.pythonCode} <span aria-hidden="true">↗</span></a>
+              <a href={`${appium}/actions/runs/43121075840#artifacts`}>{content.pythonEvidence} <span aria-hidden="true">↗</span></a>
+            </div>
           </article>
         </div>
       </div>

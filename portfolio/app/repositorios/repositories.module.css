@@ -23,103 +23,6 @@
 .navGroup[open] .navParent span{transform:rotate(180deg)}
 @media(max-width:800px){.navLinks{justify-content:space-between;overflow:visible;white-space:normal}.navGroup{position:static}.navParent{min-height:28px}.navDropdown{top:100%;left:20px;right:20px;min-width:0;padding:8px;transform:translateY(-6px)}.navGroup[open] .navDropdown{transform:translateY(0)}.navDropdown a{padding:13px 12px;font-size:9px}}
 
-.mobileDemo {
-  padding: clamp(24px, 4vw, 64px);
-  background: var(--inverse);
-  color: var(--on-inverse);
-  border-bottom: 1px solid #eee8dc55;
-}
-
-.mobileDemoHeader {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: start;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-.mobileDemoHeader h2 {
-  margin: 12px 0;
-  font: 400 clamp(36px, 5vw, 76px)/1 Georgia, serif;
-  letter-spacing: -.045em;
-}
-
-.mobileDemoHeader p:not(.eyebrow) {
-  max-width: 64ch;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.mobileDemoStatus {
-  display: grid;
-  justify-items: start;
-  gap: 8px;
-}
-
-.mobileDemoStatus strong,
-.mobileDemo .eyebrow {
-  color: var(--lime);
-}
-
-.mobileDemoCases {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.mobileDemoCases article {
-  padding: clamp(16px, 2.5vw, 32px);
-  border: 1px solid #eee8dc55;
-}
-
-.mobileDemoCases h3 {
-  margin: 10px 0;
-  font-size: clamp(17px, 2vw, 23px);
-}
-
-.mobileDemoCases p:not(.eyebrow) {
-  margin: 0;
-  max-width: 76ch;
-  line-height: 1.6;
-}
-
-.mobileDemoCases .mobileDemoFocus {
-  grid-column: 1 / -1;
-  border-color: var(--lime);
-  background: color-mix(in srgb, var(--inverse) 80%, var(--violet));
-}
-
-.mobileDemoLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  margin: 16px 0 10px;
-}
-
-.mobileDemo a {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  min-height: 34px;
-  font-size: 14px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.mobileDemo a:focus-visible {
-  outline: 2px solid var(--lime);
-  outline-offset: 3px;
-}
-
-.mobileDemoArtifacts {
-  font-size: 13px;
-}
-
-@media (max-width: 640px) {
-  .mobileDemoCases { grid-template-columns: minmax(0, 1fr); }
-}
-
 .suites {
   padding: clamp(24px, 4vw, 64px);
   background: var(--inverse);
@@ -156,6 +59,7 @@
 }
 
 .suiteCard {
+  scroll-margin-top: 125px;
   display: flex;
   flex-direction: column;
   align-items: start;
