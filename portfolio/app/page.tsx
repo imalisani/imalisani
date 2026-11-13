@@ -13,13 +13,10 @@ const copy = {
     title: "Descubre cómo trabajo",
     automation: "Qué automatizo y con qué herramientas",
     automationLabel: "Automatización",
-    automationDetail: "Playwright, Selenium y Appium",
     teamwork: "Cómo trabajo con Producto y Desarrollo",
     teamworkLabel: "Colaboración",
-    teamworkDetail: "De los requisitos a la validación",
     ai: "Cómo uso IA en mi trabajo de QA",
     aiLabel: "Agentic QA Lab",
-    aiDetail: "Del análisis de riesgos a la evidencia",
     about: "Mi recorrido profesional",
     cv: "Descargar CV en español · PDF",
     contact: "Contactarme",
@@ -29,13 +26,10 @@ const copy = {
     title: "See how I work",
     automation: "What I automate and the tools I use",
     automationLabel: "Automation",
-    automationDetail: "Playwright, Selenium, and Appium",
     teamwork: "How I work with Product and Engineering",
     teamworkLabel: "Collaboration",
-    teamworkDetail: "From requirements to validation",
     ai: "How I use AI in my QA work",
     aiLabel: "Agentic QA Lab",
-    aiDetail: "From risk analysis to evidence",
     about: "My professional journey",
     cv: "Download CV in English · PDF",
     contact: "Contact me",
@@ -81,12 +75,11 @@ export default function Home() {
           <h2 id="explore-title">{c.title}</h2>
           <div className={styles.cards}>
             {paths.map(({ key, href, icon }) => (
-              <Link key={key} className={styles.card} data-path={key} href={href} aria-labelledby={`path-${key}`} aria-describedby={`detail-${key}`}>
+              <Link key={key} className={styles.card} data-path={key} href={href} aria-labelledby={`path-${key}`}>
                 <svg viewBox="0 0 24 24" className={styles.cardIcon} fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
                 <span className={styles.cardCopy}>
                   <span className={styles.cardLabel} aria-hidden="true">{c[`${key}Label`]}</span>
                   <span className={styles.cardTitle} id={`path-${key}`}>{c[key]}</span>
-                  <span className={styles.cardDetail} id={`detail-${key}`}>{c[`${key}Detail`]}</span>
                 </span>
                 <Arrow className={styles.cardArrow}/>
               </Link>
