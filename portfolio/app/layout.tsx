@@ -5,11 +5,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://irina-malisani.vercel.app"),
-  title: "Irina Malisani | QA Engineer",
+  title: "Irina Malisani | Sr QA Engineer",
   description:
-    "QA Engineer especializada en shift-left testing, automatización inteligente y agentic quality engineering.",
+    "Sr QA Engineer especializada en shift-left testing, automatización inteligente y agentic quality engineering.",
   openGraph: {
-    title: "Irina Malisani | QA Engineer",
+    title: "Irina Malisani | Sr QA Engineer",
     description: "Calidad antes de que el usuario tenga que pedirla.",
     type: "website",
     images: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Irina Malisani | QA Engineer",
+    title: "Irina Malisani | Sr QA Engineer",
     description: "Calidad antes de que el usuario tenga que pedirla.",
     images: ["/og.png"],
   },
