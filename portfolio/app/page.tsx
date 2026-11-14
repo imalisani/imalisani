@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import avatar from "../public/home/irina.webp";
 import PortfolioHeader from "./components/PortfolioHeader";
 import PortfolioLogo from "./components/PortfolioLogo";
 import { usePortfolioPreferences } from "./components/usePortfolioPreferences";
@@ -154,7 +155,7 @@ export default function Home() {
           </div>
 
           <div className={styles.heroVisual}>
-            <Image className={styles.avatar} src="/home/irina.webp" alt="" width={1280} height={853} sizes="(max-width: 680px) 90vw, (max-width: 1550px) 44vw, 675px" preload/>
+            <Image className={styles.avatar} src={avatar} alt="" sizes="(max-width: 680px) 90vw, (max-width: 1550px) 44vw, 675px" preload/>
             <blockquote className={styles.motto}>
               <p>{c.motto}</p>
               <span>{c.mottoLines.map(line => <span key={line}>{line}</span>)}</span>
