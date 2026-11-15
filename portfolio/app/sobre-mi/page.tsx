@@ -30,8 +30,6 @@ const copy={
       "Mi mejor trabajo comienza temprano. Leo requerimientos, planteo escenarios que todavía no están visibles, alineo riesgos con Producto y Desarrollo, y preparo la cobertura antes de que la implementación convierta una duda pequeña en un problema costoso.",
       "Ese recorrido me llevó del testing reactivo al shift-left, la automatización y los agentes de IA. La tecnología acelera el análisis; el criterio humano conserva la responsabilidad.",
     ],
-    scopeLabel:"Experiencia aplicada",scopeTitle:"Un perfil que conecta producto, código y riesgo.",
-    scope:["Web, mobile, APIs e integraciones","Playwright, Appium y Python","Test strategy y diseño basado en riesgos","Agentes de QA con trazabilidad","Colaboración con Product, Dev y Engineering"],
     visionLabel:"Próximo horizonte",visionTitle:"La práctica de calidad que quiero ayudar a construir.",visionLead:"QA como un sistema de inteligencia para el producto, no como una etapa final de validación.",
     vision:[
       {title:"Agentes con límites",copy:"IA con contexto y trazabilidad, sin ocultar cómo llegó a una conclusión."},
@@ -59,8 +57,6 @@ const copy={
       "My strongest work starts early. I read requirements, surface scenarios that are not visible yet, align risks with Product and Development, and prepare coverage before implementation turns a small doubt into an expensive problem.",
       "That journey took me from reactive testing to shift-left, automation and AI agents. Technology accelerates the analysis; human judgement retains responsibility.",
     ],
-    scopeLabel:"Applied experience",scopeTitle:"A profile connecting product, code and risk.",
-    scope:["Web, mobile, APIs and integrations","Playwright, Appium and Python","Test strategy and risk-based design","Traceable QA agents","Collaboration with Product, Dev and Engineering"],
     visionLabel:"Next horizon",visionTitle:"The quality practice I want to help build.",visionLead:"QA as a product intelligence system, not a final validation stage.",
     vision:[
       {title:"Agents with boundaries",copy:"AI with context and traceability, without hiding how it reached a conclusion."},
@@ -112,7 +108,6 @@ export default function AboutPage(){
         </div>
       </div>
     </section>
-    <section className="aboutScope" aria-labelledby="scope-title"><header><p className="label">{c.scopeLabel}</p><h2 id="scope-title">{c.scopeTitle}</h2></header><ul>{c.scope.map(item=><li key={item}>{item}</li>)}</ul></section>
     <LogisticsExperience lang={lang}/>
     <section className="aboutMotto" aria-label={lang==="es"?"Mi enfoque de calidad":"My approach to quality"}><h2 className="heroPromise">{c.heroMotto}</h2><p>{c.heroCopy}</p></section>
     <section className="evidence" id="evidence" aria-labelledby="evidence-title">
