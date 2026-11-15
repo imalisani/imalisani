@@ -5,6 +5,7 @@ import PortfolioLogo from "../components/PortfolioLogo";
 import {type CSSProperties,useEffect,useState} from "react";
 import {cvFiles} from "../cv-files";
 import SkillsMap from "../components/SkillsMap";
+import LogisticsExperience from "./LogisticsExperience";
 
 type Language="en"|"es";
 
@@ -16,7 +17,7 @@ const copy={
     evidence:[
       {value:"90%",progress:90,label:"planes de prueba listos antes del desarrollo"},
       {value:"3–6",progress:null,label:"funcionalidades validadas por semana"},
-      {value:"25%",progress:25,label:"tareas con riesgos o defectos detectados antes de producción"},
+      {value:"≈25%",progress:25,label:"de los bugs identificados antes de producción"},
     ],
     back:"Volver al portfolio",switchLabel:"View in English",label:"Sobre mí · Recorrido completo",
     title:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,
@@ -43,7 +44,7 @@ const copy={
     evidence:[
       {value:"90%",progress:90,label:"test plans ready before development"},
       {value:"3–6",progress:null,label:"features validated each week"},
-      {value:"25%",progress:25,label:"tasks with risks or defects caught before production"},
+      {value:"≈25%",progress:25,label:"of bugs identified before production"},
     ],
     back:"Back to portfolio",switchLabel:"Ver en español",label:"About me · Complete journey",
     title:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,
@@ -86,6 +87,7 @@ export default function AboutPage(){
     </article>
     <section className="aboutNarrative" aria-label={lang==="es"?"Recorrido profesional":"Professional journey"}>{c.story.map((paragraph,index)=><div key={paragraph}><span>0{index+1}</span><p>{paragraph}</p></div>)}</section>
     <section className="aboutScope" aria-labelledby="scope-title"><header><p className="label">{c.scopeLabel}</p><h2 id="scope-title">{c.scopeTitle}</h2></header><ul>{c.scope.map(item=><li key={item}>{item}</li>)}</ul></section>
+    <LogisticsExperience lang={lang}/>
     <section className="aboutMotto" aria-label={lang==="es"?"Mi enfoque de calidad":"My approach to quality"}><h2 className="heroPromise">{c.heroMotto}</h2><p>{c.heroCopy}</p></section>
     <section className="evidence" id="evidence" aria-labelledby="evidence-title">
       <header className="evidenceHead"><div><p className="label">{c.evidenceLabel}</p><h2 id="evidence-title">{c.evidenceTitle}</h2></div><p>{c.evidenceIntro}</p></header>

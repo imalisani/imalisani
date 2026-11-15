@@ -343,8 +343,7 @@
 
 .metrics span,
 .exploreIntro > p:last-child,
-.card p,
-.caseDetails {
+.card p {
   color: var(--home-muted);
   font-size: .9rem;
   line-height: 1.5;
@@ -566,11 +565,6 @@
   background: #241731;
   color: #fff8ef;
   cursor: pointer;
-  list-style: none;
-}
-
-.caseCover::-webkit-details-marker {
-  display: none;
 }
 
 .caseCover img {
@@ -610,21 +604,12 @@
   height: 42px;
   border: 1px solid #d7f477;
   color: #d7f477;
-  transition: background-color .18s, color .18s, transform .18s;
+  transition: background-color .18s, color .18s;
 }
 
 .caseCover:hover .caseArrow {
   background: #d7f477;
   color: #1d2410;
-}
-
-.case details[open] .caseArrow {
-  transform: rotate(90deg);
-}
-
-.caseDetails {
-  padding: 15px clamp(16px, 2.35vw, 32px) 20px;
-  margin: 0;
 }
 
 .footer {

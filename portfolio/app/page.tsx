@@ -24,7 +24,7 @@ const copy = {
     motto: "La calidad no es suerte.",
     mottoLines: ["Se diseña.", "Se planifica.", "Se valida.", "Se protege."],
     metrics: "Resultados y compromiso",
-    metricLabels: ["de planes de prueba listos antes del desarrollo", "de tareas con riesgos o defectos detectados antes de producción", "compromiso con la calidad"],
+    metricLabels: ["de planes de prueba listos antes del desarrollo", "de los bugs identificados antes de producción", "compromiso con la calidad"],
     technologies: "Tecnologías principales",
     groups: ["Web", "Mobile", "APIs y rendimiento", "Datos", "CI/CD", "Gestión"],
     more: "Ver más",
@@ -40,7 +40,6 @@ const copy = {
     cases: "Casos destacados",
     logistics: "Logística inteligente de punta a punta",
     logisticsSummary: "Validación de entregas y comprobantes con foto y firma",
-    logisticsDetails: "Validé el flujo de cierre de entregas en mobile, desde el registro de ítems hasta la captura de foto y firma en el comprobante. Contrasté lo registrado en la app con los datos de la entrega y sus integraciones.",
     checkout: "Del producto al checkout",
     checkoutLabel: "Ver evidencia de Del producto al checkout",
     contact: "Hablemos de calidad",
@@ -59,7 +58,7 @@ const copy = {
     motto: "Quality isn’t luck.",
     mottoLines: ["Designed.", "Planned.", "Validated.", "Protected."],
     metrics: "Results and commitment",
-    metricLabels: ["of test plans ready before development", "of tasks with risks or defects caught before production", "commitment to quality"],
+    metricLabels: ["of test plans ready before development", "of bugs identified before production", "commitment to quality"],
     technologies: "Core technologies",
     groups: ["Web", "Mobile", "APIs and performance", "Data", "CI/CD", "Management"],
     more: "See more",
@@ -75,7 +74,6 @@ const copy = {
     cases: "Featured case studies",
     logistics: "End-to-end logistics",
     logisticsSummary: "Delivery validation and proof of delivery with photo and signature",
-    logisticsDetails: "I validated the mobile delivery completion flow, from recording individual items to capturing a photo and signature for proof of delivery. I checked the data recorded in the app against the delivery data and its integrations.",
     checkout: "From product to checkout",
     checkoutLabel: "See evidence for From product to checkout",
     contact: "Let’s talk quality",
@@ -83,7 +81,8 @@ const copy = {
   },
 } as const;
 
-const destinations = ["/", "/sobre-mi", "/sobre-mi#scope-title", "#casos", "/repositorios", "/contacto"];
+const experienceHref = "/sobre-mi#simpliroute";
+const destinations = ["/", "/sobre-mi", experienceHref, "#casos", "/repositorios", "/contacto"];
 const role = "Sr QA Engineer";
 const metricValues = ["90%", "≈25%", "100%"];
 
@@ -134,7 +133,9 @@ export default function Home() {
       <div className={styles.shell}>
         <PortfolioHeader {...preferences} navigation={
           <nav className={styles.navigation} aria-label={c.nav}>
-            {destinations.map((href, index) => (
+            {destinations.map((href, index) => href === experienceHref ? (
+              <a key={href} href={href}>{c.links[index]}</a>
+            ) : (
               <Link key={href} href={href} aria-current={index === 0 ? "page" : undefined}>{c.links[index]}</Link>
             ))}
           </nav>
@@ -215,14 +216,11 @@ export default function Home() {
           <div className={styles.sectionHeading}><h2 id="cases-title">{c.cases}</h2></div>
           <div className={styles.caseGrid}>
             <article className={styles.case}>
-              <details>
-                <summary className={styles.caseCover} aria-labelledby="logistics-title">
-                  <Image src="/home/logistics.webp" alt="" fill sizes="(max-width: 680px) 94vw, (max-width: 1550px) 48vw, 710px"/>
-                  <span className={styles.caseCopy}><strong id="logistics-title">{c.logistics}</strong><span>{c.logisticsSummary}</span></span>
-                  <span className={styles.caseArrow}><Arrow/></span>
-                </summary>
-                <p className={styles.caseDetails}>{c.logisticsDetails}</p>
-              </details>
+              <a className={styles.caseCover} href={experienceHref} aria-labelledby="logistics-title">
+                <Image src="/home/logistics.webp" alt="" fill sizes="(max-width: 680px) 94vw, (max-width: 1550px) 48vw, 710px"/>
+                <span className={styles.caseCopy}><strong id="logistics-title">{c.logistics}</strong><span>{c.logisticsSummary}</span></span>
+                <span className={styles.caseArrow}><Arrow/></span>
+              </a>
             </article>
             <article className={styles.case}>
               <Link className={styles.caseCover} href="/agentic-qa-lab#video-evidence-title" aria-label={c.checkoutLabel}>
