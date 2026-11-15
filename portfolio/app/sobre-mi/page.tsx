@@ -6,6 +6,7 @@ import {type CSSProperties,useEffect,useState} from "react";
 import {cvFiles} from "../cv-files";
 import SkillsMap from "../components/SkillsMap";
 import LogisticsExperience from "./LogisticsExperience";
+import styles from "./about-narrative.module.css";
 
 type Language="en"|"es";
 
@@ -22,6 +23,8 @@ const copy={
     back:"Volver al portfolio",switchLabel:"View in English",label:"Sobre mí · Recorrido completo",
     title:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,
     lead:"Soy Irina, QA Engineer con cinco años de experiencia ayudando a equipos de producto a convertir incertidumbre en decisiones de calidad.",
+    storyHeading:"Mi recorrido en QA",
+    storyTitles:["Preguntar antes de probar", "Anticipar riesgos", "Automatizar con criterio"],
     story:[
       "Trabajando con web, mobile, APIs, integraciones y algoritmos logísticos, entendí que probar no era solamente confirmar una respuesta: era hacer mejores preguntas, descubrir supuestos y acercar al equipo a la intención real del producto.",
       "Mi mejor trabajo comienza temprano. Leo requerimientos, planteo escenarios que todavía no están visibles, alineo riesgos con Producto y Desarrollo, y preparo la cobertura antes de que la implementación convierta una duda pequeña en un problema costoso.",
@@ -49,6 +52,8 @@ const copy={
     back:"Back to portfolio",switchLabel:"Ver en español",label:"About me · Complete journey",
     title:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,
     lead:"I am Irina, a QA Engineer with five years of experience helping product teams turn uncertainty into quality decisions.",
+    storyHeading:"My journey in QA",
+    storyTitles:["Ask better questions", "Anticipate risks", "Automate with judgement"],
     story:[
       "Working across web, mobile, APIs, integrations and logistics algorithms, I learned that testing was not only about confirming an answer. It was about asking better questions, uncovering assumptions and bringing the team closer to the product's real intent.",
       "My strongest work starts early. I read requirements, surface scenarios that are not visible yet, align risks with Product and Development, and prepare coverage before implementation turns a small doubt into an expensive problem.",
@@ -65,6 +70,12 @@ const copy={
     close:"Want to see this approach in action?",workflow:"Explore how I work",cv:"Download CV",
   },
 } as const;
+
+const storyIcons = [
+  "M20 10.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 3v-5.5A7.5 7.5 0 1 1 20 10.5Z M10 8.5a2.5 2.5 0 1 1 4 2l-1.5 1.2v.8 M12.5 15h.01",
+  "M12 3 4 6v5c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-3Z M8.5 12l2.5 2.5 4.5-4.5",
+  "m8 7-5 5 5 5m8-10 5 5-5 5m-2-13-4 16",
+];
 
 export default function AboutPage(){
   const [lang,setLang]=useState<Language>("es");
@@ -85,7 +96,22 @@ export default function AboutPage(){
     <article className="aboutHero" id="about">
       <p className="label">{c.label}</p><h1>{c.title}</h1><p className="aboutLead">{c.lead}</p>
     </article>
-    <section className="aboutNarrative" aria-label={lang==="es"?"Recorrido profesional":"Professional journey"}>{c.story.map((paragraph,index)=><div key={paragraph}><span>0{index+1}</span><p>{paragraph}</p></div>)}</section>
+    <section className={styles.narrative} id="recorrido" aria-labelledby="qa-journey-title">
+      <div className={styles.inner}>
+        <h2 id="qa-journey-title">{c.storyHeading}</h2>
+        <div className={styles.cards}>
+          {c.story.map((paragraph, index) => (
+            <article className={styles.card} key={c.storyTitles[index]}>
+              <svg className={styles.icon} viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d={storyIcons[index]} />
+              </svg>
+              <h3>{c.storyTitles[index]}</h3>
+              <p>{paragraph}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
     <section className="aboutScope" aria-labelledby="scope-title"><header><p className="label">{c.scopeLabel}</p><h2 id="scope-title">{c.scopeTitle}</h2></header><ul>{c.scope.map(item=><li key={item}>{item}</li>)}</ul></section>
     <LogisticsExperience lang={lang}/>
     <section className="aboutMotto" aria-label={lang==="es"?"Mi enfoque de calidad":"My approach to quality"}><h2 className="heroPromise">{c.heroMotto}</h2><p>{c.heroCopy}</p></section>

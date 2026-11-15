@@ -1,0 +1,111 @@
+.narrative {
+  --journey-surface: #f7f1e8;
+  --journey-card: #fcf7ef;
+  --journey-text: #26192f;
+  --journey-muted: #53465b;
+  --journey-rule: #cdbdd4;
+  --journey-accent: #6b418d;
+  --journey-feature: #e9e4d6;
+  --journey-feature-accent: #42591a;
+  padding: clamp(30px, 4.5vw, 66px) clamp(20px, 4vw, 64px);
+  background: var(--journey-surface);
+  color: var(--journey-text);
+  scroll-margin-top: 0;
+}
+
+:global(html[data-theme="dark"]) .narrative {
+  --journey-surface: #15111c;
+  --journey-card: #21182c;
+  --journey-text: #f5ede5;
+  --journey-muted: #ded1e4;
+  --journey-rule: #52405d;
+  --journey-accent: #ddb2f5;
+  --journey-feature: #262336;
+  --journey-feature-accent: var(--lime);
+}
+
+.inner {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.inner h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 clamp(15px, 2.1vw, 25px);
+  font: 600 clamp(30px, 4vw, 49px)/1.03 Georgia, serif;
+  letter-spacing: -.045em;
+}
+
+.inner h2::after {
+  flex: 0 1 clamp(20px, 4.5vw, 56px);
+  border-top: 1px solid var(--journey-feature-accent);
+  content: "";
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.35vw, 20px);
+}
+
+.card {
+  --card-accent: var(--journey-accent);
+  min-width: 0;
+  padding: clamp(16px, 2.45vw, 32px);
+  border: 1px solid var(--journey-rule);
+  border-radius: 14px;
+  background: var(--journey-card);
+}
+
+.card:nth-child(2) {
+  --card-accent: var(--journey-feature-accent);
+  border-top-color: var(--card-accent);
+  background: var(--journey-feature);
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 13px;
+  color: var(--card-accent);
+}
+
+.card h3 {
+  margin: 0 0 9px;
+  font: 600 clamp(20px, 2.25vw, 30px)/1.08 Georgia, serif;
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+
+.card p {
+  margin: 0;
+  color: var(--journey-muted);
+  font-size: clamp(.94rem, 1.25vw, 1.06rem);
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+@media (max-width: 720px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: start;
+    gap: 7px 12px;
+  }
+
+  .icon,
+  .card h3 {
+    margin: 0;
+  }
+
+  .card p {
+    grid-column: 2;
+  }
+}
