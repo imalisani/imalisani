@@ -1,0 +1,156 @@
+.header {
+  --header-background: #120e19;
+  --header-text: #f7efe7;
+  --header-accent: #d7f477;
+  --header-focus: #ddabf6;
+  --header-divider: #51415e;
+  position: sticky;
+  z-index: 40;
+  top: 0;
+  background: var(--header-background);
+  color: var(--header-text);
+  padding-inline: clamp(16px, 3.6vw, 60px);
+}
+
+.header[data-header-theme="light"] {
+  --header-background: #f7f1e8;
+  --header-text: #26192f;
+  --header-accent: #466016;
+  --header-focus: #70428e;
+  --header-divider: #cdbdd4;
+}
+
+.bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+  max-width: 1440px;
+  margin-inline: auto;
+  border-bottom: 1px solid var(--header-divider);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.3vw, 22px);
+  font-size: .875rem;
+}
+
+.navigation a {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 44px;
+}
+
+.navigation a:hover,
+.navigation a[aria-current],
+.active {
+  color: var(--header-accent);
+}
+
+.navigation a[aria-current]::after {
+  position: absolute;
+  inset: auto 0 3px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme,
+.language,
+.menuButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.theme {
+  width: 44px;
+}
+
+.language,
+.menuButton {
+  padding-inline: 12px;
+  border: 1px solid var(--header-divider);
+  border-radius: 12px;
+  font-size: .875rem;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.header :is(a, button):focus-visible {
+  outline: 2px solid var(--header-focus);
+  outline-offset: 3px;
+}
+
+.menuButton {
+  display: none;
+}
+
+@media (max-width: 1060px) {
+  .bar {
+    min-height: 64px;
+    gap: 8px;
+  }
+
+  .menuButton {
+    display: inline-flex;
+    margin-inline-start: auto;
+  }
+
+  .navigation {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: none;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    padding: 8px;
+    border: 1px solid var(--header-divider);
+    border-radius: 0 0 12px 12px;
+    background: var(--header-background);
+  }
+
+  .navigation[data-open="true"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 8px;
+  }
+
+  .navigation a {
+    padding-inline: 10px;
+  }
+
+  .navigation a[aria-current]::after {
+    inset-inline: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .menuButton,
+  .language {
+    padding-inline: 8px;
+  }
+
+  .controls {
+    gap: 4px;
+  }
+}

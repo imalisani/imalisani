@@ -1,16 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import PortfolioLogo from "../components/PortfolioLogo";
-import {useEffect,useState} from "react";
-import {cvFiles} from "../cv-files";
+import { usePortfolioPreferences } from "../components/usePortfolioPreferences";
 import qaEvidence from "../../public/qa-evidence.json";
 import AgentSystemScroll from "./AgentSystemScroll";
 import QaEvidencePack from "./QaEvidencePack";
 import styles from "./agentic-qa-lab.module.css";
 
-type Lang="es"|"en";
-type Theme="light"|"dark";
 
 const repo="https://github.com/imalisani/qa-agents-demo";
 const allureReport="https://imalisani.github.io/qa-agents-demo/";
@@ -89,47 +84,17 @@ const stages=[
 ] as const;
 
 const copy={
-  es:{back:"Portfolio",index:"Cómo trabajo",about:"Sobre mí",flow:"Flujo de QA",cases:"Casos de prueba",repos:"Repositorios",lab:"Agentic QA Lab",workflow:"Flujo de reembolsos",metrics:"Mis métricas",story:"Mi historia",cv:"Descargar CV",contact:"Contacto",eyebrow:"Agentic Quality Engineering · Caso real",title:<>De una historia ambigua a una <em>decisión trazable.</em></>,lead:"Reproducí una ejecución verificada del QA Agent System. Cada etapa muestra qué recibió el agente, qué produjo y dónde intervino el criterio humano.",verified:"Replay de una ejecución verificada · 27 AGO 2026",run:"Ejecutar demo",pause:"Pausar",restart:"Reiniciar",previous:"Anterior",next:"Siguiente",step:"Etapa",of:"de",agentProposes:"MI AGENTE PROPONE.",humanDecides:"YO DECIDO.",artifact:"Artefacto",openEvidence:"Abrir evidencia real",videoLabel:"Evidencia de ejecución · Showcase real",videoTitle:"Mirá un flujo E2E completo.",videoIntro:"Una ejecución de 29,2 segundos en Chromium headed, grabada deliberadamente para mostrar el comportamiento real sin ralentizar la suite habitual.",showcaseTitle:"De producto a checkout",showcaseCopy:"El test inicia sesión, busca Blue Top, valida precio y stock, lo agrega al carrito, revisa el checkout y muestra un resultado PASS. Si no recibe credenciales, crea y elimina una cuenta descartable.",videoFallback:"Abrir video",allureFull:"Explorar evidencia histórica en Allure",reportLabel:"Resultado de la corrida",reportTitle:"6 pasaron. 6 quedaron fuera por decisión, no por olvido.",reportCopy:"La fortaleza del sistema no es automatizar todo: es hacer visible qué está validado, qué permanece bloqueado y por qué.",passed:"Passed",failed:"Failed",duration:"Duración",blocked:"Bloqueados",allureEyebrow:"Evidencia interactiva · GitHub Pages",allureTitle:"Abrir dashboard Allure",allureCopy:"Resultados reales, suites, tiempos y detalle de cada caso. Se publica automáticamente en cada push a main.",allureMeta:"6 passed · 0 failed · Chromium",code:"Ver código",summary:"Ver reporte",investigation:"Ver investigación de falla",note:"Los datos mostrados pertenecen a una corrida real documentada. El botón reproduce su recorrido; no ejecuta Playwright dentro del portfolio."},
-  en:{back:"Portfolio",index:"How I work",about:"About me",flow:"QA workflow",cases:"Test cases",repos:"Repositories",lab:"Agentic QA Lab",workflow:"Refund workflow",metrics:"My metrics",story:"My story",cv:"Download CV",contact:"Contact",eyebrow:"Agentic Quality Engineering · Real case",title:<>From an ambiguous story to a <em>traceable decision.</em></>,lead:"Replay a verified QA Agent System run. Every stage shows what the agent received, what it produced and where human judgement intervened.",verified:"Verified execution replay · AUG 27 2026",run:"Run demo",pause:"Pause",restart:"Restart",previous:"Previous",next:"Next",step:"Stage",of:"of",agentProposes:"MY AGENT PROPOSES.",humanDecides:"I DECIDE.",artifact:"Artifact",openEvidence:"Open real evidence",videoLabel:"Execution evidence · Real showcase",videoTitle:"Watch a complete E2E flow.",videoIntro:"A 29.2-second headed Chromium run, deliberately recorded to show real behaviour without slowing down the regular suite.",showcaseTitle:"From product to checkout",showcaseCopy:"The test signs in, searches for Blue Top, validates price and stock, adds it to the cart, reviews checkout and displays a PASS result. Without configured credentials, it creates and removes a disposable account.",videoFallback:"Open video",allureFull:"Explore historical evidence in Allure",reportLabel:"Run result",reportTitle:"6 passed. 6 stayed out by decision, not by omission.",reportCopy:"The system's strength is not automating everything: it makes visible what is validated, what remains blocked and why.",passed:"Passed",failed:"Failed",duration:"Duration",blocked:"Blocked",allureEyebrow:"Interactive evidence · GitHub Pages",allureTitle:"Open Allure dashboard",allureCopy:"Real results, suites, timings and test-level details. It is automatically published on every push to main.",allureMeta:"6 passed · 0 failed · Chromium",code:"View code",summary:"View report",investigation:"View failure investigation",note:"The displayed data belongs to a documented real run. The button replays its journey; it does not execute Playwright inside the portfolio."},
+  es:{eyebrow:"Agentic Quality Engineering · Caso real",title:<>De una historia ambigua a una <em>decisión trazable.</em></>,lead:"Reproducí una ejecución verificada del QA Agent System. Cada etapa muestra qué recibió el agente, qué produjo y dónde intervino el criterio humano.",verified:"Replay de una ejecución verificada · 27 AGO 2026",run:"Ejecutar demo",pause:"Pausar",restart:"Reiniciar",previous:"Anterior",next:"Siguiente",step:"Etapa",of:"de",agentProposes:"MI AGENTE PROPONE.",humanDecides:"YO DECIDO.",artifact:"Artefacto",openEvidence:"Abrir evidencia real",videoLabel:"Evidencia de ejecución · Showcase real",videoTitle:"Mirá un flujo E2E completo.",videoIntro:"Una ejecución de 29,2 segundos en Chromium headed, grabada deliberadamente para mostrar el comportamiento real sin ralentizar la suite habitual.",showcaseTitle:"De producto a checkout",showcaseCopy:"El test inicia sesión, busca Blue Top, valida precio y stock, lo agrega al carrito, revisa el checkout y muestra un resultado PASS. Si no recibe credenciales, crea y elimina una cuenta descartable.",videoFallback:"Abrir video",allureFull:"Explorar evidencia histórica en Allure",reportLabel:"Resultado de la corrida",reportTitle:"6 pasaron. 6 quedaron fuera por decisión, no por olvido.",reportCopy:"La fortaleza del sistema no es automatizar todo: es hacer visible qué está validado, qué permanece bloqueado y por qué.",passed:"Passed",failed:"Failed",duration:"Duración",blocked:"Bloqueados",allureEyebrow:"Evidencia interactiva · GitHub Pages",allureTitle:"Abrir dashboard Allure",allureCopy:"Resultados reales, suites, tiempos y detalle de cada caso. Se publica automáticamente en cada push a main.",allureMeta:"6 passed · 0 failed · Chromium",code:"Ver código",summary:"Ver reporte",investigation:"Ver investigación de falla",note:"Los datos mostrados pertenecen a una corrida real documentada. El botón reproduce su recorrido; no ejecuta Playwright dentro del portfolio."},
+  en:{eyebrow:"Agentic Quality Engineering · Real case",title:<>From an ambiguous story to a <em>traceable decision.</em></>,lead:"Replay a verified QA Agent System run. Every stage shows what the agent received, what it produced and where human judgement intervened.",verified:"Verified execution replay · AUG 27 2026",run:"Run demo",pause:"Pause",restart:"Restart",previous:"Previous",next:"Next",step:"Stage",of:"of",agentProposes:"MY AGENT PROPOSES.",humanDecides:"I DECIDE.",artifact:"Artifact",openEvidence:"Open real evidence",videoLabel:"Execution evidence · Real showcase",videoTitle:"Watch a complete E2E flow.",videoIntro:"A 29.2-second headed Chromium run, deliberately recorded to show real behaviour without slowing down the regular suite.",showcaseTitle:"From product to checkout",showcaseCopy:"The test signs in, searches for Blue Top, validates price and stock, adds it to the cart, reviews checkout and displays a PASS result. Without configured credentials, it creates and removes a disposable account.",videoFallback:"Open video",allureFull:"Explore historical evidence in Allure",reportLabel:"Run result",reportTitle:"6 passed. 6 stayed out by decision, not by omission.",reportCopy:"The system's strength is not automating everything: it makes visible what is validated, what remains blocked and why.",passed:"Passed",failed:"Failed",duration:"Duration",blocked:"Blocked",allureEyebrow:"Interactive evidence · GitHub Pages",allureTitle:"Open Allure dashboard",allureCopy:"Real results, suites, timings and test-level details. It is automatically published on every push to main.",allureMeta:"6 passed · 0 failed · Chromium",code:"View code",summary:"View report",investigation:"View failure investigation",note:"The displayed data belongs to a documented real run. The button replays its journey; it does not execute Playwright inside the portfolio."},
 } as const;
 
 export default function AgenticQaLab(){
-  const [lang,setLang]=useState<Lang>("es");
-  const [theme,setTheme]=useState<Theme>("light");
-
-  useEffect(()=>{
-    const savedTheme=window.localStorage.getItem("portfolio-theme");
-    const preferredTheme=savedTheme==="light"?"light":"dark";
-    const savedLanguage=window.localStorage.getItem("portfolio-language");
-    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
-    setTheme(preferredTheme);
-    setLang(preferredLanguage);
-    document.documentElement.dataset.theme=preferredTheme;
-    document.documentElement.lang=preferredLanguage;
-  },[]);
-
-  const toggleTheme=()=>setTheme(current=>{
-    const next=current==="light"?"dark":"light";
-    document.documentElement.dataset.theme=next;
-    window.localStorage.setItem("portfolio-theme",next);
-    return next;
-  });
-  const toggleLanguage=()=>setLang(current=>{
-    const next=current==="es"?"en":"es";
-    window.localStorage.setItem("portfolio-language",next);
-    document.documentElement.lang=next;
-    return next;
-  });
+  const { lang } = usePortfolioPreferences();
   const c=copy[lang];
   const verifiedDate=new Intl.DateTimeFormat(lang==="es"?"es-AR":"en-US",{day:"2-digit",month:"short",year:"numeric",timeZone:"America/Buenos_Aires"}).format(new Date(qaEvidence.generatedAt)).toUpperCase();
   const verifiedLabel=lang==="es"?"Replay de una ejecución verificada":"Verified execution replay";
 
   return <main className={styles.page} lang={lang}>
-    <nav className={styles.nav} aria-label={lang==="es"?"Navegación del Agentic QA Lab":"Agentic QA Lab navigation"}>
-      <PortfolioLogo lang={lang}/>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown}><Link href="/como-trabajo">{c.flow}</Link><Link href="/agentic-qa-lab" aria-current="page">{c.lab}</Link><Link href="/casos-de-prueba">{c.cases}</Link><Link href="/repositorios">{c.repos}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.about} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown}><Link href="/sobre-mi#evidence">{c.metrics}</Link><Link href="/sobre-mi">{c.story}</Link><a href={cvFiles[lang]} download>CV — {c.cv}</a><Link href="/contacto">{c.contact}</Link></div></details></div>
-      <div className={styles.controls}><button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button></div>
-    </nav>
 
     <header className={styles.hero}>
       <p className={styles.eyebrow}>{c.eyebrow}</p>

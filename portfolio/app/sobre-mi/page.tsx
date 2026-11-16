@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import PortfolioLogo from "../components/PortfolioLogo";
-import {type CSSProperties,useEffect,useState} from "react";
+import { usePortfolioPreferences } from "../components/usePortfolioPreferences";
+import type { CSSProperties } from "react";
 import {cvFiles} from "../cv-files";
 import SkillsMap from "../components/SkillsMap";
 import LogisticsExperience from "./LogisticsExperience";
 import styles from "./about-narrative.module.css";
 
-type Language="en"|"es";
 
 const copy={
   es:{
@@ -20,7 +19,7 @@ const copy={
       {value:"3–6",progress:null,label:"funcionalidades validadas por semana"},
       {value:"≈25%",progress:25,label:"de los bugs identificados antes de producción"},
     ],
-    back:"Volver al portfolio",switchLabel:"View in English",label:"Sobre mí · Recorrido completo",
+    label:"Sobre mí · Recorrido completo",
     title:<>Aprendí a encontrar bugs.<br/><em>Elegí prevenirlos.</em></>,
     lead:"Soy Irina, QA Engineer con cinco años de experiencia ayudando a equipos de producto a convertir incertidumbre en decisiones de calidad.",
     storyHeading:"Mi recorrido en QA",
@@ -47,7 +46,7 @@ const copy={
       {value:"3–6",progress:null,label:"features validated each week"},
       {value:"≈25%",progress:25,label:"of bugs identified before production"},
     ],
-    back:"Back to portfolio",switchLabel:"Ver en español",label:"About me · Complete journey",
+    label:"About me · Complete journey",
     title:<>I learned to find bugs.<br/><em>I chose to prevent them.</em></>,
     lead:"I am Irina, a QA Engineer with five years of experience helping product teams turn uncertainty into quality decisions.",
     storyHeading:"My journey in QA",
@@ -74,20 +73,9 @@ const storyIcons = [
 ];
 
 export default function AboutPage(){
-  const [lang,setLang]=useState<Language>("es");
-  const [theme,setTheme]=useState<"light"|"dark">("light");
-  useEffect(()=>{
-    const savedTheme=window.localStorage.getItem("portfolio-theme");
-    const preferredTheme=savedTheme==="light"?"light":"dark";
-    const savedLanguage=window.localStorage.getItem("portfolio-language");
-    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
-    setTheme(preferredTheme);setLang(preferredLanguage);document.documentElement.dataset.theme=preferredTheme;document.documentElement.lang=preferredLanguage;
-  },[]);
-  const toggleTheme=()=>setTheme(current=>{const next=current==="light"?"dark":"light";document.documentElement.dataset.theme=next;window.localStorage.setItem("portfolio-theme",next);return next;});
-  const toggleLanguage=()=>setLang(current=>{const next=current==="en"?"es":"en";window.localStorage.setItem("portfolio-language",next);document.documentElement.lang=next;return next;});
+  const { lang } = usePortfolioPreferences();
   const c=copy[lang];
   return <main lang={lang} className="aboutPage">
-    <nav className="nav aboutNav"><PortfolioLogo lang={lang}/><Link className="aboutBack" href="/">← {c.back}</Link><div className="navActions"><button className="themeSwitch" type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button><button className={`langSwitch ${lang==="es"?"isSpanish":""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={c.switchLabel}><span className={lang==="en"?"active":""}>EN</span><i/><span className={lang==="es"?"active":""}>ES</span></button></div></nav>
 
     <article className="aboutHero" id="about">
       <p className="label">{c.label}</p><h1>{c.title}</h1><p className="aboutLead">{c.lead}</p>

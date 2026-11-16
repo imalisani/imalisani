@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import avatar from "../public/home/irina.webp";
-import PortfolioHeader from "./components/PortfolioHeader";
 import PortfolioLogo from "./components/PortfolioLogo";
 import { usePortfolioPreferences } from "./components/usePortfolioPreferences";
 import { cvFiles } from "./cv-files";
@@ -12,8 +11,6 @@ import styles from "./home.module.css";
 
 const copy = {
   es: {
-    nav: "Navegación principal",
-    links: ["Inicio", "Sobre mí", "Experiencia", "Casos", "Repositorios", "Contacto"],
     greeting: "Hola, soy",
     focus: "Automatización · Calidad · Producto · IA",
     intro: "Ayudo a equipos de producto a construir software confiable mediante testing estratégico, automatización y el uso de IA, desde los requisitos hasta el release.",
@@ -46,8 +43,6 @@ const copy = {
     automation: "Automatización",
   },
   en: {
-    nav: "Main navigation",
-    links: ["Home", "About me", "Experience", "Case studies", "Repositories", "Contact"],
     greeting: "Hi, I’m",
     focus: "Automation · Quality · Product · AI",
     intro: "I help product teams build reliable software through strategic testing, automation and AI, from requirements to release.",
@@ -82,7 +77,6 @@ const copy = {
 } as const;
 
 const experienceHref = "/sobre-mi#simpliroute";
-const destinations = ["/", "/sobre-mi", experienceHref, "#casos", "/repositorios", "/contacto"];
 const role = "Sr QA Engineer";
 const metricValues = ["90%", "≈25%", "100%"];
 
@@ -124,23 +118,12 @@ function Arrow() {
 }
 
 export default function Home() {
-  const preferences = usePortfolioPreferences();
-  const { lang, theme } = preferences;
+  const { lang, theme } = usePortfolioPreferences();
   const c = copy[lang];
 
   return (
     <main className={styles.page} data-home-theme={theme} lang={lang}>
       <div className={styles.shell}>
-        <PortfolioHeader {...preferences} navigation={
-          <nav className={styles.navigation} aria-label={c.nav}>
-            {destinations.map((href, index) => href === experienceHref ? (
-              <a key={href} href={href}>{c.links[index]}</a>
-            ) : (
-              <Link key={href} href={href} aria-current={index === 0 ? "page" : undefined}>{c.links[index]}</Link>
-            ))}
-          </nav>
-        }/>
-
         <section className={styles.intro} aria-labelledby="home-title">
           <div className={styles.identity}>
             <p className={styles.eyebrow}>{c.greeting}</p>

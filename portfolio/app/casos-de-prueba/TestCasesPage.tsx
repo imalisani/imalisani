@@ -1,12 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import PortfolioLogo from "../components/PortfolioLogo";
-import {useEffect,useState} from "react";
-import {cvFiles} from "../cv-files";
+import { usePortfolioPreferences } from "../components/usePortfolioPreferences";
 import styles from "./test-cases.module.css";
 
-type Lang="es"|"en";
 
 const testExamples=[
   {id:"TC-LOGIN-001",type:{en:"Positive · Smoke",es:"Positivo · Smoke"},priority:"P0",title:{en:"Successful login with a standard user",es:"Inicio de sesión exitoso con usuario estándar"},risk:{en:"A valid user could be unable to access the core product flow.",es:"Un usuario válido podría no acceder al flujo principal del producto."},gherkin:{en:[{keyword:"Feature:",text:"Authentication"},{keyword:"Scenario:",text:"Successful login with a standard user"},{keyword:"Given",text:"an active standard_user is on the login page"},{keyword:"When",text:"the user enters valid credentials and selects “Login”"},{keyword:"Then",text:"the inventory page is displayed"},{keyword:"And",text:"an authenticated session is created"}],es:[{keyword:"Característica:",text:"Autenticación"},{keyword:"Escenario:",text:"Inicio de sesión exitoso con usuario estándar"},{keyword:"Dado",text:"que un standard_user activo está en la página de inicio de sesión"},{keyword:"Cuando",text:"ingresa credenciales válidas y selecciona “Login”"},{keyword:"Entonces",text:"se muestra la página de inventario"},{keyword:"Y",text:"se crea una sesión autenticada"}]},tech:{en:"Equivalence Partitioning",es:"Partición de Equivalencia"},repo:"https://github.com/imalisani/playwright-portfolio-typescript"},
@@ -15,46 +12,15 @@ const testExamples=[
 ] as const;
 
 const copy={
-  es:{back:"Portfolio",index:"Cómo trabajo",aboutIndex:"Sobre mí",metricsNav:"Mis métricas",experienceNav:"Experiencia",cvNav:"Descargar CV",process:"Flujo de QA",testsNav:"Casos de prueba",reposNav:"Repositorios",contact:"Contacto",label:"Diseño de pruebas · Gherkin",title:<>Casos que hacen visible <em>el riesgo.</em></>,lead:"Cada ejemplo conecta una pregunta de negocio con un escenario Gherkin, una técnica de diseño y una implementación pública.",collection:"Escenarios Gherkin",hint:"Abrí cada escenario para ver su trazabilidad.",risk:"Riesgo cubierto",scenario:"Escenario Gherkin",technique:"Técnica",code:"Ver implementación",footerLabel:"Evidencia real",footerTitle:"Del comportamiento esperado al código ejecutable.",repositories:"Explorar repositorios",talk:"Hablemos"},
-  en:{back:"Portfolio",index:"How I work",aboutIndex:"About me",metricsNav:"My metrics",experienceNav:"Experience",cvNav:"Download CV",process:"QA workflow",testsNav:"Test cases",reposNav:"Repositories",contact:"Contact",label:"Test design · Gherkin",title:<>Test cases that make <em>risk visible.</em></>,lead:"Each example connects a business question with a Gherkin scenario, a design technique and a public implementation.",collection:"Gherkin scenarios",hint:"Open each scenario to see its traceability.",risk:"Risk covered",scenario:"Gherkin scenario",technique:"Technique",code:"View implementation",footerLabel:"Real evidence",footerTitle:"From expected behaviour to executable code.",repositories:"Explore repositories",talk:"Let’s talk"},
+  es:{label:"Diseño de pruebas · Gherkin",title:<>Casos que hacen visible <em>el riesgo.</em></>,lead:"Cada ejemplo conecta una pregunta de negocio con un escenario Gherkin, una técnica de diseño y una implementación pública.",collection:"Escenarios Gherkin",hint:"Abrí cada escenario para ver su trazabilidad.",risk:"Riesgo cubierto",scenario:"Escenario Gherkin",technique:"Técnica",code:"Ver implementación",footerLabel:"Evidencia real",footerTitle:"Del comportamiento esperado al código ejecutable.",repositories:"Explorar repositorios",talk:"Hablemos"},
+  en:{label:"Test design · Gherkin",title:<>Test cases that make <em>risk visible.</em></>,lead:"Each example connects a business question with a Gherkin scenario, a design technique and a public implementation.",collection:"Gherkin scenarios",hint:"Open each scenario to see its traceability.",risk:"Risk covered",scenario:"Gherkin scenario",technique:"Technique",code:"View implementation",footerLabel:"Real evidence",footerTitle:"From expected behaviour to executable code.",repositories:"Explore repositories",talk:"Let’s talk"},
 };
 
 export default function TestCasesPage(){
-  const [lang,setLang]=useState<Lang>("es");
-  const [theme,setTheme]=useState<"light"|"dark">("light");
-  useEffect(()=>{
-    const saved=window.localStorage.getItem("portfolio-theme");
-    const preferred=saved==="light"?"light":"dark";
-    const savedLanguage=window.localStorage.getItem("portfolio-language");
-    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
-    setTheme(preferred);
-    setLang(preferredLanguage);
-    document.documentElement.dataset.theme=preferred;
-    document.documentElement.lang=preferredLanguage;
-  },[]);
-  const toggleTheme=()=>setTheme(current=>{
-    const next=current==="light"?"dark":"light";
-    document.documentElement.dataset.theme=next;
-    window.localStorage.setItem("portfolio-theme",next);
-    return next;
-  });
-  const toggleLanguage=()=>setLang(current=>{
-    const next=current==="es"?"en":"es";
-    window.localStorage.setItem("portfolio-language",next);
-    document.documentElement.lang=next;
-    return next;
-  });
+  const { lang } = usePortfolioPreferences();
   const c=copy[lang];
 
   return <main className={styles.page} lang={lang}>
-    <nav className={styles.nav} aria-label={lang==="es"?"Navegación de casos de prueba":"Test cases navigation"}>
-      <PortfolioLogo lang={lang}/>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice de subpáginas":"Subpage index"}><Link href="/como-trabajo">{c.process}</Link><Link href="/agentic-qa-lab">Agentic QA Lab</Link><Link href="/casos-de-prueba" aria-current="page">{c.testsNav}</Link><Link href="/repositorios">{c.reposNav}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.aboutIndex} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice sobre mí":"About index"}><Link href="/sobre-mi#evidence">{c.metricsNav}</Link><Link href="/sobre-mi">{lang==="es"?"Mi historia":"My story"}</Link><a href={cvFiles[lang]} download>CV — {c.cvNav}</a><Link href="/contacto">{c.contact}</Link></div></details></div>
-      <div className={styles.controls}>
-        <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
-        <button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
-      </div>
-    </nav>
 
     <header className={styles.hero}>
       <p className={styles.eyebrow}>{c.label}</p>

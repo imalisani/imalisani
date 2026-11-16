@@ -1,11 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 type Language = "es" | "en";
 type Theme = "light" | "dark";
 
-export function usePortfolioPreferences() {
+type Preferences = {
+  lang: Language;
+  theme: Theme;
+  toggleLanguage: () => void;
+  toggleTheme: () => void;
+};
+
+const PortfolioPreferences = createContext<Preferences | null>(null);
+
+export function PortfolioPreferencesProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>("es");
   const [theme, setTheme] = useState<Theme>("dark");
 
@@ -35,5 +44,15 @@ export function usePortfolioPreferences() {
     setTheme(next);
   }
 
-  return { lang, theme, toggleLanguage, toggleTheme };
+  return (
+    <PortfolioPreferences.Provider value={{ lang, theme, toggleLanguage, toggleTheme }}>
+      {children}
+    </PortfolioPreferences.Provider>
+  );
+}
+
+export function usePortfolioPreferences() {
+  const preferences = useContext(PortfolioPreferences);
+  if (!preferences) throw new Error("Portfolio preferences are unavailable.");
+  return preferences;
 }

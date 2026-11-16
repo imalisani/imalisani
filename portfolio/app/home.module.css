@@ -35,91 +35,6 @@
   padding-inline: var(--home-gutter);
 }
 
-.header {
-  display: flex;
-  min-height: 72px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  border-bottom: 1px solid var(--home-divider, var(--violet));
-}
-
-.header:not(.shell > .header) {
-  padding-inline: clamp(20px, 3.5vw, 56px);
-}
-
-.back {
-  margin-right: auto;
-  font-size: 14px;
-}
-
-.navigation,
-.preferences,
-.language {
-  display: flex;
-  align-items: center;
-}
-
-.navigation {
-  gap: clamp(12px, 2vw, 30px);
-  font-size: .875rem;
-}
-
-.navigation a {
-  position: relative;
-  display: flex;
-  min-height: 44px;
-  align-items: center;
-}
-
-.navigation a:hover,
-.navigation a[aria-current] {
-  color: var(--home-accent);
-}
-
-.navigation a[aria-current]::after {
-  position: absolute;
-  inset: auto 0 3px;
-  height: 1px;
-  background: currentColor;
-  content: "";
-}
-
-.preferences,
-.language {
-  gap: 9px;
-}
-
-.theme,
-.language {
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-}
-
-.theme {
-  width: 44px;
-  display: grid;
-  place-items: center;
-}
-
-.shell .language {
-  min-width: 82px;
-  justify-content: center;
-  border: 1px solid var(--home-divider);
-  border-radius: 12px;
-  font-size: .875rem;
-}
-
-.active {
-  color: var(--home-accent, var(--ink));
-  font-weight: 700;
-}
-
-.header :is(a, button):focus-visible,
 .page :is(a, summary):focus-visible {
   outline: 2px solid var(--home-violet, var(--violet));
   outline-offset: 4px;
@@ -684,19 +599,6 @@
     gap: 10px;
   }
 
-  .navigation {
-    flex: 0 0 100%;
-    order: 3;
-    flex-wrap: wrap;
-    gap: 0 16px;
-  }
-
-  .shell > .header {
-    flex-wrap: wrap;
-    gap: 0 10px;
-    padding-top: 5px;
-  }
-
   .metrics li {
     flex-wrap: wrap;
     gap: 5px;
@@ -708,24 +610,6 @@
 }
 
 @media (max-width: 680px) {
-  .header {
-    min-height: 64px;
-  }
-
-  .navigation {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0 10px;
-  }
-
-  .navigation a {
-    min-height: 44px;
-  }
-
-  .navigation a[aria-current]::after {
-    width: 24px;
-    bottom: 4px;
-  }
 
   .intro {
     grid-template-columns: minmax(0, 1fr);

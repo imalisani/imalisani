@@ -2,7 +2,6 @@
 
 import { type FormEvent, useState } from "react";
 import SocialDock from "../components/SocialDock";
-import PortfolioHeader from "../components/PortfolioHeader";
 import { usePortfolioPreferences } from "../components/usePortfolioPreferences";
 
 const copy = {
@@ -21,8 +20,7 @@ const copy = {
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
 export default function ContactPage() {
-  const preferences = usePortfolioPreferences();
-  const { lang } = preferences;
+  const { lang } = usePortfolioPreferences();
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const c = copy[lang];
 
@@ -35,7 +33,6 @@ export default function ContactPage() {
   };
 
   return <main lang={lang}>
-    <PortfolioHeader {...preferences} showBack/>
     <section className="contactPage" id="contact" aria-labelledby="contact-title">
       <p className="label">{c.contactLabel}</p><h1 className="contactPageTitle" id="contact-title">{c.contactTitle}</h1>
       <SocialDock lang={lang}/>

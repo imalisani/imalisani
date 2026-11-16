@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import PortfolioLogo from "../components/PortfolioLogo";
-import {useEffect,useState} from "react";
-import {cvFiles} from "../cv-files";
+import { usePortfolioPreferences } from "../components/usePortfolioPreferences";
+import {useState} from "react";
 import TestingStories from "../components/TestingStories";
 import styles from "./process.module.css";
 
-type Lang="es"|"en";
 
 const steps=[
   {n:"01",tone:"lime",es:{short:"Historia + contexto",phase:"ENTENDER",title:"Lectura humana + primer borrador con IA",copy:"Mientras un agente elabora el primer plan de pruebas, leo los requerimientos, criterios de aceptación y dependencias. La IA acelera el borrador; yo valido intención, contexto y riesgo.",result:"Borrador inicial + mapa de riesgos"},en:{short:"Story + context",phase:"UNDERSTAND",title:"Human review + an AI first draft",copy:"While an agent drafts the first test plan, I read the requirements, acceptance criteria and dependencies. AI speeds up the draft; I validate intent, context and risk.",result:"Initial draft + risk map"}},
@@ -27,8 +25,8 @@ const outcomes=[
 ] as const;
 
 const copy={
-  es:{back:"Portfolio",index:"Cómo trabajo",aboutIndex:"Sobre mí",metricsNav:"Mis métricas",cvNav:"Descargar CV",flowNav:"Flujo de QA",casesNav:"Casos de prueba",reposNav:"Repositorios",contact:"Contacto",label:"Del requerimiento al release",title:<>Un flujo de QA que convierte incertidumbre en una <em>decisión trazable.</em></>,lead:"El proceso no empieza cuando la tarea está lista para probar. Empieza cuando todavía se puede preguntar, ajustar y prevenir.",chips:["Antes de In Progress","Agentes + criterio humano","Automatización + testing manual","Evidencia trazable"],diagram:"Mapa del proceso",diagramTitle:"Seleccioná una etapa para explorar el flujo.",diagramLead:"Las conexiones muestran el recorrido principal. La ejecución automática y la manual trabajan en paralelo y vuelven a reunirse en una decisión con evidencia.",detail:"Detalle de la etapa",output:"Salida",parallel:"DOS CAPAS DE COBERTURA",decision:"DECISIÓN DE QA",outcomeTitle:"Tres salidas posibles",outcomeCopy:"La decisión se comunica en el canal del equipo y queda vinculada a la tarjeta de desarrollo.",ctaLabel:"¿Querés ver el resultado?",ctaTitle:"Explorá casos de prueba y repositorios con evidencia real.",evidence:"Ver casos y evidencia",repos:"Explorar repositorios",talk:"Hablemos"},
-  en:{back:"Portfolio",index:"How I work",aboutIndex:"About me",metricsNav:"My metrics",cvNav:"Download CV",flowNav:"QA workflow",casesNav:"Test cases",reposNav:"Repositories",contact:"Contact",label:"From requirement to release",title:<>A QA workflow that turns uncertainty into a <em>traceable decision.</em></>,lead:"The process does not begin when a task is ready to test. It begins while there is still time to ask, adjust and prevent.",chips:["Before In Progress","Agents + human judgement","Automation + manual testing","Traceable evidence"],diagram:"Process map",diagramTitle:"Select a stage to explore the workflow.",diagramLead:"Connections show the main journey. Automated and manual execution run in parallel, then converge into an evidence-based decision.",detail:"Stage detail",output:"Output",parallel:"TWO COVERAGE LAYERS",decision:"QA DECISION",outcomeTitle:"Three possible outcomes",outcomeCopy:"The decision is shared in the team channel and linked to the development ticket.",ctaLabel:"Want to see the outcome?",ctaTitle:"Explore test cases and repositories with real evidence.",evidence:"View cases and evidence",repos:"Explore repositories",talk:"Let’s talk"},
+  es:{label:"Del requerimiento al release",title:<>Un flujo de QA que convierte incertidumbre en una <em>decisión trazable.</em></>,lead:"El proceso no empieza cuando la tarea está lista para probar. Empieza cuando todavía se puede preguntar, ajustar y prevenir.",chips:["Antes de In Progress","Agentes + criterio humano","Automatización + testing manual","Evidencia trazable"],diagram:"Mapa del proceso",diagramTitle:"Seleccioná una etapa para explorar el flujo.",diagramLead:"Las conexiones muestran el recorrido principal. La ejecución automática y la manual trabajan en paralelo y vuelven a reunirse en una decisión con evidencia.",detail:"Detalle de la etapa",output:"Salida",parallel:"DOS CAPAS DE COBERTURA",decision:"DECISIÓN DE QA",outcomeTitle:"Tres salidas posibles",outcomeCopy:"La decisión se comunica en el canal del equipo y queda vinculada a la tarjeta de desarrollo.",ctaLabel:"¿Querés ver el resultado?",ctaTitle:"Explorá casos de prueba y repositorios con evidencia real.",evidence:"Ver casos y evidencia",repos:"Explorar repositorios",talk:"Hablemos"},
+  en:{label:"From requirement to release",title:<>A QA workflow that turns uncertainty into a <em>traceable decision.</em></>,lead:"The process does not begin when a task is ready to test. It begins while there is still time to ask, adjust and prevent.",chips:["Before In Progress","Agents + human judgement","Automation + manual testing","Traceable evidence"],diagram:"Process map",diagramTitle:"Select a stage to explore the workflow.",diagramLead:"Connections show the main journey. Automated and manual execution run in parallel, then converge into an evidence-based decision.",detail:"Stage detail",output:"Output",parallel:"TWO COVERAGE LAYERS",decision:"QA DECISION",outcomeTitle:"Three possible outcomes",outcomeCopy:"The decision is shared in the team channel and linked to the development ticket.",ctaLabel:"Want to see the outcome?",ctaTitle:"Explore test cases and repositories with real evidence.",evidence:"View cases and evidence",repos:"Explore repositories",talk:"Let’s talk"},
 };
 
 const connectors=[
@@ -43,46 +41,12 @@ const connectors=[
 ] as const;
 
 export default function ProcessJourney(){
-  const [lang,setLang]=useState<Lang>("es");
-  const [theme,setTheme]=useState<"light"|"dark">("light");
+  const { lang } = usePortfolioPreferences();
   const [activeStep,setActiveStep]=useState(0);
-
-  useEffect(()=>{
-    const saved=window.localStorage.getItem("portfolio-theme");
-    const preferred=saved==="light"?"light":"dark";
-    const savedLanguage=window.localStorage.getItem("portfolio-language");
-    const preferredLanguage=savedLanguage==="en"||savedLanguage==="es"?savedLanguage:"es";
-    setTheme(preferred);
-    setLang(preferredLanguage);
-    document.documentElement.dataset.theme=preferred;
-    document.documentElement.lang=preferredLanguage;
-  },[]);
-
-  const toggleTheme=()=>setTheme(current=>{
-    const next=current==="light"?"dark":"light";
-    document.documentElement.dataset.theme=next;
-    window.localStorage.setItem("portfolio-theme",next);
-    return next;
-  });
-  const toggleLanguage=()=>setLang(current=>{
-    const next=current==="es"?"en":"es";
-    window.localStorage.setItem("portfolio-language",next);
-    document.documentElement.lang=next;
-    return next;
-  });
-
   const c=copy[lang];
   const active=steps[activeStep][lang];
 
   return <main className={styles.page} lang={lang}>
-    <nav className={styles.nav} aria-label={lang==="es"?"Navegación de Cómo trabajo":"How I work navigation"}>
-      <PortfolioLogo lang={lang}/>
-      <div className={styles.navLinks}><Link href="/">← {c.back}</Link><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.index} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice de subpáginas":"Subpage index"}><Link href="/como-trabajo" aria-current="page">{c.flowNav}</Link><Link href="/agentic-qa-lab">Agentic QA Lab</Link><Link href="/casos-de-prueba">{c.casesNav}</Link><Link href="/repositorios">{c.reposNav}</Link></div></details><details className={styles.navGroup} name="main-navigation"><summary className={styles.navParent}>{c.aboutIndex} <span aria-hidden="true">↓</span></summary><div className={styles.navDropdown} aria-label={lang==="es"?"Índice sobre mí":"About index"}><Link href="/sobre-mi#evidence">{c.metricsNav}</Link><Link href="/sobre-mi">{lang==="es"?"Mi historia":"My story"}</Link><a href={cvFiles[lang]} download>CV — {c.cvNav}</a><Link href="/contacto">{c.contact}</Link></div></details></div>
-      <div className={styles.controls}>
-        <button className={styles.theme} type="button" onClick={toggleTheme} aria-label={lang==="es"?(theme==="dark"?"Activar modo claro":"Activar modo oscuro"):(theme==="dark"?"Use light mode":"Use dark mode")}><span aria-hidden="true">{theme==="dark"?"☀":"☾"}</span></button>
-        <button className={`${styles.language} ${lang==="es"?styles.spanish:""}`} type="button" onClick={toggleLanguage} aria-pressed={lang==="es"} aria-label={lang==="es"?"View in English":"Ver en español"}><span className={lang==="en"?styles.active:""}>EN</span><i/><span className={lang==="es"?styles.active:""}>ES</span></button>
-      </div>
-    </nav>
 
     <header className={styles.hero}>
       <p className={styles.eyebrow}>{c.label}</p>
