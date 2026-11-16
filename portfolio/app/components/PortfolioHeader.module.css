@@ -39,7 +39,8 @@
   font-size: .875rem;
 }
 
-.navigation a {
+.navigation a,
+.workButton {
   display: flex;
   position: relative;
   align-items: center;
@@ -48,16 +49,54 @@
 
 .navigation a:hover,
 .navigation a[aria-current],
+.workButton:hover,
+.workButton[data-active="true"],
 .active {
   color: var(--header-accent);
 }
 
-.navigation a[aria-current]::after {
+.navigation a[aria-current]::after,
+.workButton[data-active="true"]::after {
   position: absolute;
   inset: auto 0 3px;
   height: 1px;
   background: currentColor;
   content: "";
+}
+
+.workGroup {
+  position: relative;
+}
+
+.workButton {
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.workButton[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.workLinks {
+  position: absolute;
+  inset: 100% auto auto -10px;
+  min-width: max-content;
+  padding: 4px 8px;
+  border: 1px solid var(--header-divider);
+  border-radius: 12px;
+  background: var(--header-background);
+}
+
+.workLinks a {
+  padding-inline: 10px;
+}
+
+.workLinks a[aria-current]::after {
+  inset-inline: 10px;
 }
 
 .controls {
@@ -102,7 +141,8 @@
   outline-offset: 3px;
 }
 
-.menuButton {
+.menuButton,
+.mobileControls {
   display: none;
 }
 
@@ -114,6 +154,14 @@
 
   .menuButton {
     display: inline-flex;
+  }
+
+  .desktopControls {
+    display: none;
+  }
+
+  .mobileControls {
+    display: flex;
     margin-inline-start: auto;
   }
 
@@ -131,15 +179,30 @@
 
   .navigation[data-open="true"] {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2px 8px;
+    gap: 2px;
   }
 
-  .navigation a {
+  .navigation a,
+  .workButton {
     padding-inline: 10px;
   }
 
-  .navigation a[aria-current]::after {
+  .workButton {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .workLinks {
+    position: static;
+    min-width: 0;
+    margin-inline: 10px;
+    padding: 0 0 0 8px;
+    border-width: 0 0 0 1px;
+    border-radius: 0;
+  }
+
+  .navigation a[aria-current]::after,
+  .workButton[data-active="true"]::after {
     inset-inline: 10px;
   }
 }
