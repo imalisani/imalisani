@@ -13,7 +13,7 @@ const copy = {
   es: {
     greeting: "Hola, soy",
     focus: "Automatización · Calidad · Producto · IA",
-    intro: "Ayudo a equipos de producto a construir software confiable mediante testing estratégico, automatización y el uso de IA, desde los requisitos hasta el release.",
+    intro: "Anticipo riesgos desde los requisitos, automatizo flujos críticos y aporto evidencia para decidir cuándo un cambio está listo para salir a producción.",
     success: "Ver mis casos de éxito",
     cv: "Descargar CV · PDF",
     cvLabel: "Descargar CV en español · PDF",
@@ -45,7 +45,7 @@ const copy = {
   en: {
     greeting: "Hi, I’m",
     focus: "Automation · Quality · Product · AI",
-    intro: "I help product teams build reliable software through strategic testing, automation and AI, from requirements to release.",
+    intro: "I identify risks during requirements review, automate critical workflows, and provide evidence to help teams decide when a change is ready for production.",
     success: "Explore my case studies",
     cv: "Download CV · PDF",
     cvLabel: "Download CV in English · PDF",
