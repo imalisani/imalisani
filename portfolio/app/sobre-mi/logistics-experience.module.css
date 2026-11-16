@@ -42,7 +42,7 @@
 
 .header h2 {
   margin: 0;
-  font: 600 clamp(42px, 6.5vw, 84px)/.98 Georgia, serif;
+  font: 600 var(--type-section)/1.1 Georgia, serif;
   letter-spacing: -.06em;
 }
 
@@ -56,14 +56,14 @@
   max-width: 54ch;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(.95rem, 1.5vw, 1.125rem);
+  font-size: var(--type-body);
   line-height: 1.55;
   text-wrap: pretty;
 }
 
 .subheading {
   margin: 0 0 12px;
-  font: 600 clamp(22px, 2.55vw, 34px)/1.12 Georgia, serif;
+  font: 600 var(--type-subheading)/1.13 Georgia, serif;
   letter-spacing: -.025em;
 }
 
@@ -187,7 +187,7 @@
 
 .metrics strong {
   color: var(--ink-accent);
-  font: 600 clamp(28px, 4vw, 47px)/1 Georgia, serif;
+  font: 600 var(--type-metric)/1 Georgia, serif;
   letter-spacing: -.05em;
   white-space: nowrap;
 }

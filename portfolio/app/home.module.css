@@ -67,7 +67,7 @@
 
 .identity h1 {
   margin: 9px 0 0;
-  font: 700 clamp(43px, 6.15vw, 96px)/.99 var(--home-serif);
+  font: 700 var(--type-name)/1.02 var(--home-serif);
   letter-spacing: -.065em;
   text-wrap: balance;
 }
@@ -83,7 +83,7 @@
 .role {
   margin: 0;
   color: var(--home-violet);
-  font: italic 600 clamp(25px, 3vw, 44px)/1.12 var(--home-serif);
+  font: italic 600 var(--type-role)/1.12 var(--home-serif);
   letter-spacing: -.035em;
 }
 
@@ -95,8 +95,8 @@
 .lead {
   max-width: 36rem;
   margin: 18px 0;
-  font-size: clamp(1rem, 1.48vw, 1.3rem);
-  line-height: 1.48;
+  font-size: var(--type-lead);
+  line-height: 1.55;
   text-wrap: pretty;
 }
 
@@ -251,9 +251,14 @@
 
 .metrics strong {
   color: var(--home-accent);
-  font: 700 clamp(30px, 4.1vw, 60px)/1 var(--home-serif);
+  font: 700 var(--type-metric)/1 var(--home-serif);
   letter-spacing: -.045em;
   white-space: nowrap;
+}
+
+.metrics li:last-child strong {
+  color: var(--home-violet);
+  font-size: var(--type-subheading);
 }
 
 .metrics span,
@@ -282,9 +287,13 @@
 .sectionHeading h2,
 .explore h2 {
   margin: 0;
-  font: 600 clamp(28px, 3vw, 45px)/1.06 var(--home-serif);
+  font: 600 var(--type-subheading)/1.12 var(--home-serif);
   letter-spacing: -.042em;
   text-wrap: balance;
+}
+
+.cases .sectionHeading h2 {
+  font-size: var(--type-section);
 }
 
 .sectionHeading h2::after {
@@ -406,14 +415,14 @@
 
 .card h3 {
   margin: 0;
-  font: 600 clamp(17px, 1.65vw, 24px)/1.13 var(--home-serif);
+  font: 600 var(--type-card)/1.18 var(--home-serif);
   letter-spacing: -.025em;
   text-wrap: pretty;
 }
 
 .card p {
   margin: 0 0 4px;
-  font-size: .84rem;
+  font-size: var(--type-small);
 }
 
 .cardIcon {
@@ -503,7 +512,7 @@
 
 .caseCopy strong {
   max-width: 19ch;
-  font: 700 clamp(24px, 2.65vw, 40px)/1.04 var(--home-serif);
+  font: 700 var(--type-subheading)/1.13 var(--home-serif);
   letter-spacing: -.037em;
   text-wrap: pretty;
 }
@@ -621,7 +630,6 @@
   }
 
   .identity h1 {
-    font-size: clamp(42px, 9vw, 62px);
     text-wrap: pretty;
   }
 
