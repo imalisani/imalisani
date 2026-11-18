@@ -24,7 +24,6 @@ const copy = {
     metricLabels: ["de planes de prueba listos antes del desarrollo", "de los bugs identificados antes de producción", "compromiso con la calidad"],
     technologies: "Tecnologías principales",
     groups: ["Web", "Mobile", "APIs y rendimiento", "Datos", "CI/CD", "Gestión"],
-    more: "Ver más",
     explore: "Explora mi trabajo",
     exploreTitle: "Cuatro formas de conocer mi enfoque",
     exploreIntro: "Desde la estrategia hasta el código, estos recorridos muestran cómo convierto la calidad en impacto real.",
@@ -56,7 +55,6 @@ const copy = {
     metricLabels: ["of test plans ready before development", "of bugs identified before production", "commitment to quality"],
     technologies: "Core technologies",
     groups: ["Web", "Mobile", "APIs and performance", "Data", "CI/CD", "Management"],
-    more: "See more",
     explore: "Explore my work",
     exploreTitle: "Four ways to get to know my approach",
     exploreIntro: "From strategy to code, these examples show how I apply quality engineering in practice.",
@@ -160,7 +158,6 @@ export default function Home() {
         <section className={styles.technologies} aria-labelledby="technologies-title">
           <div className={styles.sectionHeading}>
             <h2 id="technologies-title">{c.technologies}</h2>
-            <Link className={styles.more} href="/sobre-mi#capabilities">{c.more}<Arrow/></Link>
           </div>
           <div className={styles.techGrid}>
             {techGroups.map((tools, index) => (

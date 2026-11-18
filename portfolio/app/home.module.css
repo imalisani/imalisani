@@ -139,7 +139,6 @@
 }
 
 .actions svg,
-.more svg,
 .footer svg {
   width: 19px;
   height: 19px;
@@ -303,20 +302,6 @@
   vertical-align: .27em;
   border-top: 1px solid var(--home-accent);
   content: "";
-}
-
-.more {
-  display: inline-flex;
-  flex: none;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  color: var(--home-accent);
-  font-size: .86rem;
-}
-
-.more:hover {
-  text-decoration: underline;
 }
 
 .techGrid {
